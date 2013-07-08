@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Ocm::Application.load_tasks
+Ocd::Application.load_tasks

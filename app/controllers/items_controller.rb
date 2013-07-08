@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
 
-	layout 'oldcomputers'
+	layout 'ocd'
 
 end

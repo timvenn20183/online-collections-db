@@ -8,7 +8,7 @@ ROLODEX_HISTORY = 3
 ARTICLE_INTRODUCTORY = 0
 
 # site
-TAG_LINE = "old computers, software, games and consoles in South Africa"
+TAG_LINE = "Online Collectors Database"
 
 # fields
 STRING_TYPE = 2

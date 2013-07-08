@@ -1,9 +1,9 @@
 class MainController < ApplicationController
 
-    layout 'oldcomputers'
+    layout 'ocd'
 
     def index
-    	
+
     end
 
 end

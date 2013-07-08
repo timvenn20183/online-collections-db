@@ -1,5 +1,5 @@
 class BlogController < ApplicationController
 
-	layout 'oldcomputers'
+	layout 'ocd'
 
 end

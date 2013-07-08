@@ -1,6 +1,6 @@
 class PlatformController < ApplicationController
 
-	layout 'oldcomputers'
+	layout 'ocd'
 
 	def index
 		@platform = Platform.find_by_cached_slug(params[:id])

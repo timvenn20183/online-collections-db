@@ -1,5 +1,5 @@
 class RolodexController < ApplicationController
 
-	layout 'oldcomputers'
+	layout 'ocd'
 
 end

@@ -17,9 +17,6 @@ def watermark
 	txt.pointsize = 12
 	txt.gravity = Magick::SouthEastGravity
 	txt.stroke = "#222"
-	title = '(c) oldcomputers.co.za'
-	#source = source.resize_to_fill(400, 400).border(10, 10, "black")
-	source.annotate(txt, 0, 0, 0, 0, title)
 	end
 end
 

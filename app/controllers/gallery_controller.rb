@@ -1,5 +1,5 @@
 class GalleryController < ApplicationController
 
-	layout 'oldcomputers'
+	layout 'ocd'
 
 end
