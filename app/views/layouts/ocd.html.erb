@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag(:application) %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Online Collectors Database</title>
+    <meta name="description" content="old and vintage collection of computers, software, games and consoles in South Africa with an interest in collecting local computing history.">
+    <meta name="keywords" content="old computer, vintage computer, retro computer, retro games, retro software, retro console, old computer, old games, vintage games, old software, vintage software, old consoles, vintage consoles, south africa, dos, ms-dos, ibm, apple, atari, amiga, commodore, spectrum, sinclair, collecting, history, intellivision, sega, nintendo">
+</head>
+<body>
+
+<div class="main">
+<div id="header">Online Collectors Database</div>
+<div id="container">
+  <div id="center" class="column">
+    <%= yield %>
+  </div>
+
+  <div id="left" class="column">
+    <%= render :partial => '/main/menu' %>
+  </div>
+  <div id="right" class="column">
+    <div class="nav_container">
+        <%= render :partial => '/main/recent_things' %>
+  </div>
+</div>
+</div>
+<div id="footer"></div>
+
+</div>
+
+</body>
+</html>

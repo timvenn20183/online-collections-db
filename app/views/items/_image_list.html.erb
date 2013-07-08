@@ -1,0 +1,7 @@
+<% @items.sort! {|a,b| a.name.downcase <=> b.name.downcase }.each do |item| %>
+    <% if item.is_visible_to_public == true %>
+        <% if !item.mainimage.blank? then %>
+           <%= image_tag(item.mainimage.thumb.url) %>
+        <% end %>
+    <% end %>
+<% end %>

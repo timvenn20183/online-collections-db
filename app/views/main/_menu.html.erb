@@ -1,0 +1,21 @@
+<!-- MAIN MENU -->
+<div class="nav_container">
+	<div class="headers">Site Links</div>
+<div><%= link_to('Home', :controller => :main, :action => :index) %></div>
+</div>
+<br/>
+<!-- VIRTUALCOLLECTION MENU -->
+<div class="nav_container">
+		<div class="headers">Collections</div>
+<% Virtualcollection.all.each do |virtualcollection| %>
+        <div><%= link_to(virtualcollection.name, :controller => 'virtualcollection', :action => 'index', :id => virtualcollection.cached_slug) %></div>
+<% end %>
+</div>
+<br/>
+<div class="nav_container">
+		<div class="headers">Platforms</div>
+<!-- PLATFORM MENU -->
+<% Platform.visible.alphabetical.each do |platform| %>
+        <div><%= link_to(platform.menuname, :controller => 'platform', :action => 'index', :id => platform.cached_slug) %></div>
+<% end %>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Item 1
+  visability: 1
+  active: 
+  year: 1
+  value: 1.5
+  cost: 1.5
+
+two:
+  name: Item 2
+  visability: 1
+  active: 
+  year: 1
+  value: 1.5
+  cost: 1.5

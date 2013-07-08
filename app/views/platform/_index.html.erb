@@ -1,0 +1,13 @@
+<% if !@platform.note.blank? then %>
+    <table border="0" align="center" width="90%" style="border : 0px solid #222;">
+        <tr>
+            <td>
+                <%= @platform.note %>
+            </td>
+        </tr>
+    </table>
+    </br>
+<% end %>
+<%= render :partial => '/items/list' %>
+
+

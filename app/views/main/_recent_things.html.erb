@@ -1,0 +1,8 @@
+<!-- RECENT ITEMS -->
+    <div style="text-align:center;">
+        <% Thing.recent_with_images.each do |item| %>
+        <br/>
+            <%= image_tag(item.mainimage.thumb.url) if !item.mainimage.blank? %><br/>
+            <%= item.name %><br/>
+        <% end %>
+    </div>

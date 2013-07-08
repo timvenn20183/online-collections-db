@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  rolodex_type: 1
+  email: MyString
+  cell: MyString
+  tel: MyString
+  password: MyString
+  username: MyString
+
+two:
+  name: MyString
+  rolodex_type: 1
+  email: MyString
+  cell: MyString
+  tel: MyString
+  password: MyString
+  username: MyString
