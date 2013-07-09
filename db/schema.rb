@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618165646) do
+ActiveRecord::Schema.define(:version => 20130708214414) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -179,6 +179,19 @@ ActiveRecord::Schema.define(:version => 20130618165646) do
 
   add_index "rolodexes_things", ["rolodex_id"], :name => "index_rolodexes_things_on_rolodex_id"
   add_index "rolodexes_things", ["thing_id"], :name => "index_rolodexes_things_on_thing_id"
+
+  create_table "sites", :force => true do |t|
+    t.string   "code"
+    t.string   "title"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.text     "meta_keywords"
+    t.text     "meta_description"
+    t.string   "owner"
+    t.string   "email"
+    t.string   "username"
+    t.string   "password"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

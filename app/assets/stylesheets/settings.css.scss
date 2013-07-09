@@ -1,0 +1,105 @@
+body {
+background-color : #CCC;
+  min-width: 550px;  
+  font-family : Tahoma,Arial,sans-serif;
+   font-size:11pt;
+
+  color : #222;
+}
+
+#header {
+    background-image : url('5.png');
+    height : 60px;
+    text-align : left;
+    line-height : 60px;
+    padding-left : 10px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2),0px -5px 35px rgba(0,0,0,0.3);
+}
+
+#container {
+  padding-left: 150px;   
+  padding-right: 250px; 
+}
+#container .column {
+  position: relative;
+  float: left;
+}
+
+#center {
+  width: 99%;
+  margin-top : 5px;
+  padding : 5px;
+}
+#left {
+  width: 150px;       
+  right: 150px;      
+  margin-left: -100%;
+}
+#right {
+  width: 235px;    
+  margin-right: -250px;  
+  margin-top : 5px;
+  margin-bottom : 5px;
+}
+
+#footer {
+  clear: both;
+  height : 30px;
+  background-image : url('4.png');
+  font-size : 10pt;
+    text-align : right;
+    padding-right : 10px;
+    line-height : 30px;
+    color : #FFF;
+
+}
+
+/*** IE6 Fix ***/
+* html #left {
+  left: 150px;          
+}
+
+.main {
+    width : 85%;
+    margin : auto;
+    box-shadow: 10px 0px 40px -7px, -10px 0px 40px -7px;
+    border : solid 1px #222;
+    background-color : #EEE;
+}
+
+.headers {
+    background-image : url('8.png');
+    color: rgba(255,255,255,0.9);
+    text-align : center;
+  }
+
+.nav_container {
+    margin : 5px;
+
+}
+
+.list_image {
+    padding : 10px 10px 10px 10px;
+}
+
+a:link {color:#40698A;;text-decoration:none;}
+a:visited {color:#40698A;;text-decoration:none;}
+a:hover {color:#000;text-decoration:none;}  
+a:active {color:#000;;text-decoration:none;} 
+
+.help {
+    font-size : 15px;
+    color :  #FFFFFF;
+    text-align : center;
+    width : 20px;
+    background-color : transparent;
+    background: linear-gradient(to bottom, #6699bb 5%, #114477 95%) repeat scroll;
+    background: -webkit-gradient(linear, left bottom, left top, from(#114477), to(#6699bb));
+    border-radius: 2px 2px 2px 2px;
+    display: block;
+    text-align:center;
+    text-shadow : #000000 1.4px 1.4px 2.8px;
+    float : left;
+}
+

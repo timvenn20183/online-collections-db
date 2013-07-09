@@ -1,0 +1,74 @@
+<%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+<table border="0" width="100%">
+    <tr>
+        <td>
+            Site title
+        </td>
+        <td>
+            <%= text_field_tag 'site[title]', @site.title, :size => 50 %> <%= image_tag('help.png', :title => 'The name of your collections website. This will appear at the top of the browser title bar.') %>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            Meta keywords
+        </td>
+        <td>
+            <%= text_area_tag 'site[meta_keywords]', @site.meta_keywords, :rows => 5, :cols => 50 %> <%= image_tag('help.png', :title => 'The meta keywords for your site to assist with SEO.') %>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            Meta description
+        </td>
+        <td>
+            <%= text_area_tag 'site[meta_description]', @site.meta_description, :rows => 5, :cols => 50  %> <%= image_tag('help.png', :title => 'The meta description for your site to assist with SEO.') %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Site owner
+        </td>
+        <td>
+            <%= text_field_tag 'site[owner]', @site.owner, :size => 50 %> <%= image_tag('help.png', :title => 'Your name.') %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Owner email
+        </td>
+        <td>
+            <%= text_field_tag 'site[email]', @site.email, :size => 50 %> <%= image_tag('help.png', :title => 'Your email address.') %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Username
+        </td>
+        <td>
+            <%= text_field_tag 'site[username]', @site.username, :size => 20 %> <%= image_tag('help.png', :title => 'The username you wish to use to access the administration functions of this site.') %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Password
+        </td>
+        <td>
+            <%= password_field_tag 'password1', '', :size => 20 %> <%= image_tag('help.png', :title =>'Your prefered password. If you alter this please confirm the password in the box below.') %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Confirm
+        </td>
+        <td>
+            <%= password_field_tag 'password2', '', :size => 20 %> 
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="right">
+            <button onclick="$('#site_update').submit();return false;">Update</button>
+        </td>
+    </tr>
+</table>
+<% end %>
+
