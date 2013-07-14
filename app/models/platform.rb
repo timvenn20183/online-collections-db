@@ -7,7 +7,6 @@ class Platform < ActiveRecord::Base
     mount_uploader :image, PlatformimageUploader
 
     has_and_belongs_to_many :things
-    belongs_to :webring
 
     has_friendly_id :name, use_slug: true
 

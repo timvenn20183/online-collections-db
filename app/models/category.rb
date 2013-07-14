@@ -1,7 +1,5 @@
 class Category < ActiveRecord::Base
 
-    has_and_belongs_to_many :blogs
-
     validates :name, :presence => true
 
     attr_accessible :cached_slug, :name

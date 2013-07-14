@@ -5,6 +5,6 @@ class Comment < ActiveRecord::Base
 	validates :subject, :presence => true
 	validates :detail, :presence => true
 
-	attr_accessible :approved, :blog_id, :detail, :email_address, :gallery_id, :name, :thing_id, :subject
+	attr_accessible :approved, :detail, :email_address, :gallery_id, :name, :thing_id, :subject
 
 end
