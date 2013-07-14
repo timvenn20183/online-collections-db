@@ -1,8 +1,8 @@
 <% @items_without_images = Array.new %>
 <% @items_with_images = Array.new %>
 <% @items.each do |item| %>
-    <% if !item.mainimage.blank? then 
-            @items_with_images << item 
+    <% if !item.mainimage.blank? then
+            @items_with_images << item
        else
             @items_without_images << item
        end
@@ -10,14 +10,14 @@
 <% end %>
 
 <% @items_with_images.sort! {|a,b| a.name.downcase <=> b.name.downcase}.each do |item| %>
-    <%= image_tag(item.mainimage.list.url,:class => 'list_image', :title => item.name + " (" + item.year.to_s + ")") %> 
+    <%= image_tag(item.mainimage.list.url,:class => 'list_image', :title => item.name + " (" + item.year.to_s + ")") %>
 <% end %>
 <br/>
 <br/>
 <table border="0" width="99%">
 <% @items_without_images.sort! {|a,b| a.name.downcase <=> b.name.downcase }.each do |item| %>
     <tr>
-        <td>    
+        <td>
             <%= item.name %>
         </td>
         <td align="right">
