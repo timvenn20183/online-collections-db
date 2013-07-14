@@ -17,4 +17,12 @@ class SettingsController < ApplicationController
         end
     end
 
+    def fields
+
+    end
+
+    def fields_update
+
+    end
+
 end
