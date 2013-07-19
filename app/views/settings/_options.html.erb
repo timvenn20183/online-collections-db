@@ -1,9 +1,11 @@
 <div class="well" style="max-width: 340px; padding: 8px 0;">
 <ul class="nav nav-list">
 <li class="nav-header">Site</li>
-<li><%= link_to("General settings", :action => 'site', :controller => 'settings', :remote => true) %></li>
+<li><%= link_to("Settings", :action => 'site', :controller => 'settings', :remote => true) %></li>
 <li><%= link_to("About", :action => 'about', :controller => 'settings', :remote => true) %></li>
 <li class="nav-header">Item</li>
+<li class="nav-header">General</li>
+<li><%= link_to("Main", :action => 'index', :controller => 'main') %></li>
 </ul>
 </div>
 
