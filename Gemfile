@@ -6,6 +6,8 @@ gem 'roo'
 gem 'thin'
 gem 'will_paginate'
 
+gem 'bootstrap-sass'
+
 gem 'sqlite3'
 gem 'mysql2'
 gem 'rmagick'

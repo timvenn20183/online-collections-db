@@ -1,11 +1,32 @@
+<div id="notice_bar">
+<div class="alert alert-info">
+    Please update your general site information below and click save once done.
+</div>
+</div>
 <%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
 <table border="0" width="100%">
+    <tr>
+        <td>
+              Site header
+        </td>
+        <td>
+            <%= text_field_tag 'site[header]', @site.header, :size => 50 %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+              Site tagline
+        </td>
+        <td>
+            <%= text_field_tag 'site[tagline]', @site.tagline, :size => 50 %>
+        </td>
+    </tr>
     <tr>
         <td>
             Site title
         </td>
         <td>
-            <%= text_field_tag 'site[title]', @site.title, :size => 50 %> <%= image_tag('help.png', :title => 'The name of your collections website. This will appear at the top of the browser title bar.') %>
+            <%= text_field_tag 'site[title]', @site.title, :size => 50 %>
         </td>
     </tr>
     <tr>
@@ -13,7 +34,7 @@
             Meta keywords
         </td>
         <td>
-            <%= text_area_tag 'site[meta_keywords]', @site.meta_keywords, :rows => 5, :cols => 50 %> <%= image_tag('help.png', :title => 'The meta keywords for your site to assist with SEO.') %>
+            <%= text_area_tag 'site[meta_keywords]', @site.meta_keywords, :rows => 5, :cols => 50 %>
         </td>
     </tr>
     <tr>
@@ -21,7 +42,7 @@
             Meta description
         </td>
         <td>
-            <%= text_area_tag 'site[meta_description]', @site.meta_description, :rows => 5, :cols => 50  %> <%= image_tag('help.png', :title => 'The meta description for your site to assist with SEO.') %>
+            <%= text_area_tag 'site[meta_description]', @site.meta_description, :rows => 5, :cols => 50  %>
         </td>
     </tr>
     <tr>
@@ -29,7 +50,7 @@
             Site owner
         </td>
         <td>
-            <%= text_field_tag 'site[owner]', @site.owner, :size => 50 %> <%= image_tag('help.png', :title => 'Your name.') %>
+            <%= text_field_tag 'site[owner]', @site.owner, :size => 50 %>
         </td>
     </tr>
     <tr>
@@ -37,7 +58,7 @@
             Owner email
         </td>
         <td>
-            <%= text_field_tag 'site[email]', @site.email, :size => 50 %> <%= image_tag('help.png', :title => 'Your email address.') %>
+            <%= text_field_tag 'site[email]', @site.email, :size => 50 %>
         </td>
     </tr>
     <tr>
@@ -45,7 +66,7 @@
             Username
         </td>
         <td>
-            <%= text_field_tag 'site[username]', @site.username, :size => 20 %> <%= image_tag('help.png', :title => 'The username you wish to use to access the administration functions of this site.') %>
+            <%= text_field_tag 'site[username]', @site.username, :size => 20 %>
         </td>
     </tr>
     <tr>
@@ -53,7 +74,7 @@
             Password
         </td>
         <td>
-            <%= password_field_tag 'password1', '', :size => 20 %> <%= image_tag('help.png', :title =>'Your prefered password. If you alter this please confirm the password in the box below.') %>
+            <%= password_field_tag 'password1', '', :size => 20 %>
         </td>
     </tr>
     <tr>
@@ -66,7 +87,7 @@
     </tr>
     <tr>
         <td colspan="2" align="right">
-            <button onclick="$('#site_update').submit();return false;">Update</button>
+            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary" type="button" id="save_button">Save</button>
         </td>
     </tr>
 </table>

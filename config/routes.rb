@@ -5,6 +5,8 @@ Ocd::Application.routes.draw do
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'
     match 'settings/site_update' => 'settings#site_update'
+    match 'settings/about' => 'settings#about'
+    match 'settings/about_update' => 'settings#about_update'
     match 'settings/fields' => 'settings#fields'
     match 'settings/fields_update' => 'settings#fields_update'
 

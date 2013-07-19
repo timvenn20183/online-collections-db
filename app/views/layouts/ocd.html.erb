@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%= stylesheet_link_tag "ocd", :media => "all" %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag("application") %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <% site = Site.first %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-    <title><%= site.title if site != nil %></title>
-    <meta name="description" content="<%= site.meta_description if site.meta_description != nil %>">
-    <meta name="keywords" content="<%= site.meta_keywords if site.meta_keywords != nil %>">
+    <title>Online Collectors Database</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 </head>
 <body>
-
-<div class="main">
-<div id="header">Online Collectors Database</div>
-<div id="container">
-  <div id="center" class="column">
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'main/navigation' %>
+        </div>
+      </nav>
+    </header>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+        <%= render 'main/menu' %>
+    </div>
+    <div class="span10" id="center">
+        <%= render 'main/index' %>
+    </div>
   </div>
-
-  <div id="left" class="column">
-    <%= render :partial => '/main/menu' %>
-  </div>
-  <div id="right" class="column">
-    <div class="nav_container">
-        <%= render :partial => '/main/recent_things' %>
-  </div>
-</div>
-</div>
-<div id="footer"></div>
-
 </div>
 
 </body>

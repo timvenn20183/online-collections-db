@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%= stylesheet_link_tag "settings", :media => "all" %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag("application") %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title>Online Collectors Database</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 </head>
 <body>
-
-<div class="main">
-<div id="header">Online Collectors Database</div>
-<div id="container">
-  <div id="center" class="column">
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'settings/navigation' %>
+        </div>
+      </nav>
+    </header>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+        <%= render 'settings/options' %>
+    </div>
+    <div class="span10" id="center">
+        <%= render 'settings/index' %>
+    </div>
   </div>
-
-  <div id="left" class="column">
-    <%= render :partial => 'options' %>
-  </div>
-  <div id="right" class="column">
-    <div class="nav_container">
-        &nbsp;
-  </div>
-</div>
-</div>
-<div id="footer"></div>
-
 </div>
 
 </body>
