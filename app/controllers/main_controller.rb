@@ -7,4 +7,10 @@ class MainController < ApplicationController
         @about = current_about
     end
 
+    def login
+        respond_to do |format|
+            format.js
+        end
+    end
+
 end

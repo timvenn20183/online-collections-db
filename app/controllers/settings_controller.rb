@@ -2,6 +2,8 @@ class SettingsController < ApplicationController
 
     layout 'settings'
 
+    before_filter :user_logged_in
+
     def index
         @site = current_site
     end
@@ -41,6 +43,11 @@ class SettingsController < ApplicationController
     end
 
     def fields_update
+    end
+
+    def logout
+        logout_user
+        redirect_to :action => 'index', :controller => 'main'
     end
 
 

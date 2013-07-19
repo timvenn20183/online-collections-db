@@ -1,11 +1,19 @@
 <div class="well" style="max-width: 340px; padding: 8px 0;">
 <ul class="nav nav-list">
 <li class="nav-header">Site</li>
-<li><%= link_to("Settings", :action => 'site', :controller => 'settings', :remote => true) %></li>
-<li><%= link_to("About", :action => 'about', :controller => 'settings', :remote => true) %></li>
-<li class="nav-header">Item</li>
+<li class="active menu_option"><%= link_to("Settings", :action => 'site', :controller => 'settings', :remote => true) %></li>
+<li class="menu_option"><%= link_to("About", :action => 'about', :controller => 'settings', :remote => true) %></li>
+<li class="nav-header">Item Managment</li>
+<li class="menu_option"><%= link_to("Collections", :action => 'index', :controller => 'main') %></li>
+<li class="menu_option"><%= link_to("Conditions", :action => 'index', :controller => 'main') %></li>
 <li class="nav-header">General</li>
-<li><%= link_to("Main", :action => 'index', :controller => 'main') %></li>
+<li class="menu_option"><%= link_to("Help", :action => 'index', :controller => 'settings', :remote => true) %></li>
+<li class="menu_option"><%= link_to("Logout", :action => 'logout', :controller => 'settings') %></li>
 </ul>
 </div>
+<script>
+$('.menu_option').click(function() {
+    $(".menu_option").removeClass("active");$(this).addClass("active")
+});
+</script>
 

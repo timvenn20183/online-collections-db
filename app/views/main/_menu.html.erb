@@ -2,16 +2,18 @@
 <div class="well" style="max-width: 340px; padding: 8px 0;">
 <ul class="nav nav-list">
 <li class="nav-header">Site links</li>
-<li><%= link_to('Home', :controller => :main, :action => :index) %></li>
+<li class="menu_option active"><%= link_to('Home', :controller => :main, :action => :index) %></li>
 <li class="nav-header">Collections</li>
 <% Virtualcollection.all.each do |virtualcollection| %>
-        <li><%= link_to(virtualcollection.name, :controller => 'virtualcollection', :action => 'index', :id => virtualcollection.cached_slug) %></li>
-<% end %>
-<li class="nav-header">Platforms</li>
-<% Platform.visible.alphabetical.each do |platform| %>
-        <li><%= link_to(platform.menuname, :controller => 'platform', :action => 'index', :id => platform.cached_slug) %></li>
+        <li class="menu_option"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug) %></li>
 <% end %>
 <li class="nav-header">General</li>
-<li><%= link_to('Admin', :controller => :settings, :action => :index) %></li>
+<li class="menu_option"><%= link_to('Admin', :controller => :settings, :action => :index, :remote => true) %></li>
 </ul>
 </div>
+<script>
+$('.menu_option').click(function() {
+    $(".menu_option").removeClass("active");$(this).addClass("active")
+});
+</script>
+

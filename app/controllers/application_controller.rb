@@ -14,4 +14,17 @@ protect_from_forgery
         end
     end
 
+    def logout_user
+        session[:user] = nil
+    end
+
+    def login_user
+        session[:user] = "STUB"
+    end
+
+    def user_logged_in
+        return true if session[:user] != nil
+        redirect_to :action => 'login', :controller => 'main', :format => 'js'
+    end
+
 end
