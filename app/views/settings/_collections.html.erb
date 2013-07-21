@@ -11,16 +11,10 @@
             <input type="text" class="search-query" id="filter" name="filter" placeholder="Filter">
             <script>
                 $('#filter').keyup(function() {
-                    if ($('#filter').val().length > 0) {
                         pattern = new RegExp($('#filter').val().toLowerCase());
                         $('#collections_table > tbody  > tr').each(function() {
-                           if (!pattern.test($(this).html().toLowerCase()) == true) {$(this).hide();}
+                           if (!pattern.test($(this).html().toLowerCase()) == true) {$(this).hide();}else {$(this).show();}
                     });
-                    } else {
-                       $('#collections_table > tbody  > tr').each(function() {
-                            $(this).show();
-                    });
-                    };
                 });
             </script>
         <% end %>
