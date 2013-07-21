@@ -6,7 +6,26 @@
 <% end %>
 </div>
 
-<table class="table table-striped table-hover">
+<div style="float:right;">
+        <%= form_tag({:controller => :settings, :action => :collection_insert}, :remote => true, :id => 'collection_insert',:authenticity_token => form_authenticity_token ) do |f| %>
+            <input type="text" class="search-query" id="filter" name="filter" placeholder="Filter">
+            <script>
+                $('#filter').keyup(function() {
+                    if ($('#filter').val().length > 0) {
+                        pattern = new RegExp($('#filter').val().toLowerCase());
+                        $('#collections_table > tbody  > tr').each(function() {
+                           if (!pattern.test($(this).html().toLowerCase()) == true) {$(this).hide();}
+                    });
+                    } else {
+                       $('#collections_table > tbody  > tr').each(function() {
+                            $(this).show();
+                    });
+                    };
+                });
+            </script>
+        <% end %>
+</div>
+<table class="table table-striped table-hover" id="collections_table">
 <thead>
     <tr>
         <th>
@@ -23,7 +42,7 @@
 <tbody>
 <% current_site.virtualcollections.all.each do |collection| %>
 <% code = encrypt(collection.id) %>
-<tr>
+<tr <%=raw "class='success'" if defined? @virtualcollection and collection == @virtualcollection %>>
     <td>
         <%= collection.name %>
     </td>
@@ -32,26 +51,33 @@
     </td>
     <td>
         <% if collection.things.count == 0 then %>
-            <button type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
+
+            <% geturl = url_for :controller => 'settings', :action => 'collection_remove', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
         <% else %>
-            <button type="button" class="btn btn-mini btn-info" style="width:75px;" id="<%= encrypt(collections.id) %>">Update</button>
+            <button type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
         <% end %>
     </td>
 </tr>
 <% end %>
 </tbody>
+<thead>
 <tr>
-    <td>
+    <td colspan="2">
+        <%= form_tag({:controller => :settings, :action => :collection_insert}, :remote => true, :id => 'collection_insert',:authenticity_token => form_authenticity_token ) do |f| %>
+        <%= text_field_tag 'collection_name', '' %>
     </td>
     <td>
-    </td>
-    <td>
-        <button type="button" class="btn btn-mini btn-primary" style="width:75px;">Insert</button>
+        <button onclick="$('#collection_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
+        <% end %>
     </td>
 </tr>
-
+</thead>
 </table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#collection_name").focus();
+    });
+</script>
 
-<%= form_tag({:controller => :settings, :action => :about_update}, :remote => true, :id => 'about_update' , :authenticity_token => form_authenticity_token ) do |f| %>
-<% end %>
 

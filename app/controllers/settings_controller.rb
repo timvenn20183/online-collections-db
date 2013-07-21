@@ -48,6 +48,28 @@ class SettingsController < ApplicationController
     end
 
     def collection_remove
+        @collection = Virtualcollection.find(decrypt(params[:id]))
+        respond_to do |format|
+            if !@collection.nil?
+                if @collection.destroy
+                    format.js { render :action => 'collection_removed' }
+                else
+                    format.js { render :action => 'collection_notremoved' }
+                end
+            else
+                format.js { render :action => 'collection_notremoved' }
+            end
+        end
+    end
+
+    def collection_insert
+        @virtualcollection = Virtualcollection.new
+        @virtualcollection.site_id = current_site.id
+        @virtualcollection.name = params[:collection_name]
+        @virtualcollection.save
+        respond_to do |format|
+            format.js
+        end
     end
 
     def tags
