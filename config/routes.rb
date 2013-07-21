@@ -3,6 +3,7 @@ Ocd::Application.routes.draw do
     root :to => 'main#index'
 
     match 'login' => 'main#login'
+    match 'main/login_process' => 'main#login_process'
 
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'
@@ -12,6 +13,10 @@ Ocd::Application.routes.draw do
     match 'settings/fields' => 'settings#fields'
     match 'settings/fields_update' => 'settings#fields_update'
     match 'settings/logout' => 'settings#logout'
+    match 'settings/collections' => 'settings#collections'
+    match 'settings/collection_remove' => 'settings#collection_remove'
+    match 'settings/tags' => 'settings#tags'
+    match 'items' => 'items#index'
 
     match 'collection/:id' => 'collection#index'
 

@@ -1,0 +1,57 @@
+<div id="notice_bar">
+<% if current_site.collections_help? then %>
+<div class="alert alert-info">
+    <%= render :partial => 'settings/collections_help' %>
+</div>
+<% end %>
+</div>
+
+<table class="table table-striped table-hover">
+<thead>
+    <tr>
+        <th>
+            Collection
+        </th>
+        <th>
+            Item count
+        </td>
+        <th>
+            Action
+        </th>
+    </tr>
+</thead>
+<tbody>
+<% current_site.virtualcollections.all.each do |collection| %>
+<% code = encrypt(collection.id) %>
+<tr>
+    <td>
+        <%= collection.name %>
+    </td>
+    <td align="center">
+        <%= collection.things.count %>
+    </td>
+    <td>
+        <% if collection.things.count == 0 then %>
+            <button type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
+        <% else %>
+            <button type="button" class="btn btn-mini btn-info" style="width:75px;" id="<%= encrypt(collections.id) %>">Update</button>
+        <% end %>
+    </td>
+</tr>
+<% end %>
+</tbody>
+<tr>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+        <button type="button" class="btn btn-mini btn-primary" style="width:75px;">Insert</button>
+    </td>
+</tr>
+
+</table>
+
+<%= form_tag({:controller => :settings, :action => :about_update}, :remote => true, :id => 'about_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+<% end %>
+

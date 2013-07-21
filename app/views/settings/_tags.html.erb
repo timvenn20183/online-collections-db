@@ -1,15 +1,15 @@
 <div id="notice_bar">
+<% if current_site.tags_help? then %>
 <div class="alert alert-info">
-    Please tell us more about yourself and your collection. This is what appears against the About menu option on the main page.
+    <%= render :partial => 'settings/tags_help' %>
 </div>
+<% end %>
 </div>
 <%= form_tag({:controller => :settings, :action => :about_update}, :remote => true, :id => 'about_update' , :authenticity_token => form_authenticity_token ) do |f| %>
 
-    <textarea name="about" id="about" style="width:99%; height:500px;"><%= @about.content %></textarea>
-    <br/>
     <div style="float:right;">
         <button onclick="$('#about_update').submit();return false;" class="btn btn-primary" type="b
-utton" id="save_button">Update</button>
+utton" id="save_button">Save</button>
     </div>
 <% end %>
 

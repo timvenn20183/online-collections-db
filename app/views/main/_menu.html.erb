@@ -8,7 +8,7 @@
         <li class="menu_option"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug) %></li>
 <% end %>
 <li class="nav-header">General</li>
-<li class="menu_option"><%= link_to('Admin', :controller => :settings, :action => :index, :remote => true) %></li>
+<li class="menu_option"><%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %></li>
 </ul>
 </div>
 <script>

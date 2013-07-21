@@ -1,0 +1,7 @@
+<div id="notice_bar">
+<% if current_site.items_help? then  %>
+<div class="alert alert-info">
+<%= render :partial => 'items/item_help' %>
+</div>
+<% end %>
+</div>

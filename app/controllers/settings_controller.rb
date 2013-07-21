@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
 
-    layout 'settings'
+    layout 'ocd'
 
     before_filter :user_logged_in
 
@@ -39,16 +39,18 @@ class SettingsController < ApplicationController
         end
     end
 
-    def fields
-    end
-
-    def fields_update
-    end
-
     def logout
         logout_user
         redirect_to :action => 'index', :controller => 'main'
     end
 
+    def collections
+    end
+
+    def collection_remove
+    end
+
+    def tags
+    end
 
 end

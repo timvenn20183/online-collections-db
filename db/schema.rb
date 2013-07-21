@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719182255) do
-
-  create_table "articles_things", :id => false, :force => true do |t|
-    t.integer "article_id"
-    t.integer "thing_id"
-  end
-
-  add_index "articles_things", ["article_id"], :name => "index_articles_things_on_article_id"
-  add_index "articles_things", ["thing_id"], :name => "index_articles_things_on_thing_id"
+ActiveRecord::Schema.define(:version => 20130721135822) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -158,8 +150,8 @@ ActiveRecord::Schema.define(:version => 20130719182255) do
   create_table "sites", :force => true do |t|
     t.string   "code"
     t.string   "title"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.text     "meta_keywords"
     t.text     "meta_description"
     t.string   "owner"
@@ -168,6 +160,9 @@ ActiveRecord::Schema.define(:version => 20130719182255) do
     t.string   "password"
     t.string   "header"
     t.string   "tagline"
+    t.boolean  "items_help",       :default => true
+    t.boolean  "collections_help", :default => true
+    t.boolean  "tags_help",        :default => true
   end
 
   create_table "slugs", :force => true do |t|
@@ -249,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20130719182255) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "note"
+    t.integer  "site_id"
   end
 
 end
