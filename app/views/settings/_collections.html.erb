@@ -7,7 +7,6 @@
 </div>
 
 <div style="float:right;">
-        <%= form_tag({:controller => :settings, :action => :collection_insert}, :remote => true, :id => 'collection_insert',:authenticity_token => form_authenticity_token ) do |f| %>
             <input type="text" class="search-query" id="filter" name="filter" placeholder="Filter">
             <script>
                 $('#filter').keyup(function() {
@@ -17,7 +16,6 @@
                     });
                 });
             </script>
-        <% end %>
 </div>
 <table class="table table-striped table-hover" id="collections_table">
 <thead>
@@ -36,9 +34,13 @@
 <tbody>
 <% current_site.virtualcollections.all.each do |collection| %>
 <% code = encrypt(collection.id) %>
-<tr <%=raw "class='success'" if defined? @virtualcollection and collection == @virtualcollection %>>
+<tr <%=raw "class='success'" if defined? @new_virtualcollection and collection == @new_virtualcollection %>>
     <td>
-        <%= collection.name %>
+        <% if defined? @virtualcollection and collection == @virtualcollection then %>
+            <%= text_field_tag 'collection[name]', collection.name %>
+        <% else %>
+            <%= collection.name %>
+        <% end %>
     </td>
     <td align="center">
         <%= collection.things.count %>
@@ -49,7 +51,13 @@
             <% geturl = url_for :controller => 'settings', :action => 'collection_remove', :id => code %>
             <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
         <% else %>
-            <button type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
+        <% if defined? @virtualcollection and collection == @virtualcollection then %>
+            <% geturl = url_for :controller => 'settings', :action => 'collection_update', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>&name=' + $('#collection_name').val()});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
+        <% else %>
+            <% geturl = url_for :controller => 'settings', :action => 'collection_edit', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Edit</button>
+        <% end %>
         <% end %>
     </td>
 </tr>

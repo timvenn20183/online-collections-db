@@ -13,6 +13,39 @@
 
 ActiveRecord::Schema.define(:version => 20130721135822) do
 
+  create_table "articles_things", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "thing_id"
+  end
+
+  add_index "articles_things", ["article_id"], :name => "index_articles_things_on_article_id"
+  add_index "articles_things", ["thing_id"], :name => "index_articles_things_on_thing_id"
+
+  create_table "blogs", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.date     "publish_date"
+    t.date     "withdraw_date"
+    t.boolean  "draft",            :default => true
+    t.boolean  "front_page",       :default => false
+    t.integer  "order",            :default => 0
+    t.string   "cached_slug"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "trashed"
+    t.integer  "views"
+    t.datetime "last_edited_date"
+    t.integer  "gallery_id"
+  end
+
+  create_table "blogs_categories", :id => false, :force => true do |t|
+    t.integer "blog_id"
+    t.integer "category_id"
+  end
+
+  add_index "blogs_categories", ["blog_id"], :name => "index_blogs_categories_on_blog_id"
+  add_index "blogs_categories", ["category_id"], :name => "index_blogs_categories_on_category_id"
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "cached_slug"
@@ -108,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20130721135822) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "image"
+    t.integer  "webring_id"
     t.string   "menuname"
     t.text     "note"
     t.boolean  "public_visible", :default => true
@@ -243,8 +277,17 @@ ActiveRecord::Schema.define(:version => 20130721135822) do
     t.string   "cached_slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "webring_id"
     t.text     "note"
     t.integer  "site_id"
+  end
+
+  create_table "webrings", :force => true do |t|
+    t.string   "name"
+    t.boolean  "active",     :default => true
+    t.text     "code"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
 end

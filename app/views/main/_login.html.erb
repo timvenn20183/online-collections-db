@@ -8,7 +8,10 @@
             <div class="control-group">
                 <label class="control-label" for="inputEmail">Email</label>
                 <div class="controls">
-                    <input type="text" id="inputEmail" placeholder="Email" name="email">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input type="text" id="inputEmail" placeholder="Email" name="email">
+                    </div>
                 </div>
             </div>
             <div class="control-group">
@@ -19,8 +22,8 @@
             </div>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">No thanks</button>
         <button id="login" class="btn btn-primary" onclick="$('#login_form').submit();$('#myModal').modal('hide')">Login</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>
 <% end %>

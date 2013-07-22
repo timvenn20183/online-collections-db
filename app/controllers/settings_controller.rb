@@ -63,12 +63,28 @@ class SettingsController < ApplicationController
     end
 
     def collection_insert
-        @virtualcollection = Virtualcollection.new
-        @virtualcollection.site_id = current_site.id
-        @virtualcollection.name = params[:collection_name]
-        @virtualcollection.save
+        @new_virtualcollection = Virtualcollection.new
+        @new_virtualcollection.site_id = current_site.id
+        @new_virtualcollection.name = params[:collection_name]
+        @new_virtualcollection.save
         respond_to do |format|
             format.js
+        end
+    end
+
+    def collection_edit
+        @virtualcollection = Virtualcollection.find(decrypt(params[:id]))
+        respond_to do |format|
+            format.js { render :action => 'collections' }
+        end
+    end
+
+    def collection_update
+        @new_virtualcollection = Virtualcollection.find(decrypt(params[:id]))
+        @new_virtualcollection.name = params[:name]
+        @new_virtualcollection.save
+        respond_to do |format|
+            format.js { render :action => 'collections' }
         end
     end
 
