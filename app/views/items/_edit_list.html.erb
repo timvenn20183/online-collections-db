@@ -1,0 +1,33 @@
+<table class="table table-hover">
+<thead>
+    <th>
+        Name
+    </th>
+    <th>
+        Action
+    </th>
+</thead>
+<tbody>
+    <% if @items != nil and @items.count > 0 then %>
+    <% @items.each do |item| %>
+        <tr>
+            <td width=90%>
+                <%= item.name %>
+            </td>
+            <td>
+                <button onclick="$.ajax({url : '<%#= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;">Edit</button>
+            </td>
+        </tr>
+    <% end %>
+    <% else %>
+        <tr>
+            <td width=90%>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    <% end %>
+</tbody>
+</table>

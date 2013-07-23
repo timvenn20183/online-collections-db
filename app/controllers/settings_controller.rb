@@ -2,7 +2,7 @@ class SettingsController < ApplicationController
 
     layout 'ocd'
 
-    before_filter :user_logged_in
+    before_filter :must_login
 
     def index
         @site = current_site

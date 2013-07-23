@@ -11,6 +11,7 @@ class MainController < ApplicationController
         respond_to do |format|
             if !user_logged_in then
                 format.js
+                format.html
             else
                 format.js { render :action => 'login_process' }
             end

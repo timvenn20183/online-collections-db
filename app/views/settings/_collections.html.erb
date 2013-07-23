@@ -53,7 +53,7 @@
     </td>
     <td>
         <% geturl = url_for :controller => 'settings', :action => 'collection_visibility', :id => code %>
-        <input type="checkbox" <%=raw ' checked ' if collection.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+            <input type="checkbox" <%=raw ' checked ' if collection.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
     </td>
     <td>
         <input type="checkbox" <%=raw ' checked ' if collection.public_visible %> onchange="$.ajax({url : '<%= geturl %>&option=public_visible' });">

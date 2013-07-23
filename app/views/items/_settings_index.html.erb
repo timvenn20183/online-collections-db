@@ -1,0 +1,36 @@
+<div id="notice_bar">
+<% if current_site.items_help? then  %>
+<div class="alert alert-info">
+<%= render :partial => 'items/item_help' %>
+</div>
+<% end %>
+</div>
+<div style="text-align:center">
+    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => nil %>
+    <button class="btn btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+        ALL
+    </button>
+    <% (0..9).each do |t| %>
+        <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => t.to_s %>
+        <% if @alphabet_list.include?(t.to_s) then %>
+            <button class="btn btn-link btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+                <%= t %>
+            </button>
+        <% end %>
+    <% end %>
+    <% ('A'..'Z').each do |t| %>
+        <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => t %>
+        <% if @alphabet_list.include?(t) then %>
+            <button class="btn btn-link btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+                <%= t %>
+            </button>
+        <% end %>
+    <% end %>
+    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => nil %>
+    <button class="btn btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+       RECENT
+    </button>
+</div>
+<div id="item_edit_list">
+    <%= render :partial => 'items/edit_list' %>
+</div>

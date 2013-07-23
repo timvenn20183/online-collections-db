@@ -29,6 +29,10 @@ protect_from_forgery
         return true if session[:user] != nil
     end
 
+    def must_login
+        redirect_to '/' if !user_logged_in
+    end
+
     def encrypt(value)
         secret = Digest::SHA1.hexdigest('ocd')
         code = ActiveSupport::MessageEncryptor.new(secret)
