@@ -25,7 +25,13 @@
         </th>
         <th>
             Item count
-        </td>
+        </th>
+        <th>
+            Menu
+        </th>
+        <th>
+            Public
+        </th>
         <th>
             Action
         </th>
@@ -44,6 +50,12 @@
     </td>
     <td align="center">
         <%= collection.things.count %>
+    </td>
+    <td>
+        <input type="checkbox" <%=raw ' checked ' if collection.show_on_menu %>">
+    </td>
+    <td>
+        <input type="checkbox" <%=raw ' checked ' if collection.public_visible %>">
     </td>
     <td>
         <% if collection.things.count == 0 then %>
@@ -65,7 +77,7 @@
 </tbody>
 <thead>
 <tr>
-    <td colspan="2">
+    <td colspan="4">
         <%= form_tag({:controller => :settings, :action => :collection_insert}, :remote => true, :id => 'collection_insert',:authenticity_token => form_authenticity_token ) do |f| %>
         <%= text_field_tag 'collection_name', '' %>
     </td>

@@ -4,7 +4,7 @@
 <li class="nav-header">Site links</li>
 <li class="menu_option active"><%= link_to('Home', :controller => :main, :action => :index) %></li>
 <li class="nav-header">Collections</li>
-<% Virtualcollection.all.each do |virtualcollection| %>
+<% current_site.virtualcollections.publicmenu.each do |virtualcollection| %>
         <li class="menu_option"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug) %></li>
 <% end %>
 <li class="nav-header">General</li>
