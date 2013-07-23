@@ -88,6 +88,14 @@ class SettingsController < ApplicationController
         end
     end
 
+    def collection_visibility
+        @virtualcollection = Virtualcollection.find(decrypt(params[:id]))
+        @virtualcollection.show_on_menu = !@virtualcollection.show_on_menu if params[:option] == 'show_on_menu'
+        @virtualcollection.public_visible = !@virtualcollection.public_visible if params[:option] == 'public_visible'
+        @virtualcollection.save
+        render :nothing => true
+    end
+
     def tags
     end
 

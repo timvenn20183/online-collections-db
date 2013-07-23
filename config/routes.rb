@@ -18,6 +18,7 @@ Ocd::Application.routes.draw do
     match 'settings/collection_insert' => 'settings#collection_insert'
     match 'settings/collection_edit' => 'settings#collection_edit'
     match 'settings/collection_update' => 'settings#collection_update'
+    match 'settings/collection_visiblity' => 'settings#collection_visibility'
     match 'settings/tags' => 'settings#tags'
     match 'items' => 'items#index'
 
