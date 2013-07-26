@@ -13,7 +13,7 @@
 <tbody>
     <% if @items != nil and @items.count > 0 then %>
     <% @items.each do |item| %>
-        <tr>
+        <tr <%=raw "class='success'" if defined? @id and item.id.to_s == @id %>>
             <td>
                 <%= item.collection_id %>
             </td>

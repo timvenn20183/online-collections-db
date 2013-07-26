@@ -5,9 +5,12 @@ class ItemsController < ApplicationController
     before_filter :must_login, :only => [:edit_list, :index]
 
     def settings_index
+        @id = decrypt(params[:id]) if params[:id] != nil
         @alphabet_list = current_site.things.pluck(:alphabet_letter).uniq.sort
         @items = current_site.things.find_all_by_alphabet_letter(current_site.last_item_edit_list)
-        @items = current.site.things.all if @items == nil
+        @items = current_site.things.all if current_site.last_item_edit_list == 'ALL' or current_site.last_item_edit_list == nil
+        @items = current_site.things.all(:order => ['updated_at desc'], :limit => 10) if current_site.last_item_edit_list == 'RECENT'
+        @items = current_site.things.all if @items.blank?
     end
 
     def edit_list
@@ -31,6 +34,14 @@ class ItemsController < ApplicationController
     end
 
     def update
+        @item = Thing.find(decrypt(params[:id]))
+        respond_to do |format|
+            if @item.update_attributes(params[:item]) then
+                format.js { redirect_to :action => 'settings_index', :id => encrypt(@item.id) }
+            else
+                format.js
+            end
+        end
     end
 
 end

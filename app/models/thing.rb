@@ -2,7 +2,7 @@ class Thing < ActiveRecord::Base
 
     validates :name, :presence => true
 
-    attr_accessible :active, :cost, :name, :value, :visability, :year, :collection_id, :cached_slug, :aquire_date, :aquired_from
+    attr_accessible :active, :cost, :name, :value, :visability, :year, :collection_id, :cached_slug, :aquire_date, :aquired_from, :reference_number
 
     has_and_belongs_to_many :virtualcollections
     has_and_belongs_to_many :conditions
