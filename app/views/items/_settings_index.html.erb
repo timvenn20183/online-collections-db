@@ -6,8 +6,8 @@
 <% end %>
 </div>
 <div style="text-align:center">
-    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => nil %>
-    <button class="btn btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => 'ALL' %>
+    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});">
         ALL
     </button>
     <% (0..9).each do |t| %>
@@ -26,8 +26,8 @@
             </button>
         <% end %>
     <% end %>
-    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => nil %>
-    <button class="btn btn-info" onclick="$.ajax({url : '<%= geturl %>'});">
+    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => 'RECENT' %>
+    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});">
        RECENT
     </button>
 </div>

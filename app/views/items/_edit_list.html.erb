@@ -1,6 +1,9 @@
 <table class="table table-hover">
 <thead>
     <th>
+        ID
+    </th>
+    <th>
         Name
     </th>
     <th>
@@ -11,16 +14,23 @@
     <% if @items != nil and @items.count > 0 then %>
     <% @items.each do |item| %>
         <tr>
+            <td>
+                <%= item.collection_id %>
+            </td>
             <td width=90%>
                 <%= item.name %>
             </td>
             <td>
-                <button onclick="$.ajax({url : '<%#= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;">Edit</button>
+                <% geturl = url_for :controller => 'items', :action => 'edit', :id => encrypt(item.id) %>
+                <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;">Edit</button>
             </td>
         </tr>
     <% end %>
     <% else %>
         <tr>
+            <td>
+                &nbsp;
+            </td>
             <td width=90%>
                 &nbsp;
             </td>

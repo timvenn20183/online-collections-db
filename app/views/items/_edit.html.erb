@@ -1,0 +1,37 @@
+<%= form_tag({:controller => :items, :action => :update},:remote => true, :id => 'update_form', :class => "form-horizontal") do |f| %>
+<div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 id="myModalLabel"><%= @item.name %></h4>
+    </div>
+    <div class="modal-body">
+<ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a href="#item_main" data-toggle="tab">Main</a></li>
+    <li><a href="#item_extra" data-toggle="tab">Extra</a></li>
+</ul>
+<div class="tab-content">
+    <%= render :partial => 'items/edit_item_main' %>
+    <div class="tab-pane" id="item_extra">
+        TEST
+    </div>
+</div>
+
+    <div class="modal-footer">
+        <button id="login" class="btn btn-primary" onclick="$('#update_form').submit();$('#myModal').modal('hide')">Update</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+<% end %>
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+$('#myModal').on('show', function () {
+
+    $(this).find('.modal-body').css({width:'auto',
+                               height:'auto',
+                              'max-height':'100%'});
+});
+</script>

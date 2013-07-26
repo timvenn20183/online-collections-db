@@ -1,0 +1,57 @@
+<!-- ITEM MAIN -->
+    <div class="tab-pane active" id="item_main">
+    <!-- NAME -->
+           <div class="control-group">
+                <label class="control-label" for="item[name]">Title</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input class="input-xlarge" type="text" id="item[name]" name="item[name]" placeholder="<%= @item.name %>" value="<%= @item.name %>">
+                    </div>
+                </div>
+            </div>
+    <!-- COLLECTION ID -->
+            <div class="control-group">
+                <label class="control-label" for="item[collection_id]">Collection ID</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input type="text" id="item[collection_id]" placeholder="<%= @item.collection_id%>" name="item[collection_id]" value="<%= @item.collection_id%>">
+                    </div>
+                </div>
+            </div>
+    <!-- REFERENCE NO -->
+            <div class="control-group">
+                <label class="control-label" for="item[reference_number]">Ref / Serial no.</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input type="text" id="item[reference_number]" placeholder="<%= @item.reference_number%>" name="item[reference_number]" value="<%= @item.reference_number%>">
+                    </div>
+                </div>
+            </div>
+    <!-- YEAR -->
+            <div class="control-group">
+                <label class="control-label" for="item[year]">Year</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input type="text" id="item[year]" placeholder="<%= @item.year%>" name="item[year]" value="<%= @item.year%>">
+                    </div>
+                </div>
+            </div>
+    <!-- COST -->
+         <div class="control-group">
+                <label class="control-label" for="item[cost]">Cost</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input type="text" id="item[cost]" placeholder="<%= @item.cost%>" name="item[cost]" value="<%= @item.cost%>">
+                    </div>
+                </div>
+         </div>
+    <!-- VALUE -->
+         <div class="control-group">
+                <label class="control-label" for="item[value]">Value</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <input type="text" id="item[value]" placeholder="<%= @item.value%>" name="item[value]" value="<%= @item.value%>">
+                    </div>
+                </div>
+        </div>
+    </div>
