@@ -7,6 +7,9 @@
         Name
     </th>
     <th>
+        Ref / Serial no.
+    </th>
+    <th>
         Action
     </th>
 </thead>
@@ -17,8 +20,11 @@
             <td>
                 <%= item.collection_id %>
             </td>
-            <td width=90%>
+            <td width=70%>
                 <%= item.name %>
+            </td>
+            <td>
+                <%= item.reference_number %>
             </td>
             <td>
                 <% geturl = url_for :controller => 'items', :action => 'edit', :id => encrypt(item.id) %>
@@ -31,7 +37,10 @@
             <td>
                 &nbsp;
             </td>
-            <td width=90%>
+            <td width=70%>
+                &nbsp;
+            </td>
+            <td>
                 &nbsp;
             </td>
             <td>
