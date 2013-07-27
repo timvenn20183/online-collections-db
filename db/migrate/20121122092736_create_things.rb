@@ -2,7 +2,7 @@ class CreateThings < ActiveRecord::Migration
     def change
         create_table :things do |t|
             t.string :name
-            t.integer :collection_id
+            t.string :collection_id
             t.integer :visability, :default => 0
             t.boolean :active, :default => true
             t.integer :year, :default => 1981
