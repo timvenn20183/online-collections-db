@@ -96,6 +96,24 @@ class SettingsController < ApplicationController
         render :nothing => true
     end
 
+    def conditions
+    end
+
+    def condition_remove
+    end
+
+    def condition_insert
+    end
+
+    def condition_edit
+    end
+
+    def condtion_update
+    end
+
+    def condition_visibility
+    end
+
     def tags
     end
 
