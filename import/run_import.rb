@@ -12,7 +12,7 @@ items_processed = Array.new
 start = ARGV[0].to_i
 counter = 0
 start = 2 if start == nil or start < 2
-excel = Roo::Excel.new('import.xls')
+excel = Roo::Excel.new('collection.xls')
 line = 2
 while !excel.cell(line,1).blank? do
     line = line + 1
@@ -21,7 +21,7 @@ end
 # get field lists from excel
 fields = Array.new
 
-custom_fields_const = 13
+custom_fields_const = 12
 
 custom_field_start = custom_fields_const
 while (!excel.cell(1,custom_field_start).blank?) do
@@ -37,13 +37,12 @@ start.upto(line-1) do |l|
         cost = excel.cell(l,4).to_f
         virtualcollections = Array.new
         virtualcollections = excel.cell(l,5).split(",") if !excel.cell(l,5).blank?
-        platforms = excel.cell(l,6).split(",")
-        conditions = excel.cell(l,7).split(",")
-        categories = excel.cell(l,8).split(",")
-        rolodexes = excel.cell(l,9).split(",")
-        reference_number = excel.cell(l,10)
-        inside = excel.cell(l,11)
-        mainimage_filename = excel.cell(l,12)
+        conditions = excel.cell(l,6).split(",")
+        categories = excel.cell(l,7).split(",")
+        rolodexes = excel.cell(l,8).split(",")
+        reference_number = excel.cell(l,9)
+        inside = excel.cell(l,10)
+        mainimage_filename = excel.cell(l,11)
 
         # custom
         tempcounter = custom_fields_const
@@ -70,12 +69,6 @@ start.upto(line-1) do |l|
         thing.virtualcollection_ids = Array.new
         virtualcollections.each do |virtual|
             thing.virtualcollections << Virtualcollection.find_or_create_by_name(:name => virtual.strip)
-        end
-
-        # platforms
-        thing.platform_ids = Array.new
-        platforms.each do |platform|
-            thing.platforms << Platform.find_or_create_by_name(:name => platform.strip)
         end
 
         # conditions
@@ -172,10 +165,6 @@ end
 
         Fieldoption.all.each do |fieldoption|
             fieldoption.destroy if fieldoption.can_be_removed
-        end
-
-        Platform.all.each do |plat|
-            puts plat.name  + " - " + plat.things.count.to_s
         end
 
 

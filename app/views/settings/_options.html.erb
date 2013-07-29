@@ -1,4 +1,4 @@
-<div class="well" style="max-width: 340px; padding: 8px 0;">
+<div class="well" style="max-width: 300px; min-width:240px; padding: 8px 0;">
 <ul class="nav nav-list">
 <li class="nav-header">Site</li>
 <li class="menu_option"><%= link_to("Settings", :action => 'site', :controller => 'settings', :remote => true) %></li>
@@ -7,7 +7,7 @@
 <li class="menu_option"><%= link_to("Items", :action => 'settings_index', :controller => 'items', :remote => true) %></li>
 <li class="menu_option"><%= link_to("Collections", :action => 'collections', :controller => 'settings', :remote => true) %></li>
 <li class="menu_option"><%= link_to("Condition", :action => 'conditions', :controller => 'settings', :remote => true) %></li>
-<li class="menu_option"><%= link_to("Tags", :action => 'tags', :controller => 'settings', :remote => true) %></li>
+<li class="menu_option"><%= link_to("Fields", :action => 'fields', :controller => 'settings', :remote => true) %></li>
 <li class="nav-header">General</li>
 <li class="menu_option"><%= link_to("Help", :action => 'index', :controller => 'settings', :remote => true) %></li>
 <li class="menu_option"><%= link_to("Logout", :action => 'logout', :controller => 'settings') %></li>

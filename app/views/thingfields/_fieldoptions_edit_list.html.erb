@@ -1,0 +1,67 @@
+<div style="float:left;">
+        <%= form_tag({:controller => :thingfields, :action => :fieldoption_insert}, :remote => true, :id => 'fieldoption_insert',:authenticity_token => form_authenticity_token ) do |f| %>
+            <%= hidden_field_tag 'thingfield_id', encrypt(@thingfield.id) %>
+            <%= text_field_tag 'fieldoption_name', '' %>&nbsp;
+            <button onclick="$('#fieldoption_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
+        <% end %>
+</div>
+<table class="table table-striped table-hover" id="fieldoptions_table" border="0">
+<thead>
+    <tr>
+        <th colspan="2">
+            Option
+        </th>
+        <th>
+            Item count
+        </th>
+        <th>
+            Menu ?
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+</thead>
+<tbody>
+<% @thingfield.fieldoptions.all(:order => 'id desc').each do |fieldoption| %>
+<% code = encrypt(fieldoption.id) %>
+<tr <%=raw "class='success'" if defined? @new_fieldoption and fieldoption == @new_fieldoption %>>
+    <td colspan="2">
+        <% if defined? @fieldoption and fieldoption == @fieldoption then %>
+            <%= text_field_tag 'fieldoption[name]', fieldoption.name %>
+        <% else %>
+            <%= fieldoption.name %>
+        <% end %>
+    </td>
+    <td align="center">
+         <span class="badge"><%= fieldoption.things.count %></span>
+    </td>
+    <td>
+        <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_visibility', :id => code %>
+            <input type="checkbox" <%=raw ' checked ' if fieldoption.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+    </td>
+    <td>
+        <% if fieldoption.things.count == 0 then %>
+
+            <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_remove', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
+        <% else %>
+        <% if defined? @fieldoption and fieldoption == @fieldoption then %>
+            <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_update', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>&name=' + $('#fieldoption_name').val()});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
+        <% else %>
+            <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_edit', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Edit</button>
+        <% end %>
+        <% end %>
+    </td>
+</tr>
+<% end %>
+
+</tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#fieldoption_name").focus();
+    });
+</script>

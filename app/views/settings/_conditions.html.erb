@@ -6,6 +6,12 @@
 <% end %>
 </div>
 
+<div style="float:left;">
+        <%= form_tag({:controller => :settings, :action => :condition_insert}, :remote => true, :id => 'condition_insert',:authenticity_token => form_authenticity_token ) do |f| %>
+            <%= text_field_tag 'condition_name', '' %>&nbsp;
+            <button onclick="$('#condition_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
+        <% end %>
+</div>
 <div style="float:right;">
             <input type="text" class="search-query" id="filter" name="filter" placeholder="Filter">
             <script>
@@ -17,7 +23,7 @@
                 });
             </script>
 </div>
-<table class="table table-striped table-hover" id="conditions_table" style="width:100%">
+<table class="table table-striped table-hover" id="conditions_table" border="0">
 <thead>
     <tr>
         <th colspan="2">
@@ -35,7 +41,7 @@
     </tr>
 </thead>
 <tbody>
-<% current_site.conditions.all.each do |condition| %>
+<% current_site.conditions.all(:order => 'id desc').each do |condition| %>
 <% code = encrypt(condition.id) %>
 <tr <%=raw "class='success'" if defined? @new_condition and condition == @new_condition %>>
     <td colspan="2">
@@ -46,7 +52,7 @@
         <% end %>
     </td>
     <td align="center">
-        <%= condition.things.count %>
+         <span class="badge"><%= condition.things.count %></span>
     </td>
     <td>
         <% geturl = url_for :controller => 'settings', :action => 'condition_visibility', :id => code %>
@@ -70,18 +76,6 @@
 </tr>
 <% end %>
 </tbody>
-<thead>
-<tr>
-    <td colspan="4">
-        <%= form_tag({:controller => :settings, :action => :condition_insert}, :remote => true, :id => 'condition_insert',:authenticity_token => form_authenticity_token ) do |f| %>
-        <%= text_field_tag 'condition_name', '' %>
-    </td>
-    <td>
-        <button onclick="$('#condition_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
-        <% end %>
-    </td>
-</tr>
-</thead>
 </table>
 <script type="text/javascript">
     $(document).ready(function () {

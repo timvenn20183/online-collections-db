@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729165051) do
+ActiveRecord::Schema.define(:version => 20130729204958) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -102,8 +102,11 @@ ActiveRecord::Schema.define(:version => 20130729165051) do
   create_table "fieldoptions", :force => true do |t|
     t.string   "name"
     t.integer  "thingfield_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "site_id"
+    t.boolean  "show_on_menu",  :default => false
+    t.string   "cached_slug"
   end
 
   add_index "fieldoptions", ["thingfield_id"], :name => "index_fieldoptions_on_thingfield_id"
@@ -201,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20130729165051) do
     t.boolean  "tags_help",           :default => true
     t.string   "last_item_edit_list"
     t.boolean  "conditions_help",     :default => true
+    t.boolean  "fields_help",         :default => true
   end
 
   create_table "slugs", :force => true do |t|
@@ -219,8 +223,11 @@ ActiveRecord::Schema.define(:version => 20130729165051) do
   create_table "thingfields", :force => true do |t|
     t.string   "name"
     t.integer  "etype"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "site_id"
+    t.string   "cached_slug"
+    t.boolean  "show_on_menu", :default => true
   end
 
   create_table "things", :force => true do |t|

@@ -150,7 +150,7 @@ class SettingsController < ApplicationController
 
     end
 
-    def tags
+    def fields
     end
 
 end

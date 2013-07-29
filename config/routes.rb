@@ -28,7 +28,7 @@ Ocd::Application.routes.draw do
     match 'settings/condition_update' => 'settings#condition_update'
     match 'settings/condition_visiblity' => 'settings#condition_visibility'
 
-    match 'settings/tags' => 'settings#tags'
+    match 'settings/fields' => 'settings#fields'
 
     match 'items/settings_index' => 'items#settings_index'
     match 'items/edit_list' => 'items#edit_list'
@@ -38,5 +38,14 @@ Ocd::Application.routes.draw do
     match 'collection/:id' => 'collection#index'
 
     match 'condition/:id' => 'condition#index'
+
+    match 'thingfields/fieldoptions_edit_list' => 'thingfields#fieldoptions_edit_list'
+    match 'thingfields/fieldoption_visibility' => 'thingfields#fieldoption_visibility'
+    match 'thingfields/fieldoption_edit' => 'thingfields#fieldoption_edit'
+    match 'thingfields/fieldoption_update' => 'thingfields#fieldoption_update'
+    match 'thingfields/fieldoption_insert' => 'thingfields#fieldoption_insert'
+    match 'thingfields/fieldoption_remove' => 'thingfields#fieldoption_remove'
+
+    match 'fieldoptions/:id' => 'fieldoptions#index'
 
 end

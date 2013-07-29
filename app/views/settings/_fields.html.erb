@@ -1,0 +1,33 @@
+<div id="notice_bar">
+<% if current_site.fields_help? then %>
+<div class="alert alert-info">
+    <%= render :partial => 'settings/fields_help' %>
+</div>
+<% end %>
+</div>
+
+<div class="accordion" id="fieldslist">
+<% current_site.thingfields.all.each do |thingfield| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#fieldslist" href="#<%=thingfield.cached_slug%>">
+        <%= thingfield.name %>
+      </a>
+    </div>
+    <div id="<%=thingfield.cached_slug%>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div id="<%=thingfield.cached_slug%>_inner"></div>
+      </div>
+    </div>
+    <script>
+    $('#<%=thingfield.cached_slug%>').on('shown.bs.collapse', function ()  {
+        geturl = "<%= url_for :controller => 'thingfields', :action => 'fieldoptions_edit_list', :id => encrypt(thingfield.id) %>";
+        $.ajax({url: geturl});
+    });
+    $('#<%=thingfield.cached_slug%>').on('hide.bs.collapse', function ()  {
+        $('#<%=thingfield.cached_slug%>_inner').html('');
+    });
+    </script>
+  </div>
+<% end %>
+</div>
