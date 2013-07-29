@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728192702) do
+ActiveRecord::Schema.define(:version => 20130729165051) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20130728192702) do
     t.boolean  "collections_help",    :default => true
     t.boolean  "tags_help",           :default => true
     t.string   "last_item_edit_list"
+    t.boolean  "conditions_help",     :default => true
   end
 
   create_table "slugs", :force => true do |t|

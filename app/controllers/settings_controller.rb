@@ -100,18 +100,54 @@ class SettingsController < ApplicationController
     end
 
     def condition_remove
+        @condition = Condition.find(decrypt(params[:id]))
+        respond_to do |format|
+            if !@condition.nil?
+                if @condition.destroy
+                    format.js { render :action => 'condition_removed' }
+                else
+                    format.js { render :action => 'condition_notremoved' }
+                end
+            else
+                format.js { render :action => 'condition_notremoved' }
+            end
+        end
+
     end
 
     def condition_insert
+        @new_condition = Condition.new
+        @new_condition.site_id = current_site.id
+        @new_condition.name = params[:condition_name]
+        @new_condition.save
+        respond_to do |format|
+            format.js
+        end
     end
 
     def condition_edit
+        @condition = Condition.find(decrypt(params[:id]))
+        respond_to do |format|
+            format.js { render :action => 'conditions' }
+        end
     end
 
-    def condtion_update
+    def condition_update
+        @new_condition = Condition.find(decrypt(params[:id]))
+        @new_condition.name = params[:name]
+        @new_condition.save
+        respond_to do |format|
+            format.js { render :action => 'conditions' }
+        end
+
     end
 
     def condition_visibility
+        @condition = Condition.find(decrypt(params[:id]))
+        @condition.show_on_menu = !@condition.show_on_menu if params[:option] == 'show_on_menu'
+        @condition.save
+        render :nothing => true
+
     end
 
     def tags

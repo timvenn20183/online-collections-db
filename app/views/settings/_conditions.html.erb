@@ -1,0 +1,92 @@
+<div id="notice_bar">
+<% if current_site.conditions_help? then %>
+<div class="alert alert-info">
+    <%= render :partial => 'settings/conditions_help' %>
+</div>
+<% end %>
+</div>
+
+<div style="float:right;">
+            <input type="text" class="search-query" id="filter" name="filter" placeholder="Filter">
+            <script>
+                $('#filter').keyup(function() {
+                        pattern = new RegExp($('#filter').val().toLowerCase());
+                        $('#conditions_table > tbody  > tr').each(function() {
+                           if (!pattern.test($(this).html().toLowerCase()) == true) {$(this).hide();}else {$(this).show();}
+                    });
+                });
+            </script>
+</div>
+<table class="table table-striped table-hover" id="conditions_table" style="width:100%">
+<thead>
+    <tr>
+        <th colspan="2">
+            Condition
+        </th>
+        <th>
+            Item count
+        </th>
+        <th>
+           Menu ?
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+</thead>
+<tbody>
+<% current_site.conditions.all.each do |condition| %>
+<% code = encrypt(condition.id) %>
+<tr <%=raw "class='success'" if defined? @new_condition and condition == @new_condition %>>
+    <td colspan="2">
+        <% if defined? @condition and condition == @condition then %>
+            <%= text_field_tag 'condition[name]', condition.name %>
+        <% else %>
+            <%= condition.name %>
+        <% end %>
+    </td>
+    <td align="center">
+        <%= condition.things.count %>
+    </td>
+    <td>
+        <% geturl = url_for :controller => 'settings', :action => 'condition_visibility', :id => code %>
+            <input type="checkbox" <%=raw ' checked ' if condition.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+    </td>
+    <td>
+        <% if condition.things.count == 0 then %>
+
+            <% geturl = url_for :controller => 'settings', :action => 'condition_remove', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-danger" style="width:75px;" id="btn_<%=code%>">Remove</button>
+        <% else %>
+        <% if defined? @condition and condition == @condition then %>
+            <% geturl = url_for :controller => 'settings', :action => 'condition_update', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>&name=' + $('#condition_name').val()});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
+        <% else %>
+            <% geturl = url_for :controller => 'settings', :action => 'condition_edit', :id => code %>
+            <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Edit</button>
+        <% end %>
+        <% end %>
+    </td>
+</tr>
+<% end %>
+</tbody>
+<thead>
+<tr>
+    <td colspan="4">
+        <%= form_tag({:controller => :settings, :action => :condition_insert}, :remote => true, :id => 'condition_insert',:authenticity_token => form_authenticity_token ) do |f| %>
+        <%= text_field_tag 'condition_name', '' %>
+    </td>
+    <td>
+        <button onclick="$('#condition_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
+        <% end %>
+    </td>
+</tr>
+</thead>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#condition_name").focus();
+    });
+</script>
+
+
