@@ -9,7 +9,7 @@
 <div style="float:left;">
         <%= form_tag({:controller => :settings, :action => :condition_insert}, :remote => true, :id => 'condition_insert',:authenticity_token => form_authenticity_token ) do |f| %>
             <%= text_field_tag 'condition_name', '' %>&nbsp;
-            <button onclick="$('#condition_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Insert</button>
+            <button onclick="$('#condition_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Add</button>
         <% end %>
 </div>
 <div style="float:right;">

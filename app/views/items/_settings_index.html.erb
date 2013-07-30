@@ -6,10 +6,6 @@
 <% end %>
 </div>
 <div style="text-align:center">
-    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => 'ALL' %>
-    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});">
-        ALL
-    </button>
     <% (0..9).each do |t| %>
         <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => t.to_s %>
         <% if @alphabet_list.include?(t.to_s) then %>
@@ -26,11 +22,22 @@
             </button>
         <% end %>
     <% end %>
+    </div>
+    <% geturl = url_for :controller => 'items', :action => 'new' %>
+    <div style="margin:0 auto;text-align:center;">
+    <button class="btn btn-primary btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" style="width:75px;">
+        Add
+    </button>
+    <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => 'ALL' %>
+    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" style="width:75px;">
+        ALL
+    </button>
+
     <% geturl = url_for :controller => 'items', :action => 'edit_list', :letter => 'RECENT' %>
-    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});">
+    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" style="width:75px;">
        RECENT
     </button>
-</div>
+    </div>
 <div id="item_edit_list">
     <%= render :partial => 'items/edit_list' %>
 </div>

@@ -15,6 +15,7 @@ class Thing < ActiveRecord::Base
 
     scope :recent_with_images, lambda {self.all(:limit => 5, :order => 'release_date desc', :conditions => ['release_date is not NULL and mainimage <> "" and release_date <= ? and public_visible = ?',Date.current,true])}
     scope :recent, lambda {self.all(:limit => 10, :order => 'updated_at desc')}
+
     mount_uploader :mainimage, MainimageUploader
 
     has_friendly_id :name, use_slug: true

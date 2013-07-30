@@ -44,4 +44,23 @@ class ItemsController < ApplicationController
         end
     end
 
+    def new
+        @item = Thing.new
+        respond_to do |format|
+            format.js
+        end
+    end
+
+    def create
+        @new_item = Thing.new
+        @new_item.site_id = current_site.id
+        @new_item.update_attributes(params[:item])
+        @site = Site.find(current_site.id)
+        @site.last_item_edit_list = 'RECENT'
+        @site.save
+        respond_to do |format|
+            format.js { redirect_to :action => 'settings_index', :id => encrypt(@new_item.id) }
+        end
+    end
+
 end

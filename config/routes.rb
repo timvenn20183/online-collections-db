@@ -34,6 +34,8 @@ Ocd::Application.routes.draw do
     match 'items/edit_list' => 'items#edit_list'
     match 'items/edit' => 'items#edit'
     match 'items/update' => 'items#update'
+    match 'items/create' => 'items#create'
+    match 'items/new' => 'items#new'
 
     match 'collection/:id' => 'collection#index'
 
