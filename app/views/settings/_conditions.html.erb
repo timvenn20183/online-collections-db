@@ -56,7 +56,9 @@
     </td>
     <td>
         <% geturl = url_for :controller => 'settings', :action => 'condition_visibility', :id => code %>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
             <input type="checkbox" <%=raw ' checked ' if condition.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+            </div>
     </td>
     <td>
         <% if condition.things.count == 0 then %>
@@ -80,6 +82,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#condition_name").focus();
+        $('.switch')['bootstrapSwitch']();
     });
 </script>
 

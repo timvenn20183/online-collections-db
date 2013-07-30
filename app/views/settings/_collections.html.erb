@@ -1,3 +1,4 @@
+
 <div id="notice_bar">
 <% if current_site.collections_help? then %>
 <div class="alert alert-info">
@@ -58,10 +59,14 @@
     </td>
     <td>
         <% geturl = url_for :controller => 'settings', :action => 'collection_visibility', :id => code %>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
             <input type="checkbox" <%=raw ' checked ' if collection.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+            </div>
     </td>
     <td>
-        <input type="checkbox" <%=raw ' checked ' if collection.public_visible %> onchange="$.ajax({url : '<%= geturl %>&option=public_visible' });">
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+            <input type="checkbox" <%=raw ' checked ' if collection.public_visible %> onchange="$.ajax({url : '<%= geturl %>&option=public_visible' });">
+            </div>
     </td>
     <td>
         <% if collection.things.count == 0 then %>
@@ -85,6 +90,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#collection_name").focus();
+        $('.switch')['bootstrapSwitch']();
     });
 </script>
 

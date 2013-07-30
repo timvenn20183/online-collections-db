@@ -1,4 +1,4 @@
-<div style="float:left;">
+<div>
         <%= form_tag({:controller => :thingfields, :action => :fieldoption_insert}, :remote => true, :id => 'fieldoption_insert',:authenticity_token => form_authenticity_token ) do |f| %>
             <%= hidden_field_tag 'thingfield_id', encrypt(@thingfield.id) %>
             <%= text_field_tag 'fieldoption_name', '' %>&nbsp;
@@ -38,7 +38,9 @@
     </td>
     <td>
         <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_visibility', :id => code %>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
             <input type="checkbox" <%=raw ' checked ' if fieldoption.show_on_menu %>" onchange="$.ajax({url : '<%= geturl %>&option=show_on_menu' });">
+            </div>
     </td>
     <td>
         <% if fieldoption.things.count == 0 then %>
@@ -63,5 +65,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#fieldoption_name").focus();
+        $('.switch')['bootstrapSwitch']();
     });
 </script>
