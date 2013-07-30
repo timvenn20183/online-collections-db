@@ -2,6 +2,33 @@ class ThingfieldsController < ApplicationController
 
     layout 'ocd'
 
+    def create
+        @thingfield = Thingfield.new
+        @thingfield.site_id = current_site.id
+        @thingfield.name = params[:thingfield]['name']
+        @thingfield.save
+        respond_to do |format|
+            format.js
+        end
+    end
+
+    def update
+        @thingfield = Thingfield.find(decrypt(params[:thingfield_id]))
+        @thingfield.name = params[:thingfield_name]
+        @thingfield.save
+        respond_to do |format|
+            format.js
+        end
+    end
+
+    def remove
+        @thingfield = Thingfield.find(decrypt(params[:id]))
+        @thingfield.destroy
+        respond_to do |format|
+            format.js
+        end
+    end
+
     def fieldoptions_edit_list
         @thingfield = Thingfield.find(decrypt(params[:id]))
         respond_to do |format|

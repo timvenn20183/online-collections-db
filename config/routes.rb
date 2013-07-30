@@ -47,6 +47,9 @@ Ocd::Application.routes.draw do
     match 'thingfields/fieldoption_update' => 'thingfields#fieldoption_update'
     match 'thingfields/fieldoption_insert' => 'thingfields#fieldoption_insert'
     match 'thingfields/fieldoption_remove' => 'thingfields#fieldoption_remove'
+    match 'thingfields/create' => 'thingfields#create'
+    match 'thingfields/remove' => 'thingfields#remove'
+    match 'thingfields/update' => 'thingfields#update'
 
     match 'fieldoptions/:id' => 'fieldoptions#index'
 
