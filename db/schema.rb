@@ -21,23 +21,6 @@ ActiveRecord::Schema.define(:version => 20130729204958) do
   add_index "articles_things", ["article_id"], :name => "index_articles_things_on_article_id"
   add_index "articles_things", ["thing_id"], :name => "index_articles_things_on_thing_id"
 
-  create_table "blogs", :force => true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.date     "publish_date"
-    t.date     "withdraw_date"
-    t.boolean  "draft",            :default => true
-    t.boolean  "front_page",       :default => false
-    t.integer  "order",            :default => 0
-    t.string   "cached_slug"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "trashed"
-    t.integer  "views"
-    t.datetime "last_edited_date"
-    t.integer  "gallery_id"
-  end
-
   create_table "blogs_categories", :id => false, :force => true do |t|
     t.integer "blog_id"
     t.integer "category_id"
@@ -139,26 +122,6 @@ ActiveRecord::Schema.define(:version => 20130729204958) do
 
   add_index "media_things", ["media_id"], :name => "index_media_things_on_media_id"
   add_index "media_things", ["thing_id"], :name => "index_media_things_on_thing_id"
-
-  create_table "platforms", :force => true do |t|
-    t.string   "name"
-    t.string   "cached_slug"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.string   "image"
-    t.integer  "webring_id"
-    t.string   "menuname"
-    t.text     "note"
-    t.boolean  "public_visible", :default => true
-  end
-
-  create_table "platforms_things", :id => false, :force => true do |t|
-    t.integer "platform_id"
-    t.integer "thing_id"
-  end
-
-  add_index "platforms_things", ["platform_id"], :name => "index_platforms_things_on_platform_id"
-  add_index "platforms_things", ["thing_id"], :name => "index_platforms_things_on_thing_id"
 
   create_table "rolodexes", :force => true do |t|
     t.string   "name"

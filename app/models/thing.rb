@@ -6,7 +6,6 @@ class Thing < ActiveRecord::Base
 
     has_and_belongs_to_many :virtualcollections
     has_and_belongs_to_many :conditions
-    has_and_belongs_to_many :platforms
     has_and_belongs_to_many :categories
     has_and_belongs_to_many :rolodexes
     has_and_belongs_to_many :medias
@@ -15,7 +14,7 @@ class Thing < ActiveRecord::Base
     has_and_belongs_to_many :fieldoptions, :join_table => 'fieldoptions_things'
 
     scope :recent_with_images, lambda {self.all(:limit => 5, :order => 'release_date desc', :conditions => ['release_date is not NULL and mainimage <> "" and release_date <= ? and public_visible = ?',Date.current,true])}
-
+    scope :recent, lambda {self.all(:limit => 10, :order => 'updated_at desc')}
     mount_uploader :mainimage, MainimageUploader
 
     has_friendly_id :name, use_slug: true
@@ -37,7 +36,6 @@ class Thing < ActiveRecord::Base
     public
 
     def is_visible_to_public
-        return false if self.platforms.first.public_visible == false
         return self.public_visible
     end
 
@@ -119,9 +117,6 @@ class Thing < ActiveRecord::Base
 
     def build_search_string
         @searchstring = self.name + self.year.to_s
-        self.platforms.all.each do |platform|
-            @searchstring = @searchstring + platform.name.gsub("/","").gsub("-","").gsub(" ","")
-        end
         self.virtualcollections.all.each do |virtualcollection|
             @searchstring = @searchstring + virtualcollection.name.gsub("/","").gsub("-","").gsub(" ","")
         end
