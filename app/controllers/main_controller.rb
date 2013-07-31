@@ -4,7 +4,13 @@ class MainController < ApplicationController
 
     def index
         @site = current_site
-        @about = current_about
+    end
+
+    def about
+        respond_to do |format|
+            format.js
+            format.html
+        end
     end
 
     def login

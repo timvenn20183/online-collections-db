@@ -4,6 +4,7 @@ Ocd::Application.routes.draw do
 
     match 'login' => 'main#login'
     match 'main/login_process' => 'main#login_process'
+    match 'main/about' => 'main#about'
 
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'
@@ -29,6 +30,7 @@ Ocd::Application.routes.draw do
     match 'settings/condition_visiblity' => 'settings#condition_visibility'
 
     match 'settings/fields' => 'settings#fields'
+    match 'settings/about_on_menu' => 'settings#about_on_menu'
 
     match 'items/settings_index' => 'items#settings_index'
     match 'items/edit_list' => 'items#edit_list'

@@ -27,6 +27,13 @@ class SettingsController < ApplicationController
         @about = current_about
     end
 
+    def about_on_menu
+        @site = Site.find(current_site.id)
+        @site.show_about = !@site.show_about
+        @site.save
+        render :nothing => true
+    end
+
     def about_update
         @about = current_about
         @about.content = params[:about]
