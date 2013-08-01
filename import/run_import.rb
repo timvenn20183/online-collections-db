@@ -159,10 +159,6 @@ end
             cat.destroy if cat.can_be_removed
         end
 
-        Platform.all.each do |plat|
-            plat.destroy if plat.can_be_removed
-        end
-
         Fieldoption.all.each do |fieldoption|
             fieldoption.destroy if fieldoption.can_be_removed
         end

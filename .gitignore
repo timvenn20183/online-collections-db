@@ -3,6 +3,7 @@ log
 tmp
 db/*.sqlite3
 *.swp
+collection.xls
 
 
 
