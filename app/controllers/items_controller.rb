@@ -4,6 +4,17 @@ class ItemsController < ApplicationController
 
     before_filter :must_login, :only => [:edit_list, :index]
 
+    def search
+        @search = params[:search]
+        @items = current_site.things.all(:conditions => ['searchstring LIKE ?',"%#{@search}%"])
+        @items = Array.new if @items == nil
+        # session[:menu] = 'COL_' + @collection.cached_slug
+        respond_to do |format|
+            format.js { render 'items/list' }
+            format.html { render 'items/list' }
+        end
+    end
+
     def settings_index
         @id = decrypt(params[:id]) if params[:id] != nil
         @alphabet_list = current_site.things.pluck(:alphabet_letter).uniq.sort
