@@ -3,12 +3,14 @@ class CollectionController < ApplicationController
 	layout 'ocd'
 
 	def index
-        @site = current_site
-        @about = current_about
-        render :text => 'done'
-		#@collection = Virtualcollection.find_by_cached_slug(params[:id])
-		#@items = @collection.things
-		#@items = Array.new if @items == nil
+		@collection = Virtualcollection.find_by_cached_slug(params[:id])
+		@items = @collection.things
+		@items = Array.new if @items == nil
+        session[:menu] = 'COL_' + @collection.cached_slug
+        respond_to do |format|
+            format.js { render 'items/list' }
+            format.html { render 'items/list' }
+        end
 	end
 
 end
