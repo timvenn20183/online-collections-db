@@ -4,9 +4,11 @@ class MainController < ApplicationController
 
     def index
         @site = current_site
+        session[:menu] = "HOME"
     end
 
     def about
+        session[:menu] = "ABOUT"
         respond_to do |format|
             format.js
             format.html

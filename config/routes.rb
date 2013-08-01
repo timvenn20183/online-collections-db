@@ -4,7 +4,7 @@ Ocd::Application.routes.draw do
 
     match 'login' => 'main#login'
     match 'main/login_process' => 'main#login_process'
-    match 'main/about' => 'main#about'
+    match 'about' => 'main#about'
 
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'

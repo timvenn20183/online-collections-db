@@ -2,9 +2,9 @@
 <div class="well" style="max-width: 300px; padding: 8px 0;">
 <ul class="nav nav-list">
 <li class="nav-header">Site links</li>
-<li class="menu_option active"><%= link_to('Home', :controller => :main, :action => :index) %></li>
+<li class="menu_option <%= 'active' if session[:menu] == 'HOME' %>"><%= link_to('Home', :controller => :main, :action => :index) %></li>
 <% if current_site.show_about == true then %>
-<li class="menu_option"><%= link_to('About', :controller => :main, :action => :about) %></li>
+<li class="menu_option <%= 'active' if session[:menu] == 'ABOUT' %>"><%= link_to('About', :controller => :main, :action => :about) %></li>
 <% end %>
 
 <!-- COLLECTIONS -->
@@ -37,9 +37,4 @@
 <li class="menu_option"><%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %></li>
 </ul>
 </div>
-<script>
-$('.menu_option').click(function() {
-    $(".menu_option").removeClass("active");$(this).addClass("active")
-});
-</script>
 
