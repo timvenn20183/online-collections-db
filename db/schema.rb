@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731170443) do
+ActiveRecord::Schema.define(:version => 20130804183503) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -131,14 +131,17 @@ ActiveRecord::Schema.define(:version => 20130731170443) do
     t.string   "tel"
     t.string   "password"
     t.string   "username"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.text     "history"
     t.date     "start_date"
     t.date     "end_date"
     t.text     "address"
     t.string   "province"
     t.string   "city"
+    t.boolean  "show_on_menu", :default => false
+    t.integer  "site_id"
+    t.string   "cached_slug"
   end
 
   create_table "rolodexes_things", :id => false, :force => true do |t|

@@ -23,6 +23,14 @@
 <% end %>
 <% end %>
 
+<!-- ROLODEX -->
+<% if current_site.rolodexes.menu.count > 0 then %>
+<li class="nav-header">Rolodex</li>
+<% current_site.rolodexes.menu.each do |rolodex| %>
+        <li class="menu_option <%= 'active' if session[:menu] == 'ROL_'+rolodex.cached_slug %>"><%=link_to(rolodex.name, :controller => 'rolodex', :action => 'index', :id => rolodex.cached_slug, :remote => true) %></li>
+<% end %>
+<% end %>
+
 <!-- FIELDOPTIONS -->
 <% current_site.thingfields.all.each do |thingfield| %>
     <% if thingfield.fieldoptions.menu.count > 0 then %>

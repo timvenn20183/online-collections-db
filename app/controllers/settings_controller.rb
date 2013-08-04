@@ -158,7 +158,47 @@ class SettingsController < ApplicationController
     end
 
     def rolodex
+    end
 
+    def rolodex_insert
+        @new_rolodex = Rolodex.new
+        @new_rolodex.site_id = current_site.id
+        @new_rolodex.name = params[:rolodex_name]
+        @new_rolodex.save
+        respond_to do |format|
+            format.js { render :action => 'rolodex' }
+        end
+    end
+
+    def rolodex_edit
+        @rolodex = Rolodex.find(decrypt(params[:id]))
+        respond_to do |format|
+            format.js { render :action => 'rolodex' }
+        end
+    end
+
+    def rolodex_update
+        @new_rolodex = Rolodex.find(decrypt(params[:id]))
+        @new_rolodex.name = params[:name]
+        @new_rolodex.save
+        respond_to do |format|
+            format.js { render :action => 'rolodex' }
+        end
+    end
+
+    def rolodex_remove
+        @rolodex = Rolodex.find(decrypt(params[:id]))
+        @rolodex.destroy
+        respond_to do |format|
+            format.js { render :action => 'rolodex' }
+        end
+    end
+
+    def rolodex_visibility
+        @rolodex = Rolodex.find(decrypt(params[:id]))
+        @rolodex.show_on_menu = !@rolodex.show_on_menu
+        @rolodex.save
+        render :nothing => true
     end
 
 end

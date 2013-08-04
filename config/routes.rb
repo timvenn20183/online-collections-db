@@ -33,6 +33,12 @@ Ocd::Application.routes.draw do
     match 'settings/about_on_menu' => 'settings#about_on_menu'
 
     match 'settings/rolodex' => 'settings#rolodex'
+    match 'settings/rolodex_insert' => 'settings#rolodex_insert'
+    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility'
+    match 'settings/rolodex_edit' => 'settings#rolodex_edit'
+    match 'settings/rolodex_remove' => 'settings#rolodex_remove'
+    match 'settings/rolodex_update' => 'settings#rolodex_update'
+    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility'
 
     match 'items/settings_index' => 'items#settings_index'
     match 'items/edit_list' => 'items#edit_list'
@@ -42,6 +48,8 @@ Ocd::Application.routes.draw do
     match 'items/new' => 'items#new'
     match 'items/list_options' => 'items#list_options'
     match 'items/details_brief' => 'items#details_brief'
+
+    match 'rolodex/:id' => 'rolodex#index'
 
     match 'search' => 'items#search'
 
