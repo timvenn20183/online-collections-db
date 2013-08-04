@@ -27,6 +27,26 @@
         <td><%= item.aquire_date %></td>
     </tr>
     <% end %>
+    <% if item.virtualcollections.count > 0 then %>
+        <tr>
+            <td>Collections</td>
+            <td>
+                <% item.virtualcollections.each do |collection| %>
+                    <%= collection.name %> <%= ' / ' if collection != item.virtualcollections.last %>
+                <% end %>
+            </td>
+    <% end %>
+
+    <% if item.conditions.count > 0 then %>
+        <tr>
+            <td>Condition</td>
+            <td>
+                <% item.conditions.each do |condition| %>
+                    <%= condition.name %> <%= ' / ' if condition != item.conditions.last %>
+                <% end %>
+            </td>
+    <% end %>
+
     <% item.thingfields.each do |field| %>
         <% if !field.name.blank? then %>
             <tr>
