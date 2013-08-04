@@ -74,4 +74,17 @@ class ItemsController < ApplicationController
         end
     end
 
+    def list_options
+        respond_to do |format|
+            format.js
+        end
+    end
+
+    def details_brief
+        @item = Thing.find(params[:id])
+        respond_to do |format|
+            format.js
+        end
+    end
+
 end

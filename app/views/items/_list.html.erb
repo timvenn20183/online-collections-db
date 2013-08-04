@@ -1,3 +1,11 @@
+<div class="accordion" id="fieldslist">
 <% items.each do |item| %>
-    <%= item.name %><br/>
+    <%= render :partial => 'items/item_accordion_in_list', :locals => {:item => item} %>
 <% end %>
+</div>
+<script>
+    $('.accordion-body').on('shown.bs.collapse',function() {
+        geturl = "<%= url_for :controller => 'items', :action => 'details_brief' %>";
+        $.ajax({url : geturl + "?id=" + this.id});
+    });
+</script>

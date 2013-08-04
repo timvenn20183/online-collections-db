@@ -1,0 +1,45 @@
+<table class="table table-striped">
+<tbody>
+    <% if !item.collection_id.blank? then %>
+    <tr>
+        <td>Collection ID</td>
+        <td><%= item.collection_id %>
+    </tr>
+    <% end %>
+
+    <% if !item.year.blank? then %>
+    <tr>
+        <td>Year</td>
+        <td><%= item.year %></td>
+    </tr>
+    <% end %>
+
+    <% if !item.reference_number.blank? then %>
+    <tr>
+        <td>Reference</td>
+        <td><%= item.reference_number %></td>
+    </tr>
+    <% end %>
+
+    <% if !item.aquire_date.blank? then %>
+    <tr>
+        <td>Aquired date</td>
+        <td><%= item.aquire_date %></td>
+    </tr>
+    <% end %>
+    <% item.thingfields.each do |field| %>
+        <% if !field.name.blank? then %>
+            <tr>
+                <td><%= field.name %></td>
+                <td>
+                    <% options = item.fieldoptions.all(:conditions => ['fieldoptions.thingfield_id = ?',field.id]) %>
+                    <% options.each do |option| %>
+                    <%= option.name %> <%= ' / ' if option != options.last %>
+                <% end %>
+                </td>
+            </tr>
+        <% end %>
+    <% end %>
+</tbody>
+</table>
+
