@@ -41,7 +41,7 @@
 <tr <%=raw "class='success'" if defined? @new_fieldoption and fieldoption == @new_fieldoption %>>
     <td colspan="2">
         <% if defined? @fieldoption and fieldoption == @fieldoption then %>
-            <%= text_field_tag 'fieldoption[name]', fieldoption.name %>
+            <%= text_field_tag 'edit_fieldoption[name]', fieldoption.name %>
         <% else %>
             <%= fieldoption.name %>
         <% end %>
@@ -63,7 +63,7 @@
         <% else %>
         <% if defined? @fieldoption and fieldoption == @fieldoption then %>
             <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_update', :id => code %>
-            <button onclick="$.ajax({url : '<%= geturl %>&name=' + $('#fieldoption_name').val()});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
+            <button onclick="$.ajax({url : '<%= geturl %>&name=' + $('#edit_fieldoption_name').val()});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Update</button>
         <% else %>
             <% geturl = url_for :controller => 'thingfields', :action => 'fieldoption_edit', :id => code %>
             <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-info" style="width:75px;" id="btn_<%=code%>">Edit</button>

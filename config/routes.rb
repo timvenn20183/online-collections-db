@@ -32,6 +32,8 @@ Ocd::Application.routes.draw do
     match 'settings/fields' => 'settings#fields'
     match 'settings/about_on_menu' => 'settings#about_on_menu'
 
+    match 'settings/rolodex' => 'settings#rolodex'
+
     match 'items/settings_index' => 'items#settings_index'
     match 'items/edit_list' => 'items#edit_list'
     match 'items/edit' => 'items#edit'

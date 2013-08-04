@@ -157,7 +157,8 @@ class SettingsController < ApplicationController
 
     end
 
-    def fields
+    def rolodex
+
     end
 
 end
