@@ -21,11 +21,11 @@
     </header>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span2" id="left-menu">
-        MENU
-    </div>
     <div class="span10" id="center">
         <%= yield %>
+    </div>
+    <div class="span2" id="right">
+        <%= render :partial => 'main/demo' %>
     </div>
   </div>
 </div>

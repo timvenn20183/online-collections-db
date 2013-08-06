@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806181950) do
+ActiveRecord::Schema.define(:version => 20130806193025) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -156,8 +156,8 @@ ActiveRecord::Schema.define(:version => 20130806181950) do
   create_table "sites", :force => true do |t|
     t.string   "code"
     t.string   "title"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.text     "meta_keywords"
     t.text     "meta_description"
     t.string   "owner"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20130806181950) do
     t.boolean  "fields_help",         :default => true
     t.boolean  "show_about",          :default => true
     t.boolean  "nav_menu",            :default => true
+    t.boolean  "can_showcase",        :default => false
   end
 
   create_table "slugs", :force => true do |t|
