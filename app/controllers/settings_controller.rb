@@ -201,4 +201,12 @@ class SettingsController < ApplicationController
         render :nothing => true
     end
 
+    def nav_menu
+        @site = Site.find(current_site.id)
+        @site.nav_menu = !@site.nav_menu
+        @site.save
+        render :nothing => true
+    end
+
+
 end

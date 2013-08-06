@@ -1,52 +1,80 @@
-<!-- MAIN MENU -->
-<div class="well" style="max-width: 300px; padding: 8px 0;">
-<ul class="nav nav-list">
-<li class="nav-header">Site links</li>
-<li class="menu_option <%= 'active' if session[:menu] == 'HOME' %>"><%= link_to('Home', :controller => :main, :action => :index, :remote => true) %></li>
-<% if current_site.show_about == true then %>
-<li class="menu_option <%= 'active' if session[:menu] == 'ABOUT' %>"><%= link_to('About', :controller => :main, :action => :about, :remote => true) %></li>
-<% end %>
+<% divider = false %>
+<div class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+        <li><%= link_to('Home', :controller => :main, :action => :index, :remote => true) %></li>
+        <% if current_site.show_about == true then %>
+        <li><%= link_to('About', :controller => :main, :action => :about, :remote => true) %></li>
+        <% end %>
+        <li class="divider"></li>
 
 <!-- COLLECTIONS -->
-<% if current_site.virtualcollections.publicmenu.count > 0 then %>
-<li class="nav-header">Collections</li>
-<% current_site.virtualcollections.publicmenu.each do |virtualcollection| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'COL_'+virtualcollection.cached_slug %>"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug, :remote => true) %></li>
-<% end %>
-<% end %>
+        <% if current_site.virtualcollections.publicmenu.count > 0 then %>
+        <% divider = true %>
+        <li class="dropdown-submenu"><a tabindex="-1" href="#">Collections</a>
+        <ul class="dropdown-menu">
+        <% current_site.virtualcollections.publicmenu.each do |virtualcollection| %>
+            <li>
+                <%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug, :remote => true) %>
+            </li>
+            <% end %>
+        </ul>
+        </li>
+        <% end %>
 
 <!-- CONDITIONS -->
-<% if current_site.conditions.menu.count > 0 then %>
-<li class="nav-header">Condition</li>
-<% current_site.conditions.menu.each do |condition| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'CON_'+condition.cached_slug %>"><%= link_to(condition.name, :controller => 'condition', :action => 'index', :id => condition.cached_slug, :remote => true) %></li>
-<% end %>
-<% end %>
+        <% if current_site.conditions.menu.count > 0 then %>
+        <% divider = true %>
+        <li class="dropdown-submenu"><a tabindex="-1" href="#">Condition</a>
+        <ul class="dropdown-menu">
+        <% current_site.conditions.menu.each do |condition| %>
+            <li>
+                <%= link_to(condition.name, :controller => 'condition', :action => 'index', :id => condition.cached_slug, :remote => true) %>
+            </li>
+            <% end %>
+        </ul>
+        </li>
+        <% end %>
 
 <!-- ROLODEX -->
-<% if current_site.rolodexes.menu.count > 0 then %>
-<li class="nav-header">Rolodex</li>
-<% current_site.rolodexes.menu.each do |rolodex| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'ROL_'+rolodex.cached_slug %>"><%=link_to(rolodex.name, :controller => 'rolodex', :action => 'index', :id => rolodex.cached_slug, :remote => true) %></li>
-<% end %>
-<% end %>
+        <% if current_site.rolodexes.menu.count > 0 then %>
+        <% divider = true %>
+        <li class="dropdown-submenu"><a tabindex="-1" href="#">Rolodex</a>
+        <ul class="dropdown-menu">
+        <% current_site.rolodexes.menu.each do |rolodex| %>
+            <li>
+                <%= link_to(rolodex.name, :controller => 'rolodex', :action => 'index', :id => rolodex.cached_slug, :remote => true) %>
+            </li>
+            <% end %>
+        </ul>
+        </li>
+        <% end %>
 
 <!-- FIELDOPTIONS -->
-<% current_site.thingfields.all.each do |thingfield| %>
-    <% if thingfield.fieldoptions.menu.count > 0 then %>
-        <li class="nav-header"><%= thingfield.name %></li>
-        <% thingfield.fieldoptions.menu.each do |fieldoption| %>
-            <li class="menu_option <%= 'active' if session[:menu] == thingfield.cached_slug + '_' + fieldoption.cached_slug %>"><%= link_to(fieldoption.name, :controller => 'fieldoptions', :action => 'index', :id => fieldoption.cached_slug, :remote => true) %></li>
+        <% current_site.thingfields.all.each do |thingfield| %>
+            <% if thingfield.fieldoptions.menu.count > 0 then %>
+                <% divider = true %>
+                <li class="dropdown-submenu"><a tabindex="-1" href="#"><%= thingfield.name %></a>
+                <ul class="dropdown-menu">
+                <% thingfield.fieldoptions.menu.each do |fieldoption| %>
+                    <li>
+                        <%= link_to(fieldoption.name, :controller => 'fieldoptions', :action => 'index', :id => fieldoption.cached_slug, :remote => true) %>
+                    </li>
+                <% end %>
+                </ul>
+            <% end %>
+            </li>
         <% end %>
-    <% end %>
-<% end %>
 
-<li class="nav-header">General</li>
-<li class="menu_option"><%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %></li>
-</ul>
+        <% if divider == true then %>
+            <li class="divider"></li>
+        <% end %>
+
+        <li>
+            <%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %>
+        </li>
+
+    </ul>
+
+
+
 </div>
-<script>
-$('.menu_option').click(function() {
-    $(".menu_option").removeClass("active");$(this).addClass("active")
-});
-</script>

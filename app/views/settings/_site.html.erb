@@ -30,6 +30,17 @@
         </td>
     </tr>
     <tr>
+        <td>
+            Dropdown menus
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'nav_menu' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.nav_menu == false %> onchange="$.ajax({url : '<%= geturl %>' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+    <tr>
         <td valign="top">
             Meta keywords
         </td>
@@ -92,4 +103,9 @@
     </tr>
 </table>
 <% end %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.switch')['bootstrapSwitch']();
+    });
+</script>
 

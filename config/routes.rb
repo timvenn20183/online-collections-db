@@ -14,6 +14,7 @@ Ocd::Application.routes.draw do
     match 'settings/fields' => 'settings#fields'
     match 'settings/fields_update' => 'settings#fields_update'
     match 'settings/logout' => 'settings#logout'
+    match 'settings/nav_menu' => 'settings#nav_menu'
 
     match 'settings/collections' => 'settings#collections'
     match 'settings/collection_remove' => 'settings#collection_remove'

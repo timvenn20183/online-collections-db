@@ -22,7 +22,8 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2" id="left-menu">
-        <%= render 'main/menu' %>
+        <%= render 'main/menu' if current_site.nav_menu == false %>
+        <%= render 'main/nav_menu' if current_site.nav_menu == true %>
     </div>
     <div class="span10" id="center">
         <%= yield %>
