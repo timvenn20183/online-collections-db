@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806171951) do
+ActiveRecord::Schema.define(:version => 20130806181950) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130806171951) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "site_id"
   end
 
   create_table "fieldoptions", :force => true do |t|

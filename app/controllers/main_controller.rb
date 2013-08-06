@@ -1,10 +1,22 @@
 class MainController < ApplicationController
 
-    layout 'ocd'
+    layout :select_layout
+
+    def select_layout
+        if action_name == 'welcome'
+            return 'welcome'
+        else
+            return 'ocd'
+        end
+    end
 
     def index
         @site = current_site
+        redirect_to '/welcome' if @site.blank?
         session[:menu] = "HOME"
+    end
+
+    def welcome
     end
 
     def about

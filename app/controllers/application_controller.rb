@@ -6,12 +6,12 @@ protect_from_forgery
 
     def current_site
         # stub
-        return Site.first_or_create(:header => 'My collection')
+        site = Site.find_by_code(request.subdomain)
     end
 
     def current_about
         # stub
-        return Dialog.where(:code => 'ABOUT').first_or_create do |dialog|
+        return current_site.dialogs.where(:code => 'ABOUT').first_or_create do |dialog|
             dialog.content = 'About your collection'
         end
     end

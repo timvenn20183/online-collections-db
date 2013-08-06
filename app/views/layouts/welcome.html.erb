@@ -15,15 +15,14 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <nav class="navbar-inner">
         <div class="container" id="main_header">
-          <%= render 'main/navigation' %>
+          <%= render 'main/welcome_navigation' %>
         </div>
       </nav>
     </header>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2" id="left-menu">
-        <%= render 'main/menu' if current_site.nav_menu == false %>
-        <%= render 'main/nav_menu' if current_site.nav_menu == true %>
+        MENU
     </div>
     <div class="span10" id="center">
         <%= yield %>

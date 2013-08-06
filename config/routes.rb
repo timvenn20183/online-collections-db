@@ -1,10 +1,13 @@
 Ocd::Application.routes.draw do
 
+    root :to => 'main#welcome', :constraints => {:subdomain => 'www'}
+    root :to => 'main#welcome', :constraints => {:subdomain => ''}
     root :to => 'main#index'
 
     match 'login' => 'main#login'
     match 'main/login_process' => 'main#login_process'
     match 'about' => 'main#about'
+    match 'welcome' => 'main#welcome'
 
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'
