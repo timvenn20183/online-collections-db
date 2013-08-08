@@ -27,6 +27,17 @@ class MainController < ApplicationController
         end
     end
 
+    def sign_up
+       respond_to do |format|
+            if !user_logged_in then
+                format.js
+            else
+                format.js { render :action => 'login_process' }
+            end
+
+        end
+    end
+
     def login
         respond_to do |format|
             if !user_logged_in then
