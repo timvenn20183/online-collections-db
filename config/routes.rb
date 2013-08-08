@@ -7,6 +7,7 @@ Ocd::Application.routes.draw do
     match 'login' => 'main#login'
     match 'main/login_process' => 'main#login_process'
     match 'sign_up' => 'main#sign_up'
+    match 'main/sign_up_process' => 'main#sign_up_process'
     match 'about' => 'main#about'
     match 'welcome' => 'main#welcome'
 

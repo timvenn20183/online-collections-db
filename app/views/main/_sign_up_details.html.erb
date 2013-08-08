@@ -1,0 +1,30 @@
+<div class="modal-body">
+            <div class="control-group <%=raw 'error' if @site.errors['email'].blank? == false %>">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input type="text" id="inputEmail" name="email" value="<%= @site.email %>">
+                    </div>
+                </div>
+            </div>
+            <div class="control-group <%=raw 'error' if @site.errors['password'].blank? == false %>">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
+                    <input type="password" id="inputPassword" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="control-group <%=raw 'error' if @site.errors['password'].blank? == false %>">
+                <label class="control-label" for="inputPassword">Confirm</label>
+                <div class="controls">
+                    <input type="password" id="inputPassword2" name="confirm" placeholder="Password">
+                </div>
+            </div>
+            <div class="control-group <%=raw 'error' if @site.errors['code'].blank? == false %>">
+                <label class="control-label" for="inputPassword">Collection name</label>
+                <div class="controls">
+                    <input text="type" id="inputPassword" name="collection_name" value="<%= @site.code %>">
+                </div>
+            </div>
+</div>
+

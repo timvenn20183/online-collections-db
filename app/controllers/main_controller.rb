@@ -28,13 +28,24 @@ class MainController < ApplicationController
     end
 
     def sign_up
+       @site = Site.new
        respond_to do |format|
-            if !user_logged_in then
                 format.js
-            else
-                format.js { render :action => 'login_process' }
-            end
+        end
+    end
 
+    def sign_up_process
+        @site = Site.new
+        @site.header = params[:collection_name]
+        @site.code = params[:collection_name]
+        @site.email = params[:email]
+        @site.password = encrypt(params[:password]) if (params[:password] == params[:confirm]) and !params[:password].blank? and !params[:confirm].blank?
+        respond_to do |format|
+            if @site.save then
+
+            else
+                format.js { render :action => 'sign_up_process'}
+            end
         end
     end
 
