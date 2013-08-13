@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806193025) do
+ActiveRecord::Schema.define(:version => 20130813202044) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20130806193025) do
     t.boolean  "show_about",          :default => true
     t.boolean  "nav_menu",            :default => true
     t.boolean  "can_showcase",        :default => false
+    t.text     "homepage_options"
   end
 
   create_table "slugs", :force => true do |t|
