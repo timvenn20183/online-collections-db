@@ -1,1 +1,1 @@
-$('#center').html("<%= j render 'items/settings_index' %>");
+$('#center').html("<%= j render :partial => 'items/settings_index' %>");

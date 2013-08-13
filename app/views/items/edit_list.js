@@ -1,1 +1,1 @@
-$('#item_edit_list').html("<%= j render 'items/edit_list' %>");
+$('#item_edit_list').html("<%= j render :partial => 'items/edit_list' %>");

@@ -3,7 +3,7 @@
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
         <li><%= link_to('Home', :controller => :main, :action => :index, :remote => true) %></li>
         <% if current_site.show_about == true then %>
-        <li><%= link_to('About', :controller => :main, :action => :about, :remote => true) %></li>
+        <li class="<%=raw 'active' if session[:menu] == 'ABOUT' %>"><%= link_to('About', :controller => :main, :action => :about, :remote => true) %></li>
         <% end %>
         <li class="divider"></li>
 

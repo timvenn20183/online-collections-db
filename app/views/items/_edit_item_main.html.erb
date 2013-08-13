@@ -1,5 +1,7 @@
 <!-- ITEM MAIN -->
     <div class="tab-pane active" id="item_main">
+        <%= form_tag({:controller => :items, :action => :update},:remote => true, :id => 'update_form', :class => "form-horizontal") do |f| %>
+        <%= hidden_field_tag 'id', encrypt(@item.id) %>
     <!-- NAME -->
            <div class="control-group">
                 <label class="control-label" for="item[name]">Title</label>
@@ -54,4 +56,10 @@
                     </div>
                 </div>
         </div>
+    <div style="float:right;">
+        <button id="login" class="btn btn-primary" onclick="$('#update_form').submit();$('#myModal').modal('hide')">Update</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
+    <% end %>
+    </div>
+ 

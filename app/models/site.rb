@@ -11,7 +11,7 @@ class Site < ActiveRecord::Base
     attr_accessible :code, :title, :meta_keywords, :meta_description, :email, :owner, :username, :password, :header, :tagline
 
     validates :header, :presence => true
-    validates :password, :presence => true
+    #validates :password, :presence => true
     validates :email, :presence => true, :uniqueness => true
     validates :code, :presence => true, :uniqueness => true
 

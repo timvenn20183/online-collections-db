@@ -8,6 +8,7 @@ gem 'will_paginate'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-switch-rails'
+gem 'jquery-fileupload-rails'
 
 gem 'sqlite3'
 gem 'mysql2'

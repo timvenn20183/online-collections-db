@@ -46,6 +46,9 @@ class SettingsController < ApplicationController
         end
     end
 
+    def homepage
+    end
+
     def logout
         logout_user
         redirect_to :action => 'index', :controller => 'main'
