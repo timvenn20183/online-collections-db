@@ -1,3 +1,42 @@
 <div class="tab-pane" id="item_image">
+<%= form_for 'image' , :url =>  {:action => 'update', :controller => 'items'}, :html => { :id => "new_image"}  do |f| %>
+<%= hidden_field_tag 'id', encrypt(@item.id) %>
+<p>
+     <%= f.file_field :mainimage, multiple: true, name: "item[mainimage]" %>
+</p>
+<% end %>
 
+<script id="template-upload" type="text/x-tmpl">
+</script>
+<script>
+(function() {
+  jQuery(function() {
+    return $('#new_image').fileupload({
+      dataType: "script",
+      add: function(e, data) {
+        var file, types;
+
+        types = /(\.|\/)(gif|jpe?g|png)$/i;
+        file = data.files[0];
+        if (types.test(file.type) || types.test(file.name)) {
+          data.context = $(tmpl("template-upload", file));
+          $('#new_image').append(data.context);
+          return data.submit();
+        } else {
+          return alert("" + file.name + " is not a gif, jpeg, or png image file");
+        }
+      },
+      progress: function(e, data) {
+        var progress;
+
+        if (data.context) {
+          progress = parseInt(data.loaded / data.total * 100, 10);
+          return data.context.find('.bar').css('width', progress + '%');
+        }
+      }
+    });
+  });
+
+}).call(this);
+</script>
 </div>

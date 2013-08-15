@@ -15,4 +15,5 @@
 //= require_tree  . 
 //= require bootstrap
 //= require bootstrap-switch
-//= require jquery-fileupload
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
