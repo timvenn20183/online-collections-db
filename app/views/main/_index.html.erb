@@ -1,5 +1,17 @@
-<li>Last 5 items</li>
-<li>Random item</li>
-<li>About page</li>
-<li>Header</li>
+<% if current_site.homepage_options[:about_is_homepage] == true then %>
+    <%=raw current_about.content.gsub("\n","<br/>") %>
+<% else %>
 
+<% if current_site.homepage_options[:last_x_items] > 0 then %>
+<p>Recent items
+		<%= render :partial => 'items/list', :locals => {:items => @show_items} %>
+</p>
+<% end %>
+
+<% if current_site.homepage_options[:random_item] == true then %>
+<p>Random item
+		<%= render :partial => 'items/list', :locals => {:items => @random_items} %>
+</p>
+<% end %>
+
+<% end %>

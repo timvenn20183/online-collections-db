@@ -54,37 +54,13 @@ class Thing < ActiveRecord::Base
         end
     end
 
-    def virtualcollection_string
-        virtualcollection_string = String.new
-        self.virtualcollections.all.each do |virtualcollection|
-            virtualcollection_string = virtualcollection_string + virtualcollection.name + " / "
-        end
-        return virtualcollection_string[0..virtualcollection_string.length-4]
-    end
-
-    def condition_string
-        condition_string = String.new
-        self.conditions.all.each do |condition|
-            condition_string = condition_string + condition.name + " / "
-        end
-        return condition_string[0..condition_string.length-4]
-    end
-
-    def category_string
-        category_string = String.new
-        self.categories.all.each do |category|
-            category_string = category_string + category.name + " / "
-        end
-        return category_string[0..category_string.length-4]
-    end
-
-    def rolodex_string
-        rolodex_string = String.new
-        self.rolodexes.all.each do |rolodex|
-            rolodex_string = rolodex_string + rolodex.name + " / "
-        end
-        return rolodex_string[0..rolodex_string.length-4]
-    end
+    def self.random_item(site)
+        things = Array.new
+        thing_ids = site.things.pluck(:id)
+        thing_id = thing_ids[rand(thing_ids.count)]
+        things << Thing.find(thing_id)
+        return things
+    end 
 
     protected
 

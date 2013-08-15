@@ -2,3 +2,59 @@
 <div class="alert alert-info">
 <%= render :partial => 'settings/homepage_help' %>
 </div>
+<%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+<table border="0" width="100%">
+	<tr>
+		<td>
+			Home page is the about page ?
+		</td>
+		<td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+            	<% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:about_is_homepage] == true %> onchange="$.ajax({url : '<%= geturl %>?about_is_homepage=1'});">
+            </div><br/><br/>
+		</td>
+	</tr>
+    <tr>
+        <td>
+            Dropdown menus ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'nav_menu' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.nav_menu == false %> onchange="$.ajax({url : '<%= geturl %>' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Show random item ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:random_item] == true %> onchange="$.ajax({url : '<%= geturl %>?random_item=1' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+	<tr>
+		<td>
+			Number of recent items to show 
+		</td>
+		<td>
+			<% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+			<select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="btn btn-mini">
+			<% (0..10).each do |i| %>
+				<option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>				
+			<% end %>
+			</select>
+			<span class="caret"></span>
+		</td>
+	</tr>
+</table>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.switch')['bootstrapSwitch']();
+    });
+</script>

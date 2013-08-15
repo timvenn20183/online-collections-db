@@ -38,6 +38,7 @@ Ocd::Application.routes.draw do
     match 'settings/fields' => 'settings#fields'
     match 'settings/about_on_menu' => 'settings#about_on_menu'
     match 'settings/homepage' => 'settings#homepage'
+    match 'settings/homepage_update' => 'settings#homepage_update'
 
     match 'settings/rolodex' => 'settings#rolodex'
     match 'settings/rolodex_insert' => 'settings#rolodex_insert'
