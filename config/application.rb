@@ -59,6 +59,10 @@ module Ocd
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # set this to false in order to have multiple sites and the main sign up and welcome page
+    # set this to true (default) if you just want to run a single site
+    config.single_mode = true
+
 config.generators do |g|
 end
 

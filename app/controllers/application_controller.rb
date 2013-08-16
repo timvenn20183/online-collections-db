@@ -5,8 +5,9 @@ protect_from_forgery
     helper_method :current_site, :current_about, :encrypt, :decrypt
 
     def current_site
-        # stub
         site = Site.find_by_code(request.subdomain)
+        site = Site.first if Ocd::Application.config.single_mode == true 
+        return site
     end
 
     def current_about

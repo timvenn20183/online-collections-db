@@ -1,7 +1,10 @@
 Ocd::Application.routes.draw do
 
-    root :to => 'main#welcome', :constraints => {:subdomain => 'www'}
-    root :to => 'main#welcome', :constraints => {:subdomain => ''}
+    if Ocd::Application.config.single_mode == false then         
+        root :to => 'main#welcome', :constraints => {:subdomain => 'www'}
+        root :to => 'main#welcome', :constraints => {:subdomain => ''}
+    end
+    
     root :to => 'main#index'
 
     match 'login' => 'main#login'
