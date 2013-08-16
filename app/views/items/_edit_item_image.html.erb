@@ -1,11 +1,15 @@
 <div class="tab-pane" id="item_image">
-<%= form_for 'image' , :url =>  {:action => 'update', :controller => 'items'}, :html => { :id => "new_image"}  do |f| %>
+<%= form_for 'image' , :url =>  {:action => 'update_image', :controller => 'items'}, :html => { :id => "new_image"}  do |f| %>
 <%= hidden_field_tag 'id', encrypt(@item.id) %>
-<p>
+<div id="mainimage" style="text-align:center">
+  <%= image_tag(@item.mainimage.url(:medium)) if !@item.mainimage.blank? %>
+</div>
+<br/>
      <%= f.file_field :mainimage, multiple: true, name: "item[mainimage]" %>
-</p>
 <% end %>
-
+<div class="upload">
+  <div class="progress progress-striped active" id="bar"><div class="bar" style="width: 0%"></div></div>
+</div>
 <script id="template-upload" type="text/x-tmpl">
 </script>
 <script>
@@ -31,7 +35,8 @@
 
         if (data.context) {
           progress = parseInt(data.loaded / data.total * 100, 10);
-          return data.context.find('.bar').css('width', progress + '%');
+          /*return data.context.find('.bar').css('width', progress + '%');*/
+          $('#bar').html('<div class="bar" style="width: ' + progress + '%"></div>');
         }
       }
     });

@@ -44,9 +44,17 @@ class ItemsController < ApplicationController
         end
     end
 
+    def update_image
+        @item = Thing.find(decrypt(params[:id]))
+        @item.mainimage = params[:item][:mainimage].first if params[:item][:mainimage] != nil   
+        @item.save
+        respond_to do |format|
+            format.js
+        end     
+    end
+
     def update
         @item = Thing.find(decrypt(params[:id]))
-        @item.mainimage = params[:item][:mainimage].first if params[:item][:mainimage] != nil
         respond_to do |format|
             if @item.update_attributes(params[:item]) then
                 format.js { redirect_to :action => 'settings_index', :id => encrypt(@item.id) }
