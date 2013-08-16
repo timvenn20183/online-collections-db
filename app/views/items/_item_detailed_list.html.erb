@@ -1,0 +1,29 @@
+<div class="row-fluid">
+  <div class="span2"><%= image_tag(item.mainimage.url(:list)) if !item.mainimage.blank? %></div>
+  <div class="span10">
+  	<strong><%= item.name %></strong><br/>
+  	Collection ID : <%= item.collection_id %><br/>
+  	Year : <%= item.year %><br/>
+  	Reference : <%= item.reference_number %><br/>
+  	Acquired date : <%= item.aquire_date %><br/>
+  	<% if item.virtualcollections.count > 0 %>
+  	Collections : 
+  	<% item.virtualcollections.each do |collection| %>
+        <%= collection.name %> <%= ' / ' if collection != item.virtualcollections.last %>
+    <% end %><br/>
+    <% end %>
+    Condition : 
+    <% item.conditions.each do |condition| %>
+        <%= condition.name %> <%= ' / ' if condition != item.conditions.last %>
+    <% end %><br/>
+    <% item.thingfields.each do |field| %>
+    <% if !field.name.blank? then %>
+    	<%= field.name %> : 
+                <% options = item.fieldoptions.all(:conditions => ['fieldoptions.thingfield_id = ?',field.id]) %>
+                <% options.each do |option| %>
+                <%= option.name %> <%= ' / ' if option != options.last %>
+            <% end %><br/>
+    <% end %>
+<% end %>
+  </div>
+</div>

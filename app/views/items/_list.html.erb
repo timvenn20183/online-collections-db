@@ -1,3 +1,4 @@
+<% if current_site.item_view_options[:list_type] == "accordion" %>
 <div class="accordion" id="fieldslist">
 <% items.each do |item| %>
     <%= render :partial => 'items/item_accordion_in_list', :locals => {:item => item} %>
@@ -9,3 +10,13 @@
         $.ajax({url : geturl + "?id=" + this.id});
     });
 </script>
+<% end %>
+
+<% if current_site.item_view_options[:list_type] == "detailed" %>
+<% items.each do |item| %>
+    <%= render :partial => 'items/item_detailed_list', :locals => {:item => item} %>
+    <hr/>
+<% end %>
+<% end %>
+
+

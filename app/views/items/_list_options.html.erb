@@ -2,12 +2,23 @@
 <div class="alert alert-info">
 <%= render :partial => 'items/list_options_help' %>
 </div>
-<strong>SAMPLE</strong><br/><br/>
 </div>
+
+<strong>SAMPLE LIST</strong><br/><br/>
+<div id="item_sample">
+<div class="accordion" id="fieldslist">
+    <%= render :partial => 'items/item_accordion_in_list', :locals => {:item => current_site.things.first} %>
+</div>
+</div>
+
+<strong>SAMPLE SINGLE VIEW</strong><br/><br/>
 <div id="item_sample">
 <%= render :partial => 'items/item_in_list', :locals => {:item => current_site.things.first} %>
 </div>
-<br/><br/>
-<div>
 
-</div>
+<script>
+    $('.accordion-body').on('shown.bs.collapse',function() {
+        geturl = "<%= url_for :controller => 'items', :action => 'details_brief' %>";
+        $.ajax({url : geturl + "?id=" + this.id});
+    });
+</script>

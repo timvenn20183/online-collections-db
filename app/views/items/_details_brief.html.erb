@@ -1,3 +1,11 @@
+<% if !item.mainimage.blank? %>
+<div class="row-fluid">
+<div class="span4" style="text-align:center;">
+    <%= image_tag(item.mainimage.url(:medium)) %>
+</div>
+<div class="span8">
+<% end %>
+
 <table class="table table-striped">
 <tbody>
     <% if !item.collection_id.blank? then %>
@@ -63,3 +71,9 @@
 </tbody>
 </table>
 
+<% if !item.mainimage.blank? %>
+
+</div>  
+</div>
+
+<% end %>

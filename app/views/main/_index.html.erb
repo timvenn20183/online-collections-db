@@ -10,7 +10,7 @@
 
 <% if current_site.homepage_options[:random_item] == true then %>
 <p>Random item
-		<%= render :partial => 'items/list', :locals => {:items => @random_items} %>
+		<%= render :partial => 'items/list', :locals => {:items => @random_items, :expanded => true} %>
 </p>
 <% end %>
 
