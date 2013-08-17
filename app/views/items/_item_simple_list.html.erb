@@ -1,0 +1,9 @@
+<div class="row-fluid">
+  <div class="span2"><%= image_tag(item.mainimage.url(:list)) if !item.mainimage.blank? %></div>
+  <div class="span10">
+  	<strong><%= item.name %></strong><br/>
+  	Collection ID : <%= item.collection_id %><br/>
+  	Year : <%= item.year %><br/>
+  	Reference : <%= item.reference_number %><br/>
+  </div>
+</div>

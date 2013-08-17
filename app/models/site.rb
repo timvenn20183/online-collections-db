@@ -26,7 +26,7 @@ class Site < ActiveRecord::Base
     def set_homepage_options
         self.homepage_options[:about_is_homepage] = false if self.homepage_options[:about_is_homepage] == nil
         self.homepage_options[:last_x_items] = 0 if self.homepage_options[:last_x_items] == nil
-        self.homepage_options[:random_item] = false if self.homepage_options[:random_item] == nil
+        self.homepage_options[:random_x_items] = 0 if self.homepage_options[:random_x_items] == nil
      end
 
      def set_itemview_options

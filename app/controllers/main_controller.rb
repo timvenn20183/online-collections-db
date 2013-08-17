@@ -14,7 +14,7 @@ class MainController < ApplicationController
 
         @site = current_site
         @show_items = @site.things.last(current_site.homepage_options[:last_x_items]) if current_site.homepage_options[:last_x_items] != nil and !@site.blank?
-        @random_items = Thing.random_item(current_site) if current_site.homepage_options[:random_item] == true and !@site.blank?
+        @random_items = Thing.random_items(current_site) if current_site.homepage_options[:random_x_items] > 0 and !@site.blank?
         redirect_to '/welcome' if @site.blank?
         session[:menu] = "HOME"
     end

@@ -8,9 +8,9 @@
 </p>
 <% end %>
 <div style="clear:both;"></div>
-<% if current_site.homepage_options[:random_item] == true then %>
-<p><h4>Random item</h4>
-		<%= render :partial => 'items/list', :locals => {:items => @random_items, :expanded => true} %>
+<% if current_site.homepage_options[:random_x_items] > 0 then %>
+<p><h4>Random items</h4>
+		<%= render :partial => 'items/list', :locals => {:items => @random_items} %>
 </p>
 <% end %>
 

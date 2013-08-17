@@ -54,7 +54,7 @@ class SettingsController < ApplicationController
         @site = Site.find(current_site.id)
         @site.homepage_options[:about_is_homepage] = !@site.homepage_options[:about_is_homepage] if params[:about_is_homepage] == '1'
         @site.homepage_options[:last_x_items] = params[:last_x_items].to_i if params[:last_x_items] != nil
-        @site.homepage_options[:random_item] = !@site.homepage_options[:random_item] if params[:random_item] == '1'       
+        @site.homepage_options[:random_x_items] = params[:random_x_items].to_i if params[:random_x_items] != nil       
         @site.save
         render :nothing => true
     end

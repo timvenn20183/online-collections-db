@@ -1,0 +1,15 @@
+<% if !(index-1).odd? then %>
+<div class="row-fluid">
+<% end %>
+  <div class="span1">	
+  	<%= image_tag(item.mainimage.url(:list)) if !item.mainimage.blank? %>
+  </div>
+  <div class="span4">
+  	<strong><%= item.name %></strong><br/>
+  	Collection ID : <%= item.collection_id %><br/>
+  	Year : <%= item.year %><br/>
+  	Reference : <%= item.reference_number %>
+  </div>
+<% if !(index-1).odd? %>
+</div>
+<% end %>

@@ -54,11 +54,13 @@ class Thing < ActiveRecord::Base
         end
     end
 
-    def self.random_item(site)
+    def self.random_items(site)
         things = Array.new
         thing_ids = site.things.pluck(:id)
-        thing_id = thing_ids[rand(thing_ids.count)]
-        things << Thing.find(thing_id)
+        begin
+            thing_id = thing_ids[rand(thing_ids.count)]
+            things << Thing.find(thing_id) if !things.include?(thing_id)
+        end while things.count < site.homepage_options[:random_x_items]
         return things
     end 
 

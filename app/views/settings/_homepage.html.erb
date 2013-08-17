@@ -28,13 +28,16 @@
     </tr>
     <tr>
         <td>
-            Show random item ?
+            Number of random items to show 
         </td>
         <td>
-            <div class="switch switch-mini" data-on="success" data-off="warning">
-                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:random_item] == true %> onchange="$.ajax({url : '<%= geturl %>?random_item=1' });">
-            </div><br/><br/>
+            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+            <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="btn btn-mini">
+            <% (0..10).each do |i| %>
+                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>               
+            <% end %>
+            </select>
+            <span class="caret"></span>
         </td>
     </tr>
 	<tr>
