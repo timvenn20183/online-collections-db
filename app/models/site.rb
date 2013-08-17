@@ -34,7 +34,7 @@
 
      def set_itemview_options
         # stub
-        self.item_view_options[:list_type] = "accordion" if self.item_view_options[:list_type] == nil
+        self.item_view_options[:list_type] = "Accordion" if self.item_view_options[:list_type] == nil
      end
 
     def set_menu_options

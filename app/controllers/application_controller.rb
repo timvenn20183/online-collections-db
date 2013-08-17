@@ -11,7 +11,7 @@ protect_from_forgery
     end
 
     def current_about
-        # stub
+        #stub
         return current_site.dialogs.where(:code => 'ABOUT').first_or_create do |dialog|
             dialog.content = 'About your collection'
         end

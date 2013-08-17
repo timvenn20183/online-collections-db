@@ -55,6 +55,7 @@ class SettingsController < ApplicationController
         @site.homepage_options[:about_is_homepage] = !@site.homepage_options[:about_is_homepage] if params[:about_is_homepage] == '1'
         @site.homepage_options[:last_x_items] = params[:last_x_items].to_i if params[:last_x_items] != nil
         @site.homepage_options[:random_x_items] = params[:random_x_items].to_i if params[:random_x_items] != nil       
+        @site.item_view_options[:list_type] = params[:list_type] if params[:list_type] != nil       
         @site.save
         render :nothing => true
     end
@@ -221,5 +222,14 @@ class SettingsController < ApplicationController
         render :nothing => true
     end
 
+    def contact
 
+    end
+
+    def contact_update
+        @site = Site.find(current_site.id)
+        @site.menu_options[:contact_on_menu] = !@site.menu_options[:contact_on_menu] if params[:contact_on_menu].to_i == 1
+        @site.save
+        render :nothing => true
+    end
 end

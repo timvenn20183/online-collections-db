@@ -1,4 +1,4 @@
-<% if current_site.item_view_options[:list_type] == "accordion" %>
+<% if current_site.item_view_options[:list_type] == "Accordion" %>
 <div class="accordion" id="fieldslist">
 <% items.each do |item| %>
     <%= render :partial => 'items/item_accordion_in_list', :locals => {:item => item} %>
@@ -12,21 +12,21 @@
 </script>
 <% end %>
 
-<% if current_site.item_view_options[:list_type] == "detailed" %>
+<% if current_site.item_view_options[:list_type] == "Detailed" %>
 <% items.each do |item| %>
     <%= render :partial => 'items/item_detailed_list', :locals => {:item => item} %>
     <hr/>
 <% end %>
 <% end %>
 
-<% if current_site.item_view_options[:list_type] == "simple" %>
+<% if current_site.item_view_options[:list_type] == "Simple" %>
 <% items.each do |item| %>
     <%= render :partial => 'items/item_simple_list', :locals => {:item => item} %>
     <hr/>
 <% end %>
 <% end %>
 
-<% if current_site.item_view_options[:list_type] == "simple2col" %>
+<% if current_site.item_view_options[:list_type] == "2 Column" %>
 <hr/>
 <% items.each_with_index do |item,index| %>
 

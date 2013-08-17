@@ -3,18 +3,47 @@
 <%= render :partial => 'items/list_options_help' %>
 </div>
 </div>
-
-<strong>SAMPLE LIST</strong><br/><br/>
+<table border="0" width="100%">
+	<tr>
+		<td>
+			Default list (see samples below) ?
+		</td>
+		<td>
+            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+            <select onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="btn btn-mini">
+            <% ['Accordion','Detailed','Simple','2 Column'].each do |i| %>
+                <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:list_type] %>><%=i%></option>               
+            <% end %>
+            </select>
+            <span class="caret"></span>
+        </td>
+    </tr>
+</table>
+<hr/>
+<% if current_site.things.count > 0 %>
+<h4>Accordion list</h4>
 <div id="item_sample">
 <div class="accordion" id="fieldslist">
     <%= render :partial => 'items/item_accordion_in_list', :locals => {:item => current_site.things.first} %>
 </div>
 </div>
-
-<strong>SAMPLE SINGLE VIEW</strong><br/><br/>
+<hr/>
+<h4>Detailed list</h4>
 <div id="item_sample">
-<%= render :partial => 'items/item_in_list', :locals => {:item => current_site.things.first} %>
+<%= render :partial => 'items/item_detailed_list', :locals => {:item => current_site.things.first} %>
 </div>
+<hr/>
+<h4>Simple list</h4>
+<div id="item_sample">
+<%= render :partial => 'items/item_simple_list', :locals => {:item => current_site.things.first} %>
+</div>
+<hr/>
+<h4>2 Column list</h4>
+<div id="item_sample">
+<%= render :partial => 'items/item_simple2col_list', :locals => {:item => current_site.things.first, :index => 0} %>
+<%= render :partial => 'items/item_simple2col_list', :locals => {:item => current_site.things.first, :index => 1} %>
+</div>
+
 
 <script>
     $('.accordion-body').on('shown.bs.collapse',function() {
@@ -22,3 +51,7 @@
         $.ajax({url : geturl + "?id=" + this.id});
     });
 </script>
+
+<% else %>
+	<div class="alert alert-warning">Please add at least one item to see the item list previews.</div>
+<% end %>

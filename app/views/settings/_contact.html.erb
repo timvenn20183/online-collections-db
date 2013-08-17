@@ -1,0 +1,23 @@
+<div id="notice_bar">
+<div class="alert alert-info">
+    <%= render :partial => 'settings/contact_help' %>
+</div>
+</div>
+<table border="0" width="60%">
+	<tr>
+		<td>
+			Show the contact option on the main menu ?
+		</td>
+		<td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+            	<% geturl = url_for :controller => 'settings', :action => 'contact_update' %>
+                <input type="checkbox" <%=raw ' checked ' if current_site.menu_options[:contact_on_menu] == true %> onchange="$.ajax({url : '<%= geturl %>?contact_on_menu=1'});">
+            </div>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.switch')['bootstrapSwitch']();
+    });
+</script>

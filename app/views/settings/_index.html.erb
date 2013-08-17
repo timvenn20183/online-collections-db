@@ -5,42 +5,47 @@ This is the administration section of the online collectors database. Select wha
 </div>
 </div>
 <dl class="dl-horizontal">
-<dt>Site</dt>
+<dt><%= link_to("General", :action => 'site', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/site_help' %>
 <br/><br/>
 </dd>
-<dt>Home page</dt>
+<dt><%= link_to("Home page", :action => 'homepage', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/homepage_help' %>
 <br/><br/>
 </dd>
-<dt>About</dt>
+<dt><%= link_to("About", :action => 'about', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/about_help' %>
 <br/><br/>
 </dd>
-<dt>Items</dt>
+<dt><%= link_to("Contact", :action => 'contact', :controller => 'settings', :remote => true) %></dt>
+<dd>
+<%= render :partial => 'settings/contact_help' %>
+<br/><br/>
+</dd>
+<dt><%= link_to("Items", :action => 'settings_index', :controller => 'items', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'items/item_help' %>
 <br/><br/>
 </dd>
-<dt>Collections</dt>
+<dt><%= link_to("Collections", :action => 'collections', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/collections_help' %>
 <br/><br/>
 </dd>
-<dt>Condition</dt>
+<dt><%= link_to("Condition", :action => 'conditions', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/conditions_help' %>
 <br/><br/>
 </dd>
-<dt>Fields</dt>
+<dt><%= link_to("Fields", :action => 'fields', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/fields_help' %>
 </dd>
 <br/>
-<dt>Rolodex</dt>
+<dt><%= link_to("Rolodex", :action => 'rolodex', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'rolodex/rolodex_help' %>
 </dd>
