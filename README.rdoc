@@ -6,3 +6,7 @@ Ruby 1.9.3
 
 Installation :
 
+Database :
+
+rake db:migrate
+rake db:seed
