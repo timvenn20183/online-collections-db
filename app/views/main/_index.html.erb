@@ -3,13 +3,13 @@
 <% else %>
 
 <% if current_site.homepage_options[:last_x_items] > 0 then %>
-<p>Recent items
+<p><h4>Recent items</h4>
 		<%= render :partial => 'items/list', :locals => {:items => @show_items} %>
 </p>
 <% end %>
-
+<div style="clear:both;"></div>
 <% if current_site.homepage_options[:random_item] == true then %>
-<p>Random item
+<p><h4>Random item</h4>
 		<%= render :partial => 'items/list', :locals => {:items => @random_items, :expanded => true} %>
 </p>
 <% end %>

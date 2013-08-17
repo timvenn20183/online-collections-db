@@ -19,4 +19,19 @@
 <% end %>
 <% end %>
 
+<% if current_site.item_view_options[:list_type] == "simple" %>
+<% items.each do |item| %>
+    <%= render :partial => 'items/item_simple_list', :locals => {:item => item} %>
+    <hr/>
+<% end %>
+<% end %>
+
+<% if current_site.item_view_options[:list_type] == "simple2col" %>
+<hr/>
+<% items.each_with_index do |item,index| %>
+
+    <%= render :partial => 'items/item_simple2col_list', :locals => {:item => item, :index => index} %>
+    <%= raw'<hr/>' if index.odd? %>
+<% end %>
+<% end %>
 
