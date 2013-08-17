@@ -76,4 +76,26 @@ class MainController < ApplicationController
             end
         end
     end
+
+    def contact
+        
+    end
+
+    def contact_save
+        @name = params[:name] 
+        @email = params[:email]
+        @comment = params[:comment]
+        comment = Comment.new
+        comment.email_address = @email
+        comment.name = @name
+        comment.detail = @comment
+        comment.subject = "General site contact"
+        respond_to do |format|
+            if comment.save then 
+                format.js { render :action => 'contact_success'}
+            else
+                format.js { render :action => 'contact_failed'}
+            end
+        end
+    end
 end

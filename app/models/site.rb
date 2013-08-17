@@ -1,4 +1,4 @@
-class Site < ActiveRecord::Base
+    class Site < ActiveRecord::Base
 
     has_many :virtualcollections
     has_many :conditions
@@ -10,6 +10,8 @@ class Site < ActiveRecord::Base
 
     serialize :homepage_options, Hash
     serialize :item_view_options, Hash
+    serialize :menu_options, Hash
+    serialize :contact_form, Hash
 
     attr_accessible :code, :title, :meta_keywords, :meta_description, :email, :owner, :username, :password, :header, :tagline
 
@@ -21,6 +23,7 @@ class Site < ActiveRecord::Base
     before_save do
         self.set_homepage_options
         self.set_itemview_options
+        self.set_menu_options
     end
 
     def set_homepage_options
@@ -33,4 +36,8 @@ class Site < ActiveRecord::Base
         # stub
         self.item_view_options[:list_type] = "accordion" if self.item_view_options[:list_type] == nil
      end
+
+    def set_menu_options
+        self.menu_options[:contact_on_menu] = true if self.menu_options[:contact_on_menu] == nil
+    end
 end

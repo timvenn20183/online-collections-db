@@ -1,0 +1,35 @@
+<%= form_tag({:controller => :main, :action => :contact_save}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+<p>Please use the contact form below to tell us more about yourself :</p>
+<div id="contact_results"></div>
+<table border="0" width="100%">
+	<tr>
+		<td>
+			Name
+		</td>
+		<td>
+			<input type="text" name="name" value="<%=@name%>"></input>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Email
+		</td>
+		<td>
+			<input type="text" name="email" value="<%=@email%>"></input>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Comment
+		</td>
+		<td>
+			<textarea name="comment" value="<%=@comment%>" style="width:40%;" rows="10"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<button id="contact_submit" class="btn btn-primary">Send message</button>
+		</td>
+	</tr>
+</table>
+<% end %>

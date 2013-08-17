@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816203128) do
+ActiveRecord::Schema.define(:version => 20130817171944) do
 
   create_table "articles_things", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -177,6 +177,8 @@ ActiveRecord::Schema.define(:version => 20130816203128) do
     t.boolean  "can_showcase",        :default => false
     t.text     "homepage_options"
     t.text     "item_view_options"
+    t.text     "menu_options"
+    t.text     "contact_form"
   end
 
   create_table "slugs", :force => true do |t|

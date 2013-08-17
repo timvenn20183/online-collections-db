@@ -1,0 +1,1 @@
+$('#contact_results').html('<div class="alert alert-error">You message could not be save. We apologize for the inconvenience. Please check your information and try again.</div>');

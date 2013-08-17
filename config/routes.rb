@@ -13,6 +13,8 @@ Ocd::Application.routes.draw do
     match 'main/sign_up_process' => 'main#sign_up_process'
     match 'about' => 'main#about'
     match 'welcome' => 'main#welcome'
+    match 'contact' => 'main#contact'
+    match 'main/contact_save' => 'main#contact_save'
 
     match 'settings' => 'settings#index'
     match 'settings/site' => 'settings#site'
