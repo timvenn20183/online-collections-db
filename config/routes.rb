@@ -1,89 +1,89 @@
 Ocd::Application.routes.draw do
 
-    if Ocd::Application.config.single_mode == false then         
+    if Ocd::Application.config.single_mode == false then
         root :to => 'main#welcome', :constraints => {:subdomain => 'www'}
         root :to => 'main#welcome', :constraints => {:subdomain => ''}
     end
-    
+
     root :to => 'main#index'
 
-    match 'login' => 'main#login'
-    match 'main/login_process' => 'main#login_process'
-    match 'sign_up' => 'main#sign_up'
-    match 'main/sign_up_process' => 'main#sign_up_process'
-    match 'about' => 'main#about'
-    match 'welcome' => 'main#welcome'
-    match 'contact' => 'main#contact'
-    match 'main/contact_save' => 'main#contact_save'
+    get 'login' => 'main#login'
+    match 'main/login_process' => 'main#login_process', via: [:get, :post]
+    get 'sign_up' => 'main#sign_up'
+    match 'main/sign_up_process' => 'main#sign_up_process', via: [:get, :post]
+    get 'about' => 'main#about'
+    get 'welcome' => 'main#welcome'
+    get 'contact' => 'main#contact'
+    match 'main/contact_save' => 'main#contact_save', via: [:get, :post]
 
-    match 'settings' => 'settings#index'
-    match 'settings/site' => 'settings#site'
-    match 'settings/site_update' => 'settings#site_update'
-    match 'settings/about' => 'settings#about'
-    match 'settings/about_update' => 'settings#about_update'
-    match 'settings/fields' => 'settings#fields'
-    match 'settings/fields_update' => 'settings#fields_update'
-    match 'settings/logout' => 'settings#logout'
-    match 'settings/nav_menu' => 'settings#nav_menu'
+    get 'settings' => 'settings#index'
+    get 'settings/site' => 'settings#site'
+    match 'settings/site_update' => 'settings#site_update', via: [:get, :post]
+    get 'settings/about' => 'settings#about'
+    match 'settings/about_update' => 'settings#about_update', via: [:get, :post]
+    get 'settings/fields' => 'settings#fields'
+    match 'settings/fields_update' => 'settings#fields_update', via: [:get, :post]
+    get 'settings/logout' => 'settings#logout'
+    get 'settings/nav_menu' => 'settings#nav_menu'
 
-    match 'settings/contact' => 'settings#contact'
-    match 'settings/contact_update' => 'settings#contact_update'
+    get 'settings/contact' => 'settings#contact'
+    match 'settings/contact_update' => 'settings#contact_update', via: [:get, :post]
 
-    match 'settings/collections' => 'settings#collections'
-    match 'settings/collection_remove' => 'settings#collection_remove'
-    match 'settings/collection_insert' => 'settings#collection_insert'
-    match 'settings/collection_edit' => 'settings#collection_edit'
-    match 'settings/collection_update' => 'settings#collection_update'
-    match 'settings/collection_visiblity' => 'settings#collection_visibility'
+    get 'settings/collections' => 'settings#collections'
+    match 'settings/collection_remove' => 'settings#collection_remove', via: [:get, :post]
+    match 'settings/collection_insert' => 'settings#collection_insert', via: [:get, :post]
+    match 'settings/collection_edit' => 'settings#collection_edit', via: [:get, :post]
+    match 'settings/collection_update' => 'settings#collection_update', via: [:get, :post]
+    match 'settings/collection_visiblity' => 'settings#collection_visibility', via: [:get, :post]
 
-    match 'settings/conditions' => 'settings#conditions'
-    match 'settings/condition_remove' => 'settings#condition_remove'
-    match 'settings/condition_insert' => 'settings#condition_insert'
-    match 'settings/condition_edit' => 'settings#condition_edit'
-    match 'settings/condition_update' => 'settings#condition_update'
-    match 'settings/condition_visiblity' => 'settings#condition_visibility'
+    get 'settings/conditions' => 'settings#conditions'
+    match 'settings/condition_remove' => 'settings#condition_remove', via: [:get, :post]
+    match 'settings/condition_insert' => 'settings#condition_insert', via: [:get, :post]
+    match 'settings/condition_edit' => 'settings#condition_edit', via: [:get, :post]
+    match 'settings/condition_update' => 'settings#condition_update', via: [:get, :post]
+    match 'settings/condition_visiblity' => 'settings#condition_visibility', via: [:get, :post]
 
-    match 'settings/fields' => 'settings#fields'
-    match 'settings/about_on_menu' => 'settings#about_on_menu'
-    match 'settings/homepage' => 'settings#homepage'
-    match 'settings/homepage_update' => 'settings#homepage_update'
+    get 'settings/fields' => 'settings#fields'
+    match 'settings/about_on_menu' => 'settings#about_on_menu', via: [:get, :post]
+    get 'settings/homepage' => 'settings#homepage'
+    match 'settings/homepage_update' => 'settings#homepage_update', via: [:get, :post]
 
-    match 'settings/rolodex' => 'settings#rolodex'
-    match 'settings/rolodex_insert' => 'settings#rolodex_insert'
-    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility'
-    match 'settings/rolodex_edit' => 'settings#rolodex_edit'
-    match 'settings/rolodex_remove' => 'settings#rolodex_remove'
-    match 'settings/rolodex_update' => 'settings#rolodex_update'
-    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility'
+    get 'settings/rolodex' => 'settings#rolodex'
+    match 'settings/rolodex_insert' => 'settings#rolodex_insert', via: [:get, :post]
+    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility', via: [:get, :post]
+    match 'settings/rolodex_edit' => 'settings#rolodex_edit', via: [:get, :post]
+    match 'settings/rolodex_remove' => 'settings#rolodex_remove', via: [:get, :post]
+    match 'settings/rolodex_update' => 'settings#rolodex_update', via: [:get, :post]
+    match 'settings/rolodex_visibility' => 'settings#rolodex_visibility', via: [:get, :post]
 
-    match 'items/settings_index' => 'items#settings_index'
-    match 'items/edit_list' => 'items#edit_list'
-    match 'items/edit' => 'items#edit'
-    match 'items/update' => 'items#update'
-    match 'items/update_image' => 'items#update_image'
-    match 'items/create' => 'items#create'
-    match 'items/new' => 'items#new'
-    match 'items/list_options' => 'items#list_options'
-    match 'items/details_brief' => 'items#details_brief'
+    get 'items/settings_index' => 'items#settings_index'
+    match 'items/edit_list' => 'items#edit_list', via: [:get, :post]
+    match 'items/edit' => 'items#edit', via: [:get, :post]
+    match 'items/update' => 'items#update', via: [:get, :post]
+    match 'items/update_image' => 'items#update_image', via: [:get, :post]
+    match 'items/create' => 'items#create', via: [:get, :post]
+    match 'items/new' => 'items#new', via: [:get, :post]
+    match 'items/list_options' => 'items#list_options', via: [:get, :post]
+    get 'items/details_brief' => 'items#details_brief'
 
-    match 'rolodex/:id' => 'rolodex#index'
+    get 'rolodex/:id' => 'rolodex#index'
 
-    match 'search' => 'items#search'
+    match 'search' => 'items#search', via: [:get, :post]
 
-    match 'collection/:id' => 'collection#index'
+    get 'collection/:id' => 'collection#index'
 
-    match 'condition/:id' => 'condition#index'
+    get 'condition/:id' => 'condition#index'
 
-    match 'thingfields/fieldoptions_edit_list' => 'thingfields#fieldoptions_edit_list'
-    match 'thingfields/fieldoption_visibility' => 'thingfields#fieldoption_visibility'
-    match 'thingfields/fieldoption_edit' => 'thingfields#fieldoption_edit'
-    match 'thingfields/fieldoption_update' => 'thingfields#fieldoption_update'
-    match 'thingfields/fieldoption_insert' => 'thingfields#fieldoption_insert'
-    match 'thingfields/fieldoption_remove' => 'thingfields#fieldoption_remove'
-    match 'thingfields/create' => 'thingfields#create'
-    match 'thingfields/remove' => 'thingfields#remove'
-    match 'thingfields/update' => 'thingfields#update'
+    match 'thingfields/fieldoptions_edit_list' => 'thingfields#fieldoptions_edit_list', via: [:get, :post]
+    match 'thingfields/fieldoption_visibility' => 'thingfields#fieldoption_visibility', via: [:get, :post]
+    match 'thingfields/fieldoption_edit' => 'thingfields#fieldoption_edit', via: [:get, :post]
+    match 'thingfields/fieldoption_update' => 'thingfields#fieldoption_update', via: [:get, :post]
+    match 'thingfields/fieldoption_insert' => 'thingfields#fieldoption_insert', via: [:get, :post]
+    match 'thingfields/fieldoption_remove' => 'thingfields#fieldoption_remove', via: [:get, :post]
+    match 'thingfields/create' => 'thingfields#create', via: [:get, :post]
+    match 'thingfields/remove' => 'thingfields#remove', via: [:get, :post]
+    match 'thingfields/update' => 'thingfields#update', via: [:get, :post]
 
-    match 'fieldoptions/:id' => 'fieldoptions#index'
+    get 'fieldoptions/:id' => 'fieldoptions#index'
 
 end
