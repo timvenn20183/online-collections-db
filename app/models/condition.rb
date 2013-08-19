@@ -4,8 +4,6 @@ class Condition < ActiveRecord::Base
 
     validates :name, :presence => true
 
-    attr_accessible :cached_slug, :name
-
     friendly_id :name, use: :slugged
 
     has_and_belongs_to_many :things

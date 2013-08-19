@@ -4,8 +4,6 @@ class Category < ActiveRecord::Base
 
     validates :name, :presence => true
 
-    attr_accessible :cached_slug, :name
-
     has_and_belongs_to_many :things
 
     friendly_id :name, use: :slugged

@@ -1,15 +1,13 @@
 source 'https://rubygems.org'
 
 # rails 4 upgrade
-gem 'protected_attributes'
+#gem 'protected_attributes'
 
 gem 'rails', '4.0.0'
 gem 'wirble', :group => :development
 gem 'roo'
 gem 'thin'
 gem 'will_paginate'
-
-gem 'rails4_upgrade'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-switch-rails'

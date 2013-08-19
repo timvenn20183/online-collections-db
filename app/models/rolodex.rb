@@ -2,8 +2,6 @@ class Rolodex < ActiveRecord::Base
 
     extend FriendlyId
 
-    attr_accessible :cell, :email, :name, :password, :rolodex_type, :tel, :username
-
     has_and_belongs_to_many :things
     belongs_to :site
 

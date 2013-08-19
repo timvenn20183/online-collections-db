@@ -8,6 +8,4 @@ class Thingfield < ActiveRecord::Base
 
     friendly_id :name, use: :slugged
 
-    attr_accessible :etype, :name, :cached_slug
-
 end

@@ -4,8 +4,6 @@ class Virtualcollection < ActiveRecord::Base
 
     validates :name, :presence => true
 
-    attr_accessible :cached_slug, :name, :note
-
     friendly_id :name, use: :slugged
 
     belongs_to :site
