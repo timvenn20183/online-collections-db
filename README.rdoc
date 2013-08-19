@@ -1,4 +1,4 @@
-The first draft for a working online collections database designed using the Ruby on Rails framework. The aim of this project is to develop and easy to work with framework for people looking to store details their collections of "stuff" (games, toys, tea spoons etc.) online. Currently this code is working against Rails 3.2.13 and still has a ton of features to be developed. The current revision of the framework is very focused around my own personal vintage computer and gaming collection.
+The first draft for a working online collections database designed using the Ruby on Rails framework. The aim of this project is to develop and easy to work with framework for people looking to store details of their collections of "stuff" (games, toys, tea spoons etc.) online. Currently this code is working against Rails 4.0.0 and still has a ton of features to be developed. The current revision of the framework is very focused around my own personal vintage computer and gaming collection.
 
 Requirements :
 

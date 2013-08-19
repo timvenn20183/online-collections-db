@@ -57,7 +57,11 @@ class ItemsController < ApplicationController
 
     def update_image
         @item = Thing.find(decrypt(params[:id]))
-        @item.mainimage = params[:item][:mainimage] if params[:item][:mainimage] != nil
+        if params[:remove] == '1' then
+            @item.remove_mainimage!
+        else
+            @item.mainimage = params[:item][:mainimage] if params[:item][:mainimage] != nil
+        end
         @item.save
         respond_to do |format|
             format.js
