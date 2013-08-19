@@ -8,7 +8,7 @@
 </div>
 <div style="float:left;">
         <%= form_tag({:controller => :settings, :action => :collection_insert}, :remote => true, :id => 'collection_insert',:authenticity_token => form_authenticity_token ) do |f| %>
-            <%= text_field_tag 'collection_name', '' %>&nbsp;
+            <%= text_field_tag 'new_collection_name', '' %>&nbsp;
             <button onclick="$('#collection_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Add</button>
         <% end %>
 </div>

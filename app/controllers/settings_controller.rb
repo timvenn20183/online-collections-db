@@ -86,7 +86,7 @@ class SettingsController < ApplicationController
     def collection_insert
         @new_virtualcollection = Virtualcollection.new
         @new_virtualcollection.site_id = current_site.id
-        @new_virtualcollection.name = params[:collection_name]
+        @new_virtualcollection.name = params[:new_collection_name]
         @new_virtualcollection.save
         respond_to do |format|
             format.js
