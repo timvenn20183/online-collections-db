@@ -13,10 +13,26 @@
 
 ActiveRecord::Schema.define(version: 20130819173031) do
 
+  create_table "articles_things", id: false, force: true do |t|
+    t.integer "article_id"
+    t.integer "thing_id"
+  end
+
+  add_index "articles_things", ["article_id"], name: "index_articles_things_on_article_id"
+  add_index "articles_things", ["thing_id"], name: "index_articles_things_on_thing_id"
+
+  create_table "blogs_categories", id: false, force: true do |t|
+    t.integer "blog_id"
+    t.integer "category_id"
+  end
+
+  add_index "blogs_categories", ["blog_id"], name: "index_blogs_categories_on_blog_id"
+  add_index "blogs_categories", ["category_id"], name: "index_blogs_categories_on_category_id"
+
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "slug"
   end
 
@@ -36,15 +52,15 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.integer  "gallery_id"
     t.boolean  "approved"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "subject"
   end
 
   create_table "conditions", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.boolean  "show_on_menu", default: true
     t.integer  "site_id"
     t.string   "slug"
@@ -62,16 +78,16 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.integer  "user_id"
     t.string   "code"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "site_id"
   end
 
   create_table "fieldoptions", force: true do |t|
     t.string   "name"
     t.integer  "thingfield_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "site_id"
     t.boolean  "show_on_menu",  default: false
     t.string   "slug"
@@ -108,8 +124,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.string   "cached_slug"
     t.text     "caption"
     t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "md5"
   end
 
@@ -129,8 +145,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.string   "tel"
     t.string   "password"
     t.string   "username"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.text     "history"
     t.date     "start_date"
     t.date     "end_date"
@@ -153,8 +169,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
   create_table "sites", force: true do |t|
     t.string   "code"
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.text     "meta_keywords"
     t.text     "meta_description"
     t.string   "owner"
@@ -194,8 +210,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
   create_table "thingfields", force: true do |t|
     t.string   "name"
     t.integer  "etype"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "site_id"
     t.boolean  "show_on_menu", default: true
     t.string   "slug"
@@ -203,7 +219,7 @@ ActiveRecord::Schema.define(version: 20130819173031) do
 
   create_table "things", force: true do |t|
     t.string   "name"
-    t.string   "collection_id"
+    t.integer  "collection_id"
     t.integer  "visability",       default: 0
     t.boolean  "active",           default: true
     t.integer  "year",             default: 1981
@@ -212,8 +228,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.string   "alphabet_letter"
     t.date     "release_date"
     t.string   "reference_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "mainimage"
     t.string   "template",         default: "generic"
     t.integer  "views"
@@ -244,8 +260,8 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.integer  "number"
     t.integer  "reverted_from"
     t.string   "tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "versions", ["created_at"], name: "index_versions_on_created_at"
@@ -257,13 +273,22 @@ ActiveRecord::Schema.define(version: 20130819173031) do
 
   create_table "virtualcollections", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "webring_id"
     t.text     "note"
     t.integer  "site_id"
     t.boolean  "show_on_menu",   default: true
     t.boolean  "public_visible", default: true
     t.string   "slug"
+  end
+
+  create_table "webrings", force: true do |t|
+    t.string   "name"
+    t.boolean  "active",     default: true
+    t.text     "code"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
 end

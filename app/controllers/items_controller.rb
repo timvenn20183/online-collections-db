@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
     def update_image
         @item = Thing.find(decrypt(params[:id]))
-        @item.mainimage = params[:item][:mainimage].first if params[:item][:mainimage] != nil
+        @item.mainimage = params[:item][:mainimage] if params[:item][:mainimage] != nil
         @item.save
         respond_to do |format|
             format.js
@@ -55,8 +55,9 @@ class ItemsController < ApplicationController
 
     def update
         @item = Thing.find(decrypt(params[:id]))
+        @item.slug = nil
         respond_to do |format|
-            if @item.update_attributes(params[:item]) then
+            if @item.update_attributes(item_params) then
                 format.js { redirect_to :action => 'settings_index', :id => encrypt(@item.id) }
             else
                 format.js
@@ -74,7 +75,8 @@ class ItemsController < ApplicationController
     def create
         @new_item = Thing.new
         @new_item.site_id = current_site.id
-        @new_item.update_attributes(params[:item])
+        @new_item.slug = nil
+        @new_item.update_attributes(item_params)
         @site = Site.find(current_site.id)
         @site.last_item_edit_list = 'RECENT'
         @site.save
@@ -94,6 +96,12 @@ class ItemsController < ApplicationController
         respond_to do |format|
             format.js
         end
+    end
+
+    private
+
+    def item_params
+        params.require(:item).permit!
     end
 
 end
