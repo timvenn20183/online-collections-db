@@ -139,7 +139,7 @@ class SettingsController < ApplicationController
     def condition_insert
         @new_condition = Condition.new
         @new_condition.site_id = current_site.id
-        @new_condition.name = params[:condition_name]
+        @new_condition.name = params[:new_condition_name]
         @new_condition.save
         respond_to do |format|
             format.js
