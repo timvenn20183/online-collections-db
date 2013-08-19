@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
         @items = current_site.things.all if current_site.last_item_edit_list == 'ALL' or current_site.last_item_edit_list == nil
         @items = current_site.things.recent if current_site.last_item_edit_list == 'RECENT'
         @items = current_site.things.all if @items.blank?
+        respond_to do |format|
+            format.js
+        end
     end
 
     def edit_list
@@ -34,6 +37,14 @@ class ItemsController < ApplicationController
         @site.save
         respond_to do |format|
             format.js
+        end
+    end
+
+    def remove
+        @item = Thing.find(decrypt(params[:id]))
+        @item.destroy
+        respond_to do |format|
+            format.js { redirect_to :action => 'settings_index' }
         end
     end
 

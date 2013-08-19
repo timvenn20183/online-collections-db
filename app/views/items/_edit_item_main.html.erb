@@ -56,12 +56,16 @@
                     </div>
                 </div>
         </div>
+    <% end %>
     <% if @item.id != nil %>
+    <div style="float:left;">
+        <% geturl = url_for :controller => 'items', :action => 'remove', :id => encrypt(@item.id) %>
+        <button class="btn btn-danger" onclick="$('#myModal').modal('hide');$.ajax({url : '<%= geturl %>'});">Remove</button>
+    </div>
     <div style="float:right;">
-        <button id="login" class="btn btn-primary" onclick="$('#update_form').submit();$('#myModal').modal('hide')">Update</button>
+        <button id="login" class="btn btn-primary" onclick="$('#update_form').submit();$('#myModal').modal('hide');">Update</button>
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
-    <% end %>
     <% end %>
     </div>
 

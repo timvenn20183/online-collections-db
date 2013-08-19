@@ -8,7 +8,6 @@ class Thing < ActiveRecord::Base
     has_and_belongs_to_many :conditions
     has_and_belongs_to_many :categories
     has_and_belongs_to_many :rolodexes
-    has_and_belongs_to_many :medias
     belongs_to :site
     has_many :thingfields, :through => :fieldoptions
     has_and_belongs_to_many :fieldoptions, :join_table => 'fieldoptions_things'

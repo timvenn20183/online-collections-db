@@ -60,6 +60,7 @@ Ocd::Application.routes.draw do
     match 'items/edit_list' => 'items#edit_list', via: [:get, :post]
     match 'items/edit' => 'items#edit', via: [:get, :post]
     match 'items/update' => 'items#update', via: [:get, :post]
+    match 'items/remove' => 'items#remove', via: [:get, :post]
     match 'items/update_image' => 'items#update_image', via: [:get, :post]
     match 'items/create' => 'items#create', via: [:get, :post]
     match 'items/new' => 'items#new', via: [:get, :post]
