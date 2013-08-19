@@ -6,8 +6,6 @@ class Gallery < ActiveRecord::Base
 
     mount_uploader :image, GalleryimageUploader
 
-    has_friendly_id :name, use_slug: true
-
     scope :active, order('created_at desc')
 
 end

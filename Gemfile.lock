@@ -28,7 +28,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     awesome_print (1.1.0)
-    babosa (0.3.11)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -67,8 +66,7 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    friendly_id (3.3.3.0)
-      babosa (~> 0.3.0)
+    friendly_id (5.0.0.beta1)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-fileupload-rails (0.4.1)
@@ -183,7 +181,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   debugger
-  friendly_id (~> 3.1)
+  friendly_id (= 5.0.0.beta1)
   jquery-fileupload-rails
   jquery-rails
   meta_request

@@ -4,7 +4,6 @@ class FieldoptionsThings < ActiveRecord::Migration
             t.integer :thing_id
             t.integer :fieldoption_id
             t.integer :thingfield_id
-            t.integer :alt_id
         end
     add_index :fieldoptions_things, :thing_id
     add_index :fieldoptions_things, :fieldoption_id

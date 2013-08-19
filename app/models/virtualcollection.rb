@@ -1,10 +1,12 @@
 class Virtualcollection < ActiveRecord::Base
 
+    extend FriendlyId
+
     validates :name, :presence => true
 
     attr_accessible :cached_slug, :name, :note
 
-    has_friendly_id :name, use_slug: true
+    friendly_id :name, use: :slugged
 
     belongs_to :site
 

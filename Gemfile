@@ -20,7 +20,7 @@ gem 'mysql2'
 gem 'rmagick'
 gem 'rails_best_practices'
 gem 'carrierwave'
-gem "friendly_id", "~> 3.1"
+gem 'friendly_id', '5.0.0.beta1'
 
 group :development, :test do
     gem 'better_errors'

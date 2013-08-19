@@ -1,5 +1,7 @@
 class Thing < ActiveRecord::Base
 
+    extend FriendlyId
+
     validates :name, :presence => true
 
     attr_accessible :active, :cost, :name, :value, :visability, :year, :collection_id, :cached_slug, :aquire_date, :aquired_from, :reference_number
@@ -18,7 +20,7 @@ class Thing < ActiveRecord::Base
 
     mount_uploader :mainimage, MainimageUploader
 
-    has_friendly_id :name, use_slug: true
+    friendly_id :name, use: :slugged
 
     before_save do
         self.set_alphabet_letter
@@ -62,7 +64,7 @@ class Thing < ActiveRecord::Base
             things << Thing.find(thing_id) if !things.include?(thing_id)
         end while things.count < site.homepage_options[:random_x_items]
         return things
-    end 
+    end
 
     protected
 
