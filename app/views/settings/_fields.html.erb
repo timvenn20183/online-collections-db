@@ -16,22 +16,22 @@
 <% current_site.thingfields.all.each do |thingfield| %>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#fieldslist" href="#<%=thingfield.cached_slug%>">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#fieldslist" href="#<%=thingfield.slug%>">
         <%= thingfield.name %>
       </a>
     </div>
-    <div id="<%=thingfield.cached_slug%>" class="accordion-body collapse">
+    <div id="<%=thingfield.slug%>" class="accordion-body collapse">
       <div class="accordion-inner">
-        <div id="<%=thingfield.cached_slug%>_inner"></div>
+        <div id="<%=thingfield.slug%>_inner"></div>
       </div>
     </div>
     <script>
-    $('#<%=thingfield.cached_slug%>').on('shown.bs.collapse', function ()  {
+    $('#<%=thingfield.slug%>').on('shown.bs.collapse', function ()  {
         geturl = "<%= url_for :controller => 'thingfields', :action => 'fieldoptions_edit_list', :id => encrypt(thingfield.id) %>";
         $.ajax({url: geturl});
     });
-    $('#<%=thingfield.cached_slug%>').on('hide.bs.collapse', function ()  {
-        $('#<%=thingfield.cached_slug%>_inner').html('');
+    $('#<%=thingfield.slug%>').on('hide.bs.collapse', function ()  {
+        $('#<%=thingfield.slug%>_inner').html('');
     });
     </script>
   </div>

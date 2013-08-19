@@ -56,10 +56,12 @@
                     </div>
                 </div>
         </div>
+    <% if @item.id != nil %>
     <div style="float:right;">
         <button id="login" class="btn btn-primary" onclick="$('#update_form').submit();$('#myModal').modal('hide')">Update</button>
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
     <% end %>
+    <% end %>
     </div>
- 
+

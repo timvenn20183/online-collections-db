@@ -1,6 +1,6 @@
 class Rolodex < ActiveRecord::Base
 
-    extend Frieldly_id
+    extend FriendlyId
 
     attr_accessible :cell, :email, :name, :password, :rolodex_type, :tel, :username
 

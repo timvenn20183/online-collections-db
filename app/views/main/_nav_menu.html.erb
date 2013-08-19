@@ -14,7 +14,7 @@
 <% if current_site.virtualcollections.publicmenu.count > 0 then %>
 <li class="nav-header">Collections</li>
 <% current_site.virtualcollections.publicmenu.each do |virtualcollection| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'COL_'+virtualcollection.cached_slug %>"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.cached_slug, :remote => true) %></li>
+        <li class="menu_option <%= 'active' if session[:menu] == 'COL_'+virtualcollection.slug %>"><%= link_to(virtualcollection.name, :controller => 'collection', :action => 'index', :id => virtualcollection.slug, :remote => true) %></li>
 <% end %>
 <% end %>
 
@@ -22,7 +22,7 @@
 <% if current_site.conditions.menu.count > 0 then %>
 <li class="nav-header">Condition</li>
 <% current_site.conditions.menu.each do |condition| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'CON_'+condition.cached_slug %>"><%= link_to(condition.name, :controller => 'condition', :action => 'index', :id => condition.cached_slug, :remote => true) %></li>
+        <li class="menu_option <%= 'active' if session[:menu] == 'CON_'+condition.slug %>"><%= link_to(condition.name, :controller => 'condition', :action => 'index', :id => condition.slug, :remote => true) %></li>
 <% end %>
 <% end %>
 
@@ -30,7 +30,7 @@
 <% if current_site.rolodexes.menu.count > 0 then %>
 <li class="nav-header">Rolodex</li>
 <% current_site.rolodexes.menu.each do |rolodex| %>
-        <li class="menu_option <%= 'active' if session[:menu] == 'ROL_'+rolodex.cached_slug %>"><%=link_to(rolodex.name, :controller => 'rolodex', :action => 'index', :id => rolodex.cached_slug, :remote => true) %></li>
+        <li class="menu_option <%= 'active' if session[:menu] == 'ROL_'+rolodex.slug %>"><%=link_to(rolodex.name, :controller => 'rolodex', :action => 'index', :id => rolodex.slug, :remote => true) %></li>
 <% end %>
 <% end %>
 
@@ -39,7 +39,7 @@
     <% if thingfield.fieldoptions.menu.count > 0 then %>
         <li class="nav-header"><%= thingfield.name %></li>
         <% thingfield.fieldoptions.menu.each do |fieldoption| %>
-            <li class="menu_option <%= 'active' if session[:menu] == thingfield.cached_slug + '_' + fieldoption.cached_slug %>"><%= link_to(fieldoption.name, :controller => 'fieldoptions', :action => 'index', :id => fieldoption.cached_slug, :remote => true) %></li>
+            <li class="menu_option <%= 'active' if session[:menu] == thingfield.slug + '_' + fieldoption.slug %>"><%= link_to(fieldoption.name, :controller => 'fieldoptions', :action => 'index', :id => fieldoption.slug, :remote => true) %></li>
         <% end %>
     <% end %>
 <% end %>

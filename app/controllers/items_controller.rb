@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
         @search = params[:search]
         @items = current_site.things.all(:conditions => ['searchstring LIKE ?',"%#{@search}%"])
         @items = Array.new if @items == nil
-        # session[:menu] = 'COL_' + @collection.cached_slug
+        # session[:menu] = 'COL_' + @collection.slug
         respond_to do |format|
             format.js { render 'items/list' }
             format.html { render 'items/list' }
@@ -46,11 +46,11 @@ class ItemsController < ApplicationController
 
     def update_image
         @item = Thing.find(decrypt(params[:id]))
-        @item.mainimage = params[:item][:mainimage].first if params[:item][:mainimage] != nil   
+        @item.mainimage = params[:item][:mainimage].first if params[:item][:mainimage] != nil
         @item.save
         respond_to do |format|
             format.js
-        end     
+        end
     end
 
     def update
