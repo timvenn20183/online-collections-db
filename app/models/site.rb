@@ -13,6 +13,8 @@
     serialize :menu_options, Hash
     serialize :contact_form, Hash
 
+    mount_uploader :siteheader, SiteheaderUploader
+
     validates :header, :presence => true
     #validates :password, :presence => true
     validates :email, :presence => true, :uniqueness => true

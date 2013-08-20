@@ -23,6 +23,19 @@ class SettingsController < ApplicationController
         end
     end
 
+    def site_header
+        @site = Site.find(current_site.id)
+        if params[:remove] == '1' then
+            @site.remove_siteheader!
+        else
+            @site.siteheader = params[:site][:siteheader] if params[:site][:siteheader] != nil
+        end
+        @site.save
+        respond_to do |format|
+            format.js
+        end
+    end
+
     def about
         @about = current_about
     end

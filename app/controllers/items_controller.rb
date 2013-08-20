@@ -107,7 +107,7 @@ class ItemsController < ApplicationController
     end
 
     def details_brief
-        @item = Thing.find(params[:id])
+        @item = Thing.find_by_slug(params[:id])
         respond_to do |format|
             format.js
         end

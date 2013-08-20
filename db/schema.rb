@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819173031) do
+ActiveRecord::Schema.define(version: 20130819203739) do
 
   create_table "articles_things", id: false, force: true do |t|
     t.integer "article_id"
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20130819173031) do
     t.text     "item_view_options"
     t.text     "menu_options"
     t.text     "contact_form"
+    t.string   "siteheader"
   end
 
   create_table "slugs", force: true do |t|
