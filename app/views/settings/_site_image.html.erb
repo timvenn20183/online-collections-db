@@ -1,0 +1,53 @@
+<%= form_for 'image' , :url =>  {:action => 'site_header', :controller => 'settings'}, :html => { :id => "new_image"}  do |f| %>
+<%= hidden_field_tag 'id', encrypt(current_site.id) %>
+<div id="headerimage" style="text-align:center">
+  <%= image_tag(current_site.siteheader.url) if !current_site.siteheader.blank? %>
+</div>
+<br/>
+<div style="float:left;">
+     <%= f.file_field :siteheader, multiple: true, name: "site[siteheader]", :class => 'button' %>
+</div>
+<% end %>
+<div style="clear:both;"></div>
+<br/>
+<div class="upload">
+  <div class="progress progress-striped active" id="bar"><div class="bar" style="width: 0%"></div></div>
+</div>
+    <div style="float:left;">
+        <% geturl = url_for :controller => 'settings', :action => 'site_header', :id => encrypt(current_site.id) %>
+        <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=1'});">Remove</button>
+    </div>
+<script id="template-upload" type="text/x-tmpl">
+</script>
+<script>
+(function() {
+  jQuery(function() {
+    return $('#new_image').fileupload({
+      dataType: "script",
+      add: function(e, data) {
+        var file, types;
+
+        types = /(\.|\/)(gif|jpe?g|png)$/i;
+        file = data.files[0];
+        if (types.test(file.type) || types.test(file.name)) {
+          data.context = $(tmpl("template-upload", file));
+          $('#new_image').append(data.context);
+          return data.submit();
+        } else {
+          return alert("" + file.name + " is not a gif, jpeg, or png image file");
+        }
+      },
+      progress: function(e, data) {
+        var progress;
+
+        if (data.context) {
+          progress = parseInt(data.loaded / data.total * 100, 10);
+          /*return data.context.find('.bar').css('width', progress + '%');*/
+          $('#bar').html('<div class="bar" style="width: ' + progress + '%"></div>');
+        }
+      }
+    });
+  });
+
+}).call(this);
+</script>
