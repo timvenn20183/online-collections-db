@@ -17,3 +17,10 @@
 //= require bootstrap-switch
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+
+$(function() {
+  $("a, area").click(function() {
+    history.pushState({}, '', $(this).attr("href"));
+    return true;
+  });
+});
