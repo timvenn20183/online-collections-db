@@ -15,7 +15,6 @@
 
     mount_uploader :siteheader, SiteheaderUploader
 
-    validates :header, :presence => true
     #validates :password, :presence => true
     validates :email, :presence => true, :uniqueness => true
     validates :code, :presence => true, :uniqueness => true
@@ -30,6 +29,7 @@
         self.homepage_options[:about_is_homepage] = false if self.homepage_options[:about_is_homepage] == nil
         self.homepage_options[:last_x_items] = 0 if self.homepage_options[:last_x_items] == nil
         self.homepage_options[:random_x_items] = 0 if self.homepage_options[:random_x_items] == nil
+        self.homepage_options[:show_navbar] = true if self.homepage_options[:show_navbar] == nil
      end
 
      def set_itemview_options

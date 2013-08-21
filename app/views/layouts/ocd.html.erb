@@ -11,7 +11,8 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 </head>
-<body>
+<body <%=raw 'style="padding-top: 10px;"' if current_site.homepage_options[:show_navbar] == false %>>
+<% if current_site.homepage_options[:show_navbar] == true then %>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <nav class="navbar-inner">
         <div class="container" id="main_header">
@@ -19,6 +20,7 @@
         </div>
       </nav>
     </header>
+<% end %>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2" id="left-menu">
@@ -27,6 +29,12 @@
     </div>
     <div class="span10" id="center">
         <%= yield %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12" id="footer">
     </div>
   </div>
 </div>

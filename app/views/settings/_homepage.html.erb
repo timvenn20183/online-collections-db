@@ -28,13 +28,25 @@
     </tr>
     <tr>
         <td>
-            Number of random items to show 
+            Show top navigation bar ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:show_navbar] == true %> onchange="$.ajax({url : '<%= geturl %>?show_navbar=1' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Number of random items to show
         </td>
         <td>
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
             <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="btn btn-mini">
             <% (0..10).each do |i| %>
-                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>               
+                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>
             <% end %>
             </select>
             <span class="caret"></span>
@@ -42,13 +54,13 @@
     </tr>
 	<tr>
 		<td>
-			Number of recent items to show 
+			Number of recent items to show
 		</td>
 		<td>
 			<% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
 			<select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="btn btn-mini">
 			<% (0..10).each do |i| %>
-				<option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>				
+				<option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>
 			<% end %>
 			</select>
 			<span class="caret"></span>
