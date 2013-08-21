@@ -4,6 +4,8 @@ Ocd::Application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.assets.enabled = true
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
   # and those relying on copy on write to perform better.
@@ -20,7 +22,7 @@ Ocd::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -46,7 +48,7 @@ Ocd::Application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
@@ -59,7 +61,7 @@ Ocd::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( search.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

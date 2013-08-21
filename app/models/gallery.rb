@@ -1,9 +1,9 @@
 class Gallery < ActiveRecord::Base
 
-    validates :name, :presence => true
+    #validates :name, :presence => true
 
-    mount_uploader :image, GalleryimageUploader
+    #mount_uploader :image, GalleryimageUploader
 
-    scope :active, order('created_at desc')
+    #scope :active, order('created_at desc')
 
 end
