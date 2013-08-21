@@ -1,12 +1,14 @@
 class ApplicationController < ActionController::Base
 
-protect_from_forgery
+    protect_from_forgery
 
     helper_method :current_site, :current_about, :encrypt, :decrypt
 
+    private
+
     def current_site
         site = Site.find_by_code(request.subdomain)
-        site = Site.first if Ocd::Application.config.single_mode == true 
+        site = Site.first if Ocd::Application.config.single_mode == true
         return site
     end
 
@@ -22,8 +24,13 @@ protect_from_forgery
     end
 
     def login_user(email,password)
-        session[:user] = "STUB"
-        return true
+        @site = Site.find(current_site)
+        if decrypt(@site.password) == password and email == @site.email then
+            session[:user] = "STUB"
+            return true
+        else
+            return false
+        end
     end
 
     def user_logged_in

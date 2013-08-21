@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
 	layout 'ocd'
 
-    before_filter :must_login, :only => [:edit_list, :index]
+    before_filter :must_login, :expect => [:search]
 
     def search
         @search = params[:search]
