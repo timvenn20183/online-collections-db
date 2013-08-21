@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 
 # rails 4 upgrade
 #gem 'protected_attributes'
+#RAILS_ENV=production bundle exec rake assets:precompile
 
 gem 'rails', '4.0.0'
+
 gem 'wirble', :group => :development
 gem 'roo'
 gem 'thin'
