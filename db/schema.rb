@@ -11,28 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819203739) do
-
-  create_table "articles_things", id: false, force: true do |t|
-    t.integer "article_id"
-    t.integer "thing_id"
-  end
-
-  add_index "articles_things", ["article_id"], name: "index_articles_things_on_article_id"
-  add_index "articles_things", ["thing_id"], name: "index_articles_things_on_thing_id"
-
-  create_table "blogs_categories", id: false, force: true do |t|
-    t.integer "blog_id"
-    t.integer "category_id"
-  end
-
-  add_index "blogs_categories", ["blog_id"], name: "index_blogs_categories_on_blog_id"
-  add_index "blogs_categories", ["category_id"], name: "index_blogs_categories_on_category_id"
+ActiveRecord::Schema.define(version: 20130823084934) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "slug"
   end
 
@@ -48,23 +32,27 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.string   "email_address"
     t.text     "detail"
     t.integer  "thing_id"
-    t.integer  "blog_id"
-    t.integer  "gallery_id"
     t.boolean  "approved"
     t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "subject"
+    t.integer  "site_id"
   end
+
+  add_index "comments", ["site_id"], name: "index_comments_on_site_id"
+  add_index "comments", ["thing_id"], name: "index_comments_on_thing_id"
 
   create_table "conditions", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "show_on_menu", default: true
     t.integer  "site_id"
     t.string   "slug"
   end
+
+  add_index "conditions", ["site_id"], name: "index_conditions_on_site_id"
 
   create_table "conditions_things", id: false, force: true do |t|
     t.integer "condition_id"
@@ -78,21 +66,24 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.integer  "user_id"
     t.string   "code"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "site_id"
   end
+
+  add_index "dialogs", ["site_id"], name: "index_dialogs_on_site_id"
 
   create_table "fieldoptions", force: true do |t|
     t.string   "name"
     t.integer  "thingfield_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "site_id"
     t.boolean  "show_on_menu",  default: false
     t.string   "slug"
   end
 
+  add_index "fieldoptions", ["site_id"], name: "index_fieldoptions_on_site_id"
   add_index "fieldoptions", ["thingfield_id"], name: "index_fieldoptions_on_thingfield_id"
 
   create_table "fieldoptions_things", primary_key: "alt_id", force: true do |t|
@@ -124,8 +115,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.string   "cached_slug"
     t.text     "caption"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "md5"
   end
 
@@ -145,8 +136,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.string   "tel"
     t.string   "password"
     t.string   "username"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "history"
     t.date     "start_date"
     t.date     "end_date"
@@ -157,6 +148,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.integer  "site_id"
     t.string   "slug"
   end
+
+  add_index "rolodexes", ["site_id"], name: "index_rolodexes_on_site_id"
 
   create_table "rolodexes_things", id: false, force: true do |t|
     t.integer "rolodex_id"
@@ -169,8 +162,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
   create_table "sites", force: true do |t|
     t.string   "code"
     t.string   "title"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "meta_keywords"
     t.text     "meta_description"
     t.string   "owner"
@@ -193,6 +186,7 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.text     "menu_options"
     t.text     "contact_form"
     t.string   "siteheader"
+    t.text     "footer"
   end
 
   create_table "slugs", force: true do |t|
@@ -211,16 +205,18 @@ ActiveRecord::Schema.define(version: 20130819203739) do
   create_table "thingfields", force: true do |t|
     t.string   "name"
     t.integer  "etype"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "site_id"
     t.boolean  "show_on_menu", default: true
     t.string   "slug"
   end
 
+  add_index "thingfields", ["site_id"], name: "index_thingfields_on_site_id"
+
   create_table "things", force: true do |t|
     t.string   "name"
-    t.integer  "collection_id"
+    t.string   "collection_id"
     t.integer  "visability",       default: 0
     t.boolean  "active",           default: true
     t.integer  "year",             default: 1981
@@ -229,8 +225,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.string   "alphabet_letter"
     t.date     "release_date"
     t.string   "reference_number"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "mainimage"
     t.string   "template",         default: "generic"
     t.integer  "views"
@@ -242,6 +238,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.integer  "site_id"
     t.string   "slug"
   end
+
+  add_index "things", ["site_id"], name: "index_things_on_site_id"
 
   create_table "things_virtualcollections", id: false, force: true do |t|
     t.integer "thing_id"
@@ -261,8 +259,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.integer  "number"
     t.integer  "reverted_from"
     t.string   "tag"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "versions", ["created_at"], name: "index_versions_on_created_at"
@@ -274,9 +272,8 @@ ActiveRecord::Schema.define(version: 20130819203739) do
 
   create_table "virtualcollections", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "webring_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "note"
     t.integer  "site_id"
     t.boolean  "show_on_menu",   default: true
@@ -284,12 +281,6 @@ ActiveRecord::Schema.define(version: 20130819203739) do
     t.string   "slug"
   end
 
-  create_table "webrings", force: true do |t|
-    t.string   "name"
-    t.boolean  "active",     default: true
-    t.text     "code"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
+  add_index "virtualcollections", ["site_id"], name: "index_virtualcollections_on_site_id"
 
 end

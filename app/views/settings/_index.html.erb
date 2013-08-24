@@ -1,3 +1,6 @@
+<script>
+$('#left-menu').html("<%=j render :partial => 'settings/options' %>");
+</script>
 <!-- WELCOME -->
 <div id="notice_bar">
 <div class="alert alert-info">
@@ -23,6 +26,11 @@ This is the administration section of the online collectors database. Select wha
 <dt><%= link_to("Contact", :action => 'contact', :controller => 'settings', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'settings/contact_help' %>
+<br/><br/>
+</dd>
+<dt><%= link_to("Comments", :action => 'comments', :controller => 'settings', :remote => true) %></dt>
+<dd>
+<%= render :partial => 'settings/comments_help' %>
 <br/><br/>
 </dd>
 <dt><%= link_to("Items", :action => 'settings_index', :controller => 'items', :remote => true) %></dt>

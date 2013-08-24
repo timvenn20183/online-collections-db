@@ -89,6 +89,14 @@
         </td>
     </tr>
     <tr>
+        <td>
+            Footer
+        </td>
+        <td>
+            <%= text_area_tag 'site[footer]', @site.footer, :rows => 5, :cols => 50 %>
+        </td>
+    </tr>
+    <tr>
         <td colspan="2">
             <button onclick="$('#site_update').submit();return false;" class="btn btn-primary btn-mini" type="button" id="save_button">Update</button>
         </td>

@@ -12,7 +12,7 @@
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
             <select onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="btn btn-mini">
             <% ['Accordion','Detailed','Simple','2 Column'].each do |i| %>
-                <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:list_type] %>><%=i%></option>               
+                <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:list_type] %>><%=i%></option>
             <% end %>
             </select>
             <span class="caret"></span>

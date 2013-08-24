@@ -1,0 +1,49 @@
+<div id="notice_bar">
+<div class="alert alert-info">
+<%= render :partial => 'settings/comments_help' %>
+</div>
+</div>
+<table class="table table-striped table-hover" id="comments_table">
+<thead>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Email 
+        </th>
+        <th>
+            Subject
+        </th>
+        <th colspan="2" style="text-align:center;">
+            Actions
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <% current_site.comments.each do |comment| %>
+        <tr>
+            <td>
+                <%= comment.name %>
+            </td>
+            <td>
+                <%= comment.email_address %>
+            </td>
+            <td>
+                <%= comment.subject %>
+            </td>
+            <% code = encrypt(comment.id) %>
+            <td width="75px">
+                <% if comment.approved == nil then %>
+                    <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => code %>
+                    <button class="btn btn-primary btn-mini" onclick="$.ajax({url : '<%= geturl %>&approve=true'});" type="button">Approve</button>
+                <% end %>
+            </td>
+            <td width="75px">
+                    <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => code %>
+                    <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=true'});" type="button">Remove</button>
+            </td>
+        </tr>
+    <% end %>
+</tbody>
+</table>

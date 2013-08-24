@@ -7,7 +7,7 @@
   	Reference : <%= item.reference_number %><br/>
   	Acquired date : <%= item.aquire_date %><br/>
   	<% if item.virtualcollections.count > 0 %>
-  	Collections : 
+  	Collections :
   	<% item.virtualcollections.each do |collection| %>
         <%= collection.name %> <%= ' / ' if collection != item.virtualcollections.last %>
     <% end %><br/>

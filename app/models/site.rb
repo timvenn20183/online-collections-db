@@ -7,6 +7,7 @@
     has_many :fieldoptions
     has_many :rolodexes
     has_many :dialogs
+    has_many :comments
 
     serialize :homepage_options, Hash
     serialize :item_view_options, Hash

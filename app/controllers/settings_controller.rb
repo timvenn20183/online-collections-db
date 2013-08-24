@@ -251,4 +251,24 @@ class SettingsController < ApplicationController
         params.require(:site).permit!
     end
 
+    def comments
+        respond_to do |format|
+            format.js
+        end
+    end
+
+    def comments_update
+        @comment = Comment.find(decrypt(params[:id]))
+        if params[:approve] == 'true' then
+            @comment.approved = true
+            @comment.save
+        end
+        if params[:remove] == 'true' then
+            @comment.destroy
+        end
+        respond_to do |format|
+            format.js { render :action => 'comments' }
+        end
+    end
+
 end
