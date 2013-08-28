@@ -134,6 +134,7 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sexp_processor (4.2.1)
+    signup_validations (0.0.1)
     spreadsheet (0.8.8)
       ruby-ole (>= 1.0)
     sprockets (2.10.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   rmagick
   roo
   sass-rails (~> 4.0.0)
+  signup_validations
   sqlite3
   thin
   uglifier

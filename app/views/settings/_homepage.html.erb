@@ -28,6 +28,17 @@
     </tr>
     <tr>
         <td>
+           <% geturl = url_for :controller => 'settings', :action => 'about_on_menu' %>
+            Show about on main menu ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+            <input type="checkbox" <%=raw ' checked ' if current_site.show_about %> onchange="$.ajax ({url : '<%= geturl %>' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+    <tr>
+        <td>
             Show top navigation bar ?
         </td>
         <td>

@@ -1,5 +1,5 @@
 newsite = Site.new
-    newsite.code = "A"
+    newsite.code = "a"
     newsite.title = "Your site title"
     newsite.header = "Your site header"
     newsite.email =  "1"

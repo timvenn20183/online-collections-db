@@ -26,5 +26,11 @@
                     <input text="type" id="inputPassword" name="collection_name" value="<%= @site.code %>">
                 </div>
             </div>
+            <% if !@site.errors.blank? then %>
+            <div class="alert alert-danger">
+                <%= 'Your chosen site code ' + @site.errors['code'].first if !@site.errors['code'].blank? %>
+                <%= 'Your email ' + @site.errors['email'].first if !@site.errors['email'].blank? %>
+            </div>
+            <% end %>
 </div>
 

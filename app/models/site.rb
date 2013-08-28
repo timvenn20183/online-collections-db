@@ -16,14 +16,23 @@
 
     mount_uploader :siteheader, SiteheaderUploader
 
-    #validates :password, :presence => true
-    validates :email, :presence => true, :uniqueness => true
-    validates :code, :presence => true, :uniqueness => true
+    validate :validate_site, on: :create
 
     before_save do
         self.set_homepage_options
         self.set_itemview_options
         self.set_menu_options
+        self.set_lowercase_code
+    end
+
+    def validate_site
+        errors.add(:email, "cannot be blank") if self.email.blank?
+        errors.add(:email, "is already registered") if !Site.where(:email => self.email).blank?
+        errors.add(:code, "cannot be blank") if self.email.blank?
+        errors.add(:code, "is already in use") if !Site.where(:code => self.code).blank?
+        errors.add(:code, "is reserved") if self.code.downcase == 'www'
+        errors.add(:email, "appears to be invalid") if self.email.split("@").count != 2
+        errors.add(:email, "domain appears to be invalid") if self.email.split("@").count == 2 and Signupvalidations.is_valid_domain(self.email.split("@")[1]) != true
     end
 
     def set_homepage_options
@@ -40,5 +49,9 @@
 
     def set_menu_options
         self.menu_options[:contact_on_menu] = true if self.menu_options[:contact_on_menu] == nil
+    end
+
+    def set_lowercase_code
+        self.code = self.code.downcase
     end
 end

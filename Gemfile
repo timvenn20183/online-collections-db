@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 #gem 'protected_attributes'
 #RAILS_ENV=production bundle exec rake assets:precompile
 
+gem 'signup_validations'
+
 gem 'rails', '4.0.0'
 
 gem 'wirble', :group => :development
