@@ -2,13 +2,15 @@
 <br/>
 <br/>
 <br/>
-<br/>
+<div class="well">
 <div style="text-align:center;">
 <h4>Take a look at our demo site</h4>
-<a href="http://ocd.test.com:3000" target="_blank" class="btn btn-primary" type="button">DEMO</a>
+<a href="http://ocd.<%= request.domain %>" target="_blank" class="btn btn-primary" type="button">DEMO</a>
 </div>
 <hr/>
 <div style="text-align:center;">
 <h4>Go ahead and</h4>
 <%= link_to('Sign up', {:controller => :main, :action => :sign_up, :remote => true}, :class => 'btn btn-success' ) %>
+</div>
+<br/>
 </div>

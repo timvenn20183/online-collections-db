@@ -1,5 +1,6 @@
 <%= form_tag({:controller => :main, :action => :sign_up_process},:remote => true, :id => 'sign_up_form', :class => "form-horizontal") do |f| %>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="sign_up">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h3 id="myModalLabel">Sign up</h3>
@@ -8,8 +9,9 @@
     <%= render :partial => 'main/sign_up_details' %>
 </div>
     <div class="modal-footer">
-        <button id="login" class="btn btn-primary" onclick="$('#sign_up_form').submit();return false;">Create collection</button>
+        <button id="login" class="btn btn-primary" type="submit">Create collection</button>
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
+</div>
 </div>
 <% end %>

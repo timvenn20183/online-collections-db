@@ -42,12 +42,11 @@ class MainController < ApplicationController
         @site.code = params[:collection_name]
         @site.email = params[:email]
         @site.password = encrypt(params[:password]) if (params[:password] == params[:confirm]) and !params[:password].blank? and !params[:confirm].blank?
-        debugger
-        if @site.save then
-                redirect_to @site.code + request.domain
-        else
-            respond_to do |format|
-                format.js { render :action => 'sign_up_process'}
+        respond_to do |format|
+            if @site.save then
+                    format.js { render :action => 'sign_up_accepted' }
+            else
+                    format.js { render :action => 'sign_up_process'}
             end
         end
     end
