@@ -1,6 +1,6 @@
 puts "Generating default site test"
 newsite = Site.new
-    newsite.code = "a"
+    newsite.code = "ocd"
     newsite.title = "Your site title"
     newsite.header = "Your site header"
     newsite.email =  "tim@nevyn.co.za"

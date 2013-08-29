@@ -12,9 +12,12 @@ class MainController < ApplicationController
 
     def index
         @site = current_site
+        if @site.blank?
+            redirect_to request.protocol + Ocd::Application.config.domain if @site.blank?
+            return true
+        end
         @show_items = @site.things.last(current_site.homepage_options[:last_x_items]) if current_site.homepage_options[:last_x_items] != nil and !@site.blank?
         @random_items = Thing.random_items(current_site) if current_site.homepage_options[:random_x_items] > 0 and !@site.blank?
-        redirect_to '/welcome' if @site.blank?
         session[:menu] = "HOME"
     end
 
@@ -25,7 +28,6 @@ class MainController < ApplicationController
         session[:menu] = "ABOUT"
         respond_to do |format|
             format.js
-            format.html
         end
     end
 
@@ -33,6 +35,7 @@ class MainController < ApplicationController
        @site = Site.new
        respond_to do |format|
                 format.js
+                format.html { redirect_to request.protocol + Ocd::Application.config.domain }
         end
     end
 
@@ -41,12 +44,19 @@ class MainController < ApplicationController
         @site.header = params[:collection_name]
         @site.code = params[:collection_name]
         @site.email = params[:email]
-        @site.password = encrypt(params[:password]) if (params[:password] == params[:confirm]) and !params[:password].blank? and !params[:confirm].blank?
+        if params[:password] == params[:confirm] and !params[:password].blank? then
+            @site.password = encrypt(params[:password])
+            @site.password = nil if Signupvalidations.is_dictionary_word(params[:password]) == true
+        else
+            @site.password = nil
+        end
         respond_to do |format|
             if @site.save then
                     format.js { render :action => 'sign_up_accepted' }
+                    format.html { redirect_to request.protocol + Ocd::Application.config.domain }
             else
                     format.js { render :action => 'sign_up_process'}
+                    format.html { redirect_to request.protocol + Ocd::Application.config.domain }
             end
         end
     end

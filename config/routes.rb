@@ -1,8 +1,8 @@
 Ocd::Application.routes.draw do
 
     if Ocd::Application.config.single_mode == false then
-        root :to => 'main#welcome', :constraints => {:subdomain => 'www'}, as: :normal_root
-        root :to => 'main#welcome', :constraints => {:subdomain => ''}, as: :alternate_root
+        root :to => 'main#welcome', :constraints => {:subdomain => 'www.onlinecollector'}, as: :normal_root
+        root :to => 'main#welcome', :constraints => {:subdomain => 'onlinecollector'}, as: :alternate_root
     end
 
     root :to => 'main#index'
@@ -90,5 +90,8 @@ Ocd::Application.routes.draw do
     match 'thingfields/update' => 'thingfields#update', via: [:get, :post]
 
     get 'fieldoptions/:id' => 'fieldoptions#index'
+
+    # catch all route
+    match '*path' => 'main#welcome', via: [:get, :post]
 
 end

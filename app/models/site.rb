@@ -33,6 +33,8 @@
         errors.add(:code, "is reserved.") if self.code.downcase == 'www'
         errors.add(:email, "appears to be invalid.") if self.email.split("@").count != 2
         errors.add(:email, "domain appears to be invalid.") if self.email.split("@").count == 2 and Signupvalidations.is_valid_domain(self.email.split("@")[1]) != true
+        errors.add(:password, "is either blank, is a dictionary word or does not match") if self.password.blank?
+
     end
 
     def set_homepage_options
@@ -54,4 +56,5 @@
     def set_lowercase_code
         self.code = self.code.downcase if self.code != nil
     end
+
 end

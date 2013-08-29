@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     private
 
     def current_site
-        site = Site.find_by_code(request.subdomain)
+        site = Site.find_by_code(request.subdomain.split(".").first)
         site = Site.first if Ocd::Application.config.single_mode == true
         return site
     end
