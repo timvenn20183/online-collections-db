@@ -74,9 +74,21 @@
 				<option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>
 			<% end %>
 			</select>
-			<span class="caret"></span>
+			<span class="caret"></span><br/><br/>
 		</td>
 	</tr>
+    <tr>
+        <td>
+            Limit recents items to those with images ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:last_x_items_images] == true %> onchange="$.ajax({url : '<%= geturl %>?last_x_items_images=1' });">
+            </div><br/><br/>
+        </td>
+    </tr>
+
 </table>
 <% end %>
 <script type="text/javascript">

@@ -90,7 +90,7 @@ class Thing < ActiveRecord::Base
         self.fieldoptions.all.each do |fieldoption|
             @searchstring = @searchstring + fieldoption.name.gsub("/","").gsub("-","").gsub(" ","")
         end
-        self.searchstring = @searchstring
+        self.searchstring = @searchstring + self.reference_number
     end
 
     def set_aquire_date
