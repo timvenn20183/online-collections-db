@@ -16,7 +16,7 @@
 
     mount_uploader :siteheader, SiteheaderUploader
 
-    validate :validate_site #, on: :create
+    validate :validate_site , on: :create
 
     before_save do
         self.set_homepage_options
