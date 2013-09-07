@@ -14,7 +14,6 @@ class MainController < ApplicationController
         @site = current_site
         if @site.blank?
             redirect_to request.protocol + Ocd::Application.config.domain if @site.blank?
-            return true
         end
         if !@site.blank? then
             if current_site.homepage_options[:last_x_items] != nil then

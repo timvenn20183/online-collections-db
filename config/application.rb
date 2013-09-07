@@ -10,7 +10,7 @@ module Ocd
   class Application < Rails::Application
 
     config.single_mode = false
-    config.domain = "onlinecollector.co.za"
+    config.domain = "test.co.za"
 
     require 'signupvalidations'
 

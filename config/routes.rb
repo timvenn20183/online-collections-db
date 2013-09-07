@@ -1,10 +1,8 @@
 Ocd::Application.routes.draw do
 
     if Ocd::Application.config.single_mode == false then
-        root :to => 'main#welcome', :constraints => {:subdomain => 'www.onlinecollector'}, as: :normal_root
-        root :to => 'main#welcome', :constraints => {:subdomain => 'onlinecollector'}, as: :alternate_root
+        root :to => 'main#welcome', :constraints => {:host => Ocd::Application.config.domain}, as: :normal_root
     end
-
     root :to => 'main#index'
 
     get 'login' => 'main#login'
