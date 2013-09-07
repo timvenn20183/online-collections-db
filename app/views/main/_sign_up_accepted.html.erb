@@ -1,19 +1,17 @@
-<form method="get" action="http://<%= @site.code %>.<%= Ocd::Application.config.domain %>/">    
 <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h3 id="myModalLabel">Collection created</h3>
     </div>
 <div class="alert alert-success rounded" style="margin:10px;">
-    Congratulations ! Your online collections website is ready 
+    Congratulations ! Your online collections website is ready
 </div>
 <div class="well" style="margin:10px;">
     <p>
-        Your collection has been created and can be accessed at <strong><%= @site.code %>.<%= request.domain %></strong> with the username and password supplied during your sign up. An email has also been sent to <strong><%= @site.email %></strong> with all the relevant details. Should you not receive your email please check your junk mail folder or use the contact form on the main site to log a query.
+        Your collection has been created and can be accessed at <strong><%= @site.code %>.<%= Ocd::Application.config.domain %></strong> with the username and password supplied during your sign up. An email has also been sent to <strong><%= @site.email %></strong> with all the relevant details. Should you not receive your email please check your junk mail folder or use the contact form on the main site to log a query.
     </p>
 </div>
 </div>
     <div class="modal-footer">
-        <button id="login" class="btn btn-primary" type="submit">Get started</button>
+        <button id="login" class="btn btn-primary" onclick="window.location=('http://<%= @site.code %>.<%= Ocd::Application.config.domain %>');return false;" type="submit">Get started</button>
         <button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
     </div>
-</form>
