@@ -88,6 +88,17 @@
             </div><br/><br/>
         </td>
     </tr>
+    <tr>
+        <td>
+            Limit random items to those with images ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if @site.homepage_options[:random_x_items_images] == true %> onchange="$.ajax({url : '<%= geturl %>?random_x_items_images=1' });">
+            </div><br/><br/>
+        </td>
+    </tr>
 
 </table>
 <% end %>

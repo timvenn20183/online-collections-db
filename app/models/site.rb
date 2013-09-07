@@ -43,6 +43,7 @@
         self.homepage_options[:random_x_items] = 0 if self.homepage_options[:random_x_items] == nil
         self.homepage_options[:show_navbar] = true if self.homepage_options[:show_navbar] == nil
         self.homepage_options[:last_x_items_images] = false if self.homepage_options[:last_x_items_images] == nil
+        self.homepage_options[:random_x_items_images] = false if self.homepage_options[:random_x_items_images] == nil
      end
 
      def set_itemview_options

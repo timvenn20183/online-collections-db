@@ -52,6 +52,16 @@ class Thing < ActiveRecord::Base
         return things
     end
 
+    def self.random_items_with_images(site)
+        things = Array.new
+        thing_ids = site.things.where('mainimage <> ?','').pluck(:id)
+        begin
+            thing_id = thing_ids[rand(thing_ids.count)]
+            things << Thing.find(thing_id) if !things.include?(thing_id)
+        end while things.count < site.homepage_options[:random_x_items]
+        return things
+    end
+
     protected
 
     def set_alphabet_letter

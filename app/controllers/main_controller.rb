@@ -23,7 +23,13 @@ class MainController < ApplicationController
                     @show_items = @site.things.last(current_site.homepage_options[:last_x_items]) if current_site.homepage_options[:last_x_items] != nil
                 end
             end
-            @random_items = Thing.random_items(current_site) if current_site.homepage_options[:random_x_items] > 0
+            if current_site.homepage_options[:random_x_items] != nil then
+                if current_site.homepage_options[:random_x_items_images] == true then
+                    @random_items = Thing.random_items_with_images(current_site) if current_site.homepage_options[:random_x_items]
+                else
+                    @random_items = Thing.random_items(current_site) if current_site.homepage_options[:random_x_items]
+                end
+            end
         end
         session[:menu] = "HOME"
     end
