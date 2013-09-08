@@ -9,6 +9,8 @@ require 'digest/md5'
 
 items_processed = Array.new
 
+site_id = 1
+
 start = ARGV[0].to_i
 counter = 0
 start = 2 if start == nil or start < 2
@@ -53,13 +55,13 @@ start.upto(line-1) do |l|
             tempcounter = tempcounter + 1
         end
 
-        thing = Thing.find_or_create_by_collection_id(:collection_id => collection_id, :name => name)
-
+        thing = Thing.find_or_create_by_collection_id(:collection_id => collection_id, :name => name, :site_id => site_id)
         thing.year = year
         thing.cost = cost
         thing.name = name
         thing.inside_id = inside
         thing.reference_number = reference_number
+        thing.site_id = site_id
 
         if thing.save
 
@@ -68,25 +70,25 @@ start.upto(line-1) do |l|
         # virtual collections
         thing.virtualcollection_ids = Array.new
         virtualcollections.each do |virtual|
-            thing.virtualcollections << Virtualcollection.find_or_create_by_name(:name => virtual.strip)
+            thing.virtualcollections << Virtualcollection.find_or_create_by_name(:name => virtual.strip, :site_id => site_id)
         end
 
         # conditions
         thing.condition_ids = Array.new
         conditions.each do |condit|
-            thing.conditions << Condition.find_or_create_by_name(:name => condit.strip)
+            thing.conditions << Condition.find_or_create_by_name(:name => condit.strip, :site_id => site_id)
         end
 
         # categories
         thing.category_ids = Array.new
         categories.each do |cat|
-            thing.categories << Category.find_or_create_by_name(:name => cat.strip)
+            thing.categories << Category.find_or_create_by_name(:name => cat.strip, :site_id => site_id)
         end
 
         # rolodexes
         thing.rolodex_ids = Array.new
         rolodexes.each do |rolo|
-            thing.rolodexes << Rolodex.find_or_create_by_name(:name => rolo.strip)
+            thing.rolodexes << Rolodex.find_or_create_by_name(:name => rolo.strip, :site_id => site_id)
         end
 
         # main image
@@ -115,7 +117,7 @@ start.upto(line-1) do |l|
         fieldcounter = 0
         fields.each do |field|
             # get the thingfield
-            thingfield = Thingfield.find_or_create_by_name(:name => field)
+            thingfield = Thingfield.find_or_create_by_name(:name => field, :site_id => site_id)
             # check each option on the line
             fieldoptions[fieldcounter].to_s.split(",").each do |fieldoption|
                 option_object = nil
@@ -129,6 +131,7 @@ start.upto(line-1) do |l|
                 if option_object == nil then
                     temp = Fieldoption.new
                     temp.name = fieldoption.strip
+                    temp.site_id = site_id
                     temp.thingfield_id = thingfield.id
                     temp.save!
                     option_object = temp
