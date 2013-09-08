@@ -1,0 +1,14 @@
+A comment has been left regarding your Online Collectors Database site
+
+The message is as follows :
+
+Sender name : <%= @comment.name %>
+Sender email : <%= @comment.email_address %>
+Subject : <%= @comment.subject %>
+Comment : <%= @comment.detail %>
+
+Please do NOT REPLY to this email but rather login to your Online Collectors Database in order to manage your site related comments.
+
+You have opted to receive this email based on your settings on the Online Collectors Database located at <%= @comment.site.code %>.<%= Ocd::Application.config.domain %>. If you do not wish to receive these notifications please login and disable the "send site comments via email" feature.
+
+If you have received this email in error please forward this email to <%= Ocd::Application.config.support_email %>
