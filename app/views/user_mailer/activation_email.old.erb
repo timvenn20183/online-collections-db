@@ -1,9 +1,0 @@
-<p>
-You have requested a site on the Online Collectors Database located at <%= Ocd::Application.config.domain %> via the online sign up form. If this is not the case then please ignore this email or forward it to <%= Ocd::Application.config.support_email %> and request that your email address be removed from the system.
-</p>
-<p>
-To activate your site please navgiate to the url below and you will be redirected to your Online Collectors Database site.
-</br>
-<a href="<%= Ocd::Application.config.protocol + "://" + @site.code + "." + Ocd::Application.config.domain + "/activate_site/?activation=" + @site.activation_code %>"><%= Ocd::Application.config.protocol + "://" + @site.code + "." + Ocd::Application.config.domain + "/activate_site/?activation=" + @site.activation_code %></a>
-</p>
-

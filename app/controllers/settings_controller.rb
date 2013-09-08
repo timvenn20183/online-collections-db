@@ -65,6 +65,7 @@ class SettingsController < ApplicationController
 
     def homepage_update
         @site = Site.find(current_site.id)
+        @site.comms_options[:email_comments] = !@site.comms_options[:email_comments] if params[:email_comments] == '1'
         @site.homepage_options[:about_is_homepage] = !@site.homepage_options[:about_is_homepage] if params[:about_is_homepage] == '1'
         @site.homepage_options[:show_navbar] = !@site.homepage_options[:show_navbar] if params[:show_navbar] == '1'
         @site.homepage_options[:last_x_items_images] = !@site.homepage_options[:last_x_items_images] if params[:last_x_items_images] == '1'

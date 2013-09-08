@@ -117,6 +117,7 @@ class MainController < ApplicationController
         comment.subject = "General site contact"
         respond_to do |format|
             if comment.save then
+                UserMailer.send_user_comment(comment).deliver
                 format.js { render :action => 'contact_success'}
             else
                 format.js { render :action => 'contact_failed'}

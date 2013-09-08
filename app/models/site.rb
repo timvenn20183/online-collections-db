@@ -13,6 +13,7 @@
     serialize :item_view_options, Hash
     serialize :menu_options, Hash
     serialize :contact_form, Hash
+    serialize :comms_options, Hash
 
     mount_uploader :siteheader, SiteheaderUploader
 
@@ -23,6 +24,7 @@
         self.set_itemview_options
         self.set_menu_options
         self.set_lowercase_code
+        self.set_comms_options
     end
 
     def validate_site
@@ -35,6 +37,10 @@
         errors.add(:email, "domain appears to be invalid.") if self.email.split("@").count == 2 and Signupvalidations.is_valid_domain(self.email.split("@")[1]) != true
         errors.add(:password, "is either blank, is a dictionary word or does not match") if self.password.blank?
 
+    end
+
+    def set_comms_options
+        self.comms_options[:email_comments] = true if self.comms_options[:email_comments] == nil
     end
 
     def set_homepage_options

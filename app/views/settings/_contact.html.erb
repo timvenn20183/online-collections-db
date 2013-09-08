@@ -12,9 +12,21 @@
             <div class="switch switch-mini" data-on="success" data-off="warning">
             	<% geturl = url_for :controller => 'settings', :action => 'contact_update' %>
                 <input type="checkbox" <%=raw ' checked ' if current_site.menu_options[:contact_on_menu] == true %> onchange="$.ajax({url : '<%= geturl %>?contact_on_menu=1'});">
-            </div>
+            </div><br/><br/>
 		</td>
 	</tr>
+    <tr>
+        <td>
+            Send site comments via email ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if current_site.comms_options[:email_comments] == true %> onchange="$.ajax({url : '<%= geturl %>?email_comments=1'});">
+            </div>
+        </td>
+    </tr>
+
 </table>
 <script type="text/javascript">
     $(document).ready(function () {
