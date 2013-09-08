@@ -2,12 +2,15 @@ class ApplicationController < ActionController::Base
 
     protect_from_forgery
 
-    helper_method :current_site, :current_about, :encrypt, :decrypt
+    helper_method :current_site, :current_about
 
     private
 
     def current_site
         site = Site.find_by_code(request.subdomain.split(".").first)
+        if site != nil then
+            site = nil if site.activation_code != nil
+        end
         site = Site.first if Ocd::Application.config.single_mode == true
         return site
     end
@@ -39,22 +42,6 @@ class ApplicationController < ActionController::Base
 
     def must_login
         redirect_to '/' if !user_logged_in
-    end
-
-    def encrypt(value)
-        secret = Digest::SHA1.hexdigest('ocd')
-        code = ActiveSupport::MessageEncryptor.new(secret)
-        return code.encrypt_and_sign(value.to_s)
-    end
-
-    def decrypt(value)
-        begin
-            secret = Digest::SHA1.hexdigest('ocd')
-            code = ActiveSupport::MessageEncryptor.new(secret)
-            return code.decrypt_and_verify(value.to_s)
-        rescue
-            #sign_out
-        end
     end
 
 end

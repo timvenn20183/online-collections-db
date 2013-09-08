@@ -11,8 +11,19 @@ module Ocd
 
     config.single_mode = false
     config.domain = "test.co.za"
+    config.support_email = "tim@nevyn.co.za"
+    config.protocol = "http"
 
     require 'signupvalidations'
+    require 'functs'
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address:              'smtp.mweb.co.za',
+        port:                 25,
+        domain:               'onlinecollector.co.za',
+    }
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

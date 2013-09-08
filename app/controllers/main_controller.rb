@@ -63,8 +63,10 @@ class MainController < ApplicationController
         else
             @site.password = nil
         end
+        @site.activation_code = encrypt(@site.code)
         respond_to do |format|
             if @site.save then
+                    UserMailer.activation_email(@site).deliver
                     format.js { render :action => 'sign_up_accepted' }
                     format.html { redirect_to request.protocol + Ocd::Application.config.domain }
             else
@@ -121,4 +123,25 @@ class MainController < ApplicationController
             end
         end
     end
+
+    def activate_site
+        code = params[:activation]
+        if code.blank? then
+            redirect_to request.protocol + Ocd::Application.config.domain
+            return true
+        end
+        site_code = decrypt(code)
+        site = Site.where(:code => site_code).first
+        if site.blank? then
+            redirect_to request.protocol + Ocd::Application.config.domain
+            return true
+        end
+        site.activation_code = nil
+        site.save
+        redirect_to request.protocol + site.code + "." + Ocd::Application.config.domain + '/activated'
+    end
+
+    def activated
+    end
+
 end

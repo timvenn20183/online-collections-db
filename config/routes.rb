@@ -13,6 +13,8 @@ Ocd::Application.routes.draw do
     get 'welcome' => 'main#welcome'
     get 'contact' => 'main#contact'
     match 'main/contact_save' => 'main#contact_save', via: [:get, :post]
+    get 'activate_site' => 'main#activate_site'
+    get 'activated' => 'main#activated'
 
     get 'settings' => 'settings#index'
     get 'settings/site' => 'settings#site'
