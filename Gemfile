@@ -12,6 +12,7 @@ gem 'wirble', :group => :development
 gem 'roo'
 gem 'thin'
 gem 'will_paginate'
+gem 'zip'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-switch-rails'
