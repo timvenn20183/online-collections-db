@@ -10,7 +10,14 @@
     <title><%= current_site.title%></title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-        <%=raw current_site.tracker_code %>
+    <%=raw current_site.tracker_code %>
+    <script>
+        $(document).bind('ajaxStart', function(){
+            $('#loading_image').show();
+        }).bind('ajaxStop', function(){
+            $('#loading_image').hide();
+    });
+    </script>
 </head>
 <body <%=raw 'style="padding-top: 10px;"' if current_site.homepage_options[:show_navbar] == false %>>
 <% if current_site.homepage_options[:show_navbar] == true then %>
@@ -41,5 +48,8 @@
   </div>
 </div>
 <div id="overlay_box"></div>
+<div id="loading_image_holder" style="background:transparent;width:100%;height:100%">
+<div id="loading_image" style="position:fixed;left: 50%;top: 45%;display: none;background: transparent url('/images/ajax-loader.gif');z-index: 1000;height: 100px;width: 100px;"></div>
+</div>
 </body>
 </html>
