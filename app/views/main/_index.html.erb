@@ -1,23 +1,24 @@
-  <div class="row-fluid">
+<div class="row-fluid">
     <div class="span12" style="text-align:center;">
-    <%= image_tag current_site.siteheader.url %>
-</div>
+        <%= image_tag current_site.siteheader.url %>
+    </div>
 </div>
 
-<% if current_site.homepage_options[:about_is_homepage] == true then %>
+<% if current_site.homepage_options[:about_on_homepage] == true then %>
     <%=raw current_about.content.gsub("\n","<br/>") %>
-<% else %>
-
+<% end %>
+<div style="clear:both;"></div>
 <% if current_site.homepage_options[:last_x_items] > 0 then %>
+<hr/>
 <p><h4>Recent items</h4>
 		<%= render :partial => 'items/list', :locals => {:items => @show_items} %>
 </p>
 <% end %>
 <div style="clear:both;"></div>
 <% if current_site.homepage_options[:random_x_items] > 0 then %>
+<hr/>
 <p><h4>Random items</h4>
 		<%= render :partial => 'items/list', :locals => {:items => @random_items} %>
 </p>
 <% end %>
 
-<% end %>
