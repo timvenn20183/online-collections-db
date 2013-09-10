@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910095255) do
+ActiveRecord::Schema.define(version: 20130910204928) do
 
   create_table "articles_things", id: false, force: true do |t|
     t.integer "article_id"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 20130910095255) do
     t.string   "comms_options"
     t.text     "tracker_code"
     t.datetime "activation_date"
+    t.integer  "password_retry",      default: 0
   end
 
   create_table "slugs", force: true do |t|

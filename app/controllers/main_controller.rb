@@ -35,9 +35,11 @@ class MainController < ApplicationController
     end
 
     def welcome
+        redirect_to request.protocol + Ocd::Application.config.domain if current_site != nil
     end
 
     def about
+        redirect_to request.protocol + Ocd::Application.config.domain if current_site == nil
         session[:menu] = "ABOUT"
     end
 
@@ -82,13 +84,20 @@ class MainController < ApplicationController
 
     def login
         respond_to do |format|
-            if !user_logged_in then
-                format.js
-                format.html
+            if current_site != nil
+                if !user_logged_in and current_site.password_retry <= Ocd::Application.config.password_retries then
+                    format.js
+                    format.html
+                elsif current_site.password_retry > Ocd::Application.config.password_retries
+                    format.js { render :action => 'admin_locked' }
+                    format.html { render :action => 'admin_locked' }
+                else
+                    format.js { render :action => 'login_process' }
+                    format.html { redirect_to request.protocol + Ocd::Application.config.domain }
+                end
             else
-                format.js { render :action => 'login_process' }
+                format.html { redirect_to request.protocol + Ocd::Application.config.domain }
             end
-
         end
     end
 

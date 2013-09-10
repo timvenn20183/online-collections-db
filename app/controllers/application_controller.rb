@@ -29,9 +29,15 @@ class ApplicationController < ActionController::Base
     def login_user(email,password)
         @site = Site.find(current_site)
         if decrypt(@site.password) == password and email == @site.email then
-            session[:user] = "STUB"
+            @site.password_retry = 0
+            @site.save
+            session[:user] = encrypt(current_site.code)
             return true
         else
+            if email == @site.email then
+                @site.password_retry = @site.password_retry + 1
+                @site.save
+            end
             return false
         end
     end
