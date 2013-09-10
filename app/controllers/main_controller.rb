@@ -3,7 +3,7 @@ class MainController < ApplicationController
     layout :select_layout
 
     def select_layout
-        if action_name == 'welcome'
+        if action_name == 'welcome' or action_name == 'terms_and_conditions'
             return 'welcome'
         else
             return 'ocd'
@@ -39,9 +39,6 @@ class MainController < ApplicationController
 
     def about
         session[:menu] = "ABOUT"
-        respond_to do |format|
-            format.js
-        end
     end
 
     def sign_up
@@ -49,6 +46,13 @@ class MainController < ApplicationController
        respond_to do |format|
                 format.js
                 format.html { redirect_to request.protocol + Ocd::Application.config.domain }
+        end
+    end
+
+    def terms_and_conditions
+        respond_to do |format|
+            format.js
+            format.html
         end
     end
 
@@ -138,11 +142,19 @@ class MainController < ApplicationController
             return true
         end
         site.activation_code = nil
+        site.activation_date = Time.now if site.activation_date == nil
         site.save
         redirect_to request.protocol + site.code + "." + Ocd::Application.config.domain + '/activated'
     end
 
     def activated
+        if current_site.blank? then
+            redirect_to request.protocol + Ocd::Application.config.domain + "/" if current_site.blank?
+            return true
+        end
+        if !current_site.blank? then
+            redirect_to request.protocol + Ocd::Application.config.domain + "/" if current_site.activation_code != nil
+        end
     end
 
 end

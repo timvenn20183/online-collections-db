@@ -1,8 +1,7 @@
-<ul>
-<li>The Online Collectors Database currently runs as a free service to the community but reserves the right to accept donations,implement a monthly fee or attract advertising based revenue at any time in the future after providing notice via email to the users of this service.</li>
-<li>Sites which have not had any items added to their online collection within 30 days from the creation of the site will be automatically removed and an email sent to the email address, which was used to sign up, stating that the site has been removed due to non activity.</li>
-<li>Any site which uploads or contains illegal or pornographic material will automatically be removed without notice.</li>
-<li>This site provides a mechanism to backup your online collection and images and as such, whilst every precaution is taken by the Online Collectors Database to backup your data, the Online Collectors Database cannot be held liable for the loss of any data associated with your online collection.</li>
-<li>Where humanly possible all complaints against a site will be investigated and the appropriate action taken with in the framework of the terms and conditions.</li>
-<li>The email address supplied during the sign up to this service will remain private and not sold or distributed in any way. The email address will however be used for site comment notification and communications from the operators of this service.</li>
-</ul>
+<%= render :partial => 'main/terms_and_conditions_detail' %>
+
+<div style="text-align:center;">
+<h4>By clicking the Continue button you confirm that you have read and agree to the terms of usage above</h4>
+<%= link_to('Continue', {:controller => :main, :action => :sign_up, :remote => true}, :class => 'btn btn-success' ) %>
+</div>
+
