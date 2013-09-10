@@ -155,6 +155,9 @@ class MainController < ApplicationController
         if !current_site.blank? then
             redirect_to request.protocol + Ocd::Application.config.domain + "/" if current_site.activation_code != nil
         end
+        site = Site.find(current_site)
+        @recently_activated = false
+        @recently_activated = true if site.activation_date > Time.now-5.seconds
     end
 
 end

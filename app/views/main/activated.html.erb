@@ -1,5 +1,11 @@
+<% if @recently_activated == true then %>
 <div class="alert alert-success">
 <p>Congratulations ! Your site has been activated.</p>
 <p>You can now proceed to login and start setting up your online collection. The terms and conditions of use have been provided below as a reminder :</p>
 </div>
 <%= render :partial => 'main/terms_and_conditions_detail' %>
+<% else %>
+<div class="alert alert-error">
+    <p>This site has already been activated.</p>
+</div>
+<% end %>
