@@ -1,0 +1,16 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="myModalLabel"><%= @comment.subject %></h3>
+    </div>
+    <div class="modal-body">
+        <%= @comment.detail %>
+    </div>
+    <div class="modal-footer">
+        <% if @comment.approved == nil then %>
+            <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => encrypt(@comment.id) %>
+                <button class="btn btn-primary" onclick="$.ajax({url : '<%= geturl %>&approve=true'});$('#myModal').modal('hide');" type="button">Approve</button>
+            <% end %>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>

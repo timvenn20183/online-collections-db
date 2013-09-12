@@ -51,6 +51,7 @@ Ocd::Application.routes.draw do
     match 'settings/homepage_update' => 'settings#homepage_update', via: [:get, :post]
 
     get 'settings/comments' => 'settings#comments'
+    get 'settings/comments_view' => 'settings#comments_view'
     match 'settings/comments_update' => 'settings#comments_update', via: [:get, :post]
 
     get 'settings/rolodex' => 'settings#rolodex'

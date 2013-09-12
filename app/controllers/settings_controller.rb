@@ -260,6 +260,13 @@ class SettingsController < ApplicationController
         end
     end
 
+    def comments_view
+        @comment = Comment.find(decrypt(params[:id]))
+        respond_to do |format|
+            format.js
+        end
+    end
+
     def comments_update
         @comment = Comment.find(decrypt(params[:id]))
         if params[:approve] == 'true' then

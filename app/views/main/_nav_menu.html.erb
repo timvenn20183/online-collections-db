@@ -45,7 +45,12 @@
 <% end %>
 
 <li class="nav-header">General</li>
+<% if !user_logged_in == true then %>
 <li class="menu_option"><%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %></li>
+<% else %>
+<li class="menu_option"><%= link_to('Admin', :controller => :main, :action => :login, :remote => true) %></li>
+<li class="menu_option"><%= link_to('Logout', :controller => :settings, :action => :logout) %></li>
+<% end %>
 </ul>
 </div>
 <script>

@@ -27,19 +27,23 @@
                 <%= comment.name %>
             </td>
             <td>
-                <%= comment.email_address %>
+               <%= mail_to comment.email_address %>
             </td>
             <td>
                 <%= comment.subject %>
             </td>
             <% code = encrypt(comment.id) %>
-            <td width="75px">
+            <td width="50px">
                 <% if comment.approved == nil then %>
                     <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => code %>
                     <button class="btn btn-primary btn-mini" onclick="$.ajax({url : '<%= geturl %>&approve=true'});" type="button">Approve</button>
                 <% end %>
             </td>
-            <td width="75px">
+            <td width="50px">
+                    <% geturl = url_for :controller => 'settings', :action => 'comments_view', :id => code %>
+                    <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" type="button">&nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;</button>
+            </td>
+            <td width="50px">
                     <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => code %>
                     <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=true'});" type="button">Remove</button>
             </td>
