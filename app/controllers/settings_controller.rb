@@ -284,18 +284,33 @@ class SettingsController < ApplicationController
 
     def users
         @site = current_site
+        @password_placeholder = '*****'
         respond_to do |format|!
             format.js
         end
     end
 
     def users_update
-        @site = current_site
+        @site = Site.find(current_site.id)
+        password1 = params[:password1]
+        password2 = params[:password2]
+        can_save_passwords = false
+        if !password1.blank? then
+            if !Signupvalidations.is_dictionary_word(password1) then
+                can_save_passwords = true if password1 == password2
+                @site.password = encrypt(password1)
+                @site.save
+            end
+        else
+                @site.owner = params[:site][:owner]
+                @site.save
+                can_save_passwords = true
+        end
         respond_to do |format|
-            if @site.update_attributes(site_params)
+            if can_save_passwords == true
                 format.js { render :action => 'success' }
             else
-                format.js { render :action => 'users' }
+                format.js { render :action => 'user_update_failed' }
             end
         end
     end

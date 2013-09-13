@@ -18,7 +18,8 @@
             Owner email
         </td>
         <td>
-            <%= text_field_tag 'site[email]', @site.email, :size => 50 %>
+            <%#= text_field_tag 'site[email]', @site.email, :size => 50 %>
+            <%= @site.email %><br/><br/>
         </td>
     </tr>
     <tr>
@@ -26,7 +27,7 @@
             Password
         </td>
         <td>
-            <%= password_field_tag 'password1', '', :size => 20 %>
+            <%= password_field_tag 'password1', '', :size => 20 , :placeholder => @password_placeholder %>
         </td>
     </tr>
     <tr>
@@ -34,7 +35,7 @@
             Confirm
         </td>
         <td>
-            <%= password_field_tag 'password2', '', :size => 20 %>
+            <%= password_field_tag 'password2', '', :size => 20 , :placeholder => @password_placeholder %>
         </td>
     </tr>
     <tr>
