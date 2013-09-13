@@ -51,46 +51,6 @@
     <%= render :partial => 'extra_settings' %>
     <tr>
         <td>
-            Site owner
-        </td>
-        <td>
-            <%= text_field_tag 'site[owner]', @site.owner, :size => 50 %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Owner email
-        </td>
-        <td>
-            <%= text_field_tag 'site[email]', @site.email, :size => 50 %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Username
-        </td>
-        <td>
-            <%= text_field_tag 'site[username]', @site.username, :size => 20 %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Password
-        </td>
-        <td>
-            <%= password_field_tag 'password1', '', :size => 20 %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Confirm
-        </td>
-        <td>
-            <%= password_field_tag 'password2', '', :size => 20 %>
-        </td>
-    </tr>
-    <tr>
-        <td>
             Footer
         </td>
         <td>
@@ -99,7 +59,7 @@
     </tr>
     <tr>
         <td colspan="2">
-            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary btn-mini" type="button" id="save_button">Update</button>
+            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary" type="button" id="save_button">Update</button>
         </td>
     </tr>
 </table>

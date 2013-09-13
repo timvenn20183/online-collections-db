@@ -7,16 +7,17 @@
 <div style="float:left;">
      <%= f.file_field :siteheader, multiple: true, name: "site[siteheader]", :class => 'button' %>
 </div>
+<div style="float:right;">
+     <% geturl = url_for :controller => 'settings', :action => 'site_header', :id => encrypt(current_site.id) %>
+     <button class="btn btn-danger" onclick="$.ajax({url : '<%= geturl %>&remove=1'});return false;">Remove</button>
+</div>
+
 <% end %>
 <div style="clear:both;"></div>
 <br/>
 <div class="upload">
   <div class="progress progress-striped active" id="bar"><div class="bar" style="width: 0%"></div></div>
 </div>
-    <div style="float:left;">
-        <% geturl = url_for :controller => 'settings', :action => 'site_header', :id => encrypt(current_site.id) %>
-        <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=1'});">Remove</button>
-    </div>
 <script id="template-upload" type="text/x-tmpl">
 </script>
 <script>

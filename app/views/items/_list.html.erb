@@ -34,4 +34,7 @@
     <%= raw'<hr/>' if index.odd? %>
 <% end %>
 <% end %>
-
+<% if !defined? @is_home_page %>
+<div style="clear:both;"></div>
+<div style="text-align:center;"><%= will_paginate items, renderer: BootstrapPagination::Rails %></div>
+<% end %>

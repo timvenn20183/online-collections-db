@@ -4,9 +4,36 @@
 </div>
 <%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
 <table border="0" width="100%">
+    <tr>
+        <td>
+            Number of random items to show
+        </td>
+        <td>
+            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+            <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="selectpicker" data-style="btn-info">
+            <% (0..10).each do |i| %>
+                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>
+            <% end %>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Number of recent items to show
+        </td>
+        <td>
+            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+            <select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="selectpicker" data-style="btn-info">
+            <% (0..10).each do |i| %>
+                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>
+            <% end %>
+            </select>
+        </td>
+    </tr>
+
 	<tr>
 		<td>
-			Include about page on homepage ?
+			Include about page on homepage ? <span class="label label-info" title="">?</span>
 		</td>
 		<td>
             <div class="switch switch-mini" data-on="success" data-off="warning">
@@ -48,35 +75,6 @@
             </div><br/><br/>
         </td>
     </tr>
-
-    <tr>
-        <td>
-            Number of random items to show
-        </td>
-        <td>
-            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="btn btn-mini">
-            <% (0..10).each do |i| %>
-                <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>
-            <% end %>
-            </select>
-            <span class="caret"></span>
-        </td>
-    </tr>
-	<tr>
-		<td>
-			Number of recent items to show
-		</td>
-		<td>
-			<% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-			<select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="btn btn-mini">
-			<% (0..10).each do |i| %>
-				<option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>
-			<% end %>
-			</select>
-			<span class="caret"></span><br/><br/>
-		</td>
-	</tr>
     <tr>
         <td>
             Limit recents items to those with images ?
@@ -105,5 +103,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.switch')['bootstrapSwitch']();
+        $('.selectpicker').selectpicker({
+            'dropupAuto': true
+        });
     });
 </script>

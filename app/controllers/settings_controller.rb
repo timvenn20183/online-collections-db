@@ -73,6 +73,7 @@ class SettingsController < ApplicationController
         @site.homepage_options[:last_x_items] = params[:last_x_items].to_i if params[:last_x_items] != nil
         @site.homepage_options[:random_x_items] = params[:random_x_items].to_i if params[:random_x_items] != nil
         @site.item_view_options[:list_type] = params[:list_type] if params[:list_type] != nil
+        @site.item_view_options[:pagination] = params[:pagination] if params[:pagination] != nil
         @site.save
         render :nothing => true
     end
@@ -278,6 +279,24 @@ class SettingsController < ApplicationController
         end
         respond_to do |format|
             format.js { render :action => 'comments' }
+        end
+    end
+
+    def users
+        @site = current_site
+        respond_to do |format|!
+            format.js
+        end
+    end
+
+    def users_update
+        @site = current_site
+        respond_to do |format|
+            if @site.update_attributes(site_params)
+                format.js { render :action => 'success' }
+            else
+                format.js { render :action => 'users' }
+            end
         end
     end
 

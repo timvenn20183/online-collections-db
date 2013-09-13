@@ -10,12 +10,24 @@
 		</td>
 		<td>
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="btn btn-mini">
+            <select  onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="selectpicker" data-style="btn-info">
             <% ['Accordion','Detailed','Simple','2 Column'].each do |i| %>
                 <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:list_type] %>><%=i%></option>
             <% end %>
             </select>
-            <span class="caret"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Number of items to show per page 
+        </td>
+        <td>
+            <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+            <select onchange="$.ajax({url : '<%= geturl %>?pagination='+$(this).val()});" name="pagination" id="pagination" class="selectpicker" data-style="btn-info">
+            <% (0..20).each do |i| %>
+                <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:pagination].to_i %>><%=i%></option>
+            <% end %>
+            </select>
         </td>
     </tr>
 </table>
@@ -55,3 +67,10 @@
 <% else %>
 	<div class="alert alert-warning">Please add at least one item to see the item list previews.</div>
 <% end %>
+<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker({
+            'dropupAuto': true
+        });
+    });
+</script>

@@ -1,0 +1,46 @@
+<div id="notice_bar">
+<div class="alert alert-info">
+<%= render :partial => 'settings/users_help' %>
+</div>
+</div>
+<%= form_tag({:controller => :settings, :action => :users_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+<table border="0" width="100%">
+    <tr>
+        <td>
+            Site owner
+        </td>
+        <td>
+            <%= text_field_tag 'site[owner]', @site.owner, :size => 50 %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Owner email
+        </td>
+        <td>
+            <%= text_field_tag 'site[email]', @site.email, :size => 50 %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Password
+        </td>
+        <td>
+            <%= password_field_tag 'password1', '', :size => 20 %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Confirm
+        </td>
+        <td>
+            <%= password_field_tag 'password2', '', :size => 20 %>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary" type="button" id="save_button">Update</button>
+        </td>
+    </tr>
+
+<% end %>

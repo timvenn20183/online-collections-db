@@ -16,6 +16,11 @@ gem 'zip'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-switch-rails'
+# https://github.com/nickpad/will_paginate-bootstrap
+gem 'will_paginate-bootstrap'
+
+# http://silviomoreto.github.io/bootstrap-select/
+
 gem 'jquery-fileupload-rails'
 
 gem 'sqlite3'

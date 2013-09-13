@@ -4,7 +4,7 @@ class ConditionController < ApplicationController
 
     def index
         @condition = Condition.find_by_slug(params[:id])
-        @items = @condition.things
+        @items = @condition.things.paginate(:page => params[:page], :per_page => current_site_pagination)
         @items = Array.new if @items == nil
         session[:menu] = 'CON_' + @condition.slug
         respond_to do |format|

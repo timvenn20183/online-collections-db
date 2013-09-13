@@ -12,6 +12,7 @@ class MainController < ApplicationController
 
     def index
         @site = current_site
+        @is_home_page = true
         if @site.blank?
             redirect_to request.protocol + Ocd::Application.config.domain if @site.blank?
         end

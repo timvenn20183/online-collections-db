@@ -33,6 +33,11 @@ This is the administration section of the online collectors database. Select wha
 <%= render :partial => 'settings/comments_help' %>
 <br/><br/>
 </dd>
+<dt><%= link_to("Users", :action => 'users', :controller => 'settings', :remote => true) %></dt>
+<dd>
+<%= render :partial => 'settings/users_help' %>
+<br/><br/>
+</dd>
 <dt><%= link_to("Items", :action => 'settings_index', :controller => 'items', :remote => true) %></dt>
 <dd>
 <%= render :partial => 'items/item_help' %>

@@ -50,4 +50,16 @@ class ApplicationController < ActionController::Base
         redirect_to '/' if !user_logged_in
     end
 
+    def current_site_pagination
+        if current_site.item_view_options[:pagination].to_i > 0 then
+            return current_site.item_view_options[:pagination].to_i
+        else
+            return current_site.things.count
+        end
+    end
+
+    def must_paginate
+        return true if current_site.item_view_options[:pagination].to_i > 0
+    end
+
 end

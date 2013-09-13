@@ -18,8 +18,10 @@ Ocd::Application.routes.draw do
     get 'terms_and_conditions' => 'main#terms_and_conditions'
 
     get 'settings' => 'settings#index'
+    get 'settings/users' => 'settings#users'
     get 'settings/site' => 'settings#site'
     match 'settings/site_update' => 'settings#site_update', via: [:get, :post]
+    match 'settings/users_update' => 'settings#users_update', via: [:get, :post]
     match 'settings/site_header' => 'settings#site_header', via: [:get, :post]
     get 'settings/about' => 'settings#about'
     match 'settings/about_update' => 'settings#about_update', via: [:get, :post]

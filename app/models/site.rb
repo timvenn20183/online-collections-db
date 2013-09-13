@@ -55,6 +55,7 @@
      def set_itemview_options
         # stub
         self.item_view_options[:list_type] = "Accordion" if self.item_view_options[:list_type] == nil
+        self.item_view_options[:pagination] = 0 if self.item_view_options[:pagination] == nil
      end
 
     def set_menu_options
