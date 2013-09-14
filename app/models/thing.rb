@@ -64,6 +64,10 @@ class Thing < ActiveRecord::Base
 
     protected
 
+    def virtualcollection_tokens=(ids)
+
+    end
+
     def set_alphabet_letter
         self.alphabet_letter = self.name[0].upcase
     end
