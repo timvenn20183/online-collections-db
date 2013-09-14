@@ -1,5 +1,74 @@
 <div class="tab-pane" id="item_extra">
 <p>
-    TEST
+Collection :
+   <%= text_field 'thing', :virtualcollection_tokens, "data-pre" => @item.virtualcollections.map(&:attributes).to_json %>
 </p>
+<p>
+Condition :
+   <%= text_field 'thing', :condition_tokens, "data-pre" => @item.conditions.map(&:attributes).to_json %>
+</p>
+<p>
+Rolodexes :
+   <%= text_field 'thing', :rolodex_tokens, "data-pre" => @item.rolodexes.map(&:attributes).to_json %>
+</p>
+<p>
+Fields :
+   <%= text_field 'thing', :fieldoption_tokens, "data-pre" => @item.fieldoptions.map(&:attributes).to_json %>
+</p>
+<div style="float:right;">
+    <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
 </div>
+</div>
+<script>
+$(function() {
+  $("#thing_virtualcollection_tokens").tokenInput("/search/collection.json", {
+    crossDomain: false,
+    prePopulate: $("#thing_virtualcollection_tokens").data("pre"),
+    theme: "facebook"
+  });
+});
+
+$(function() {
+  $("#thing_condition_tokens").tokenInput("/search/condition.json", {
+    crossDomain: false,
+    prePopulate: $("#thing_condition_tokens").data("pre"),
+    theme: "facebook"
+  });
+});
+
+$(function() {
+  $("#thing_rolodex_tokens").tokenInput("/search/rolodex.json", {
+    crossDomain: false,
+    prePopulate: $("#thing_rolodex_tokens").data("pre"),
+    theme: "facebook"
+  });
+});
+
+$(function() {
+  $("#thing_fieldoption_tokens").tokenInput("/search/fieldoption.json", {
+    crossDomain: false,
+    prePopulate: $("#thing_fieldoption_tokens").data("pre"),
+    theme: "facebook"
+  });
+});
+
+
+  $("#thing_virtualcollection_tokens").change(function() {
+        <% geturl = url_for :controller => 'items', :action => 'extra_update', :id => encrypt(@item.id) %>
+        $.ajax({url : '<%= geturl %>&collection=true&ids=' + $(this).val()});
+   });
+
+  $("#thing_condition_tokens").change(function() {
+        <% geturl = url_for :controller => 'items', :action => 'extra_update', :id => encrypt(@item.id) %>
+        $.ajax({url : '<%= geturl %>&condition=true&ids=' + $(this).val()});
+   });
+
+   $("#thing_rolodex_tokens").change(function() {
+        <% geturl = url_for :controller => 'items', :action => 'extra_update', :id => encrypt(@item.id) %>
+        $.ajax({url : '<%= geturl %>&rolodex=true&ids=' + $(this).val()});
+   });
+   $("#thing_fieldoption_tokens").change(function() {
+        <% geturl = url_for :controller => 'items', :action => 'extra_update', :id => encrypt(@item.id) %>
+        $.ajax({url : '<%= geturl %>&fieldoption=true&ids=' + $(this).val()});
+   });
+</script>

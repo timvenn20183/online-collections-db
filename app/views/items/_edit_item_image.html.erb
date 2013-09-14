@@ -16,8 +16,11 @@
 </div>
     <div style="float:left;">
         <% geturl = url_for :controller => 'items', :action => 'update_image', :id => encrypt(@item.id) %>
-        <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=1'});">Remove</button>
+        <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=1'});">Remove image</button>
     </div>
+<div style="float:right;">
+    <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
 <script id="template-upload" type="text/x-tmpl">
 </script>
 <script>

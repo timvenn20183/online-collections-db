@@ -66,6 +66,7 @@ Ocd::Application.routes.draw do
     match 'settings/rolodex_visibility' => 'settings#rolodex_visibility', via: [:get, :post]
 
     get 'items/settings_index' => 'items#settings_index'
+    match 'items/extra_update' => 'items#extra_update', via: [:get, :post]
     match 'items/edit_list' => 'items#edit_list', via: [:get, :post]
     match 'items/edit' => 'items#edit', via: [:get, :post]
     match 'items/update' => 'items#update', via: [:get, :post]
@@ -78,6 +79,11 @@ Ocd::Application.routes.draw do
 
     get 'rolodex/:id' => 'rolodex#index'
 
+
+    get 'search/collection' => 'search#collection'
+    get 'search/condition' => 'search#condition'
+    get 'search/rolodex' => 'search#rolodex'
+    get 'search/fieldoption' => 'search#fieldoption'
 
     get 'collection/:id' => 'collection#index'
 

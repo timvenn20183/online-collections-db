@@ -102,6 +102,16 @@ class ItemsController < ApplicationController
         end
     end
 
+    def extra_update
+        @item = Thing.find(decrypt(params[:id]))
+        @ids = params[:ids]
+        @item.virtualcollection_tokens = @ids if params[:collection] == 'true'
+        @item.condition_tokens = @ids if params[:condition] == 'true'
+        @item.rolodex_tokens = @ids if params[:rolodex] == 'true'
+        @item.fieldoption_tokens = @ids if params[:fieldoption] == 'true'
+        render :nothing => true
+    end
+
     private
 
     def item_params

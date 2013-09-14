@@ -62,11 +62,23 @@ class Thing < ActiveRecord::Base
         return things
     end
 
-    protected
-
     def virtualcollection_tokens=(ids)
-
+        self.virtualcollection_ids = ids.split(",")
     end
+
+    def condition_tokens=(ids)
+        self.condition_ids = ids.split(",")
+    end
+
+    def rolodex_tokens=(ids)
+        self.rolodex_ids = ids.split(",")
+    end
+
+    def fieldoption_tokens=(ids)
+        self.fieldoption_ids = ids.split(",")
+    end
+
+    protected
 
     def set_alphabet_letter
         self.alphabet_letter = self.name[0].upcase
