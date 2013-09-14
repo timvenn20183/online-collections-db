@@ -6,6 +6,7 @@ Ocd::Application.routes.draw do
     root :to => 'main#index'
 
     get 'login' => 'main#login'
+    get 'search' => 'main#search'
     match 'main/login_process' => 'main#login_process', via: [:get, :post]
     get 'sign_up' => 'main#sign_up'
     match 'main/sign_up_process' => 'main#sign_up_process', via: [:get, :post]
@@ -77,7 +78,6 @@ Ocd::Application.routes.draw do
 
     get 'rolodex/:id' => 'rolodex#index'
 
-    match 'search' => 'items#search', via: [:get, :post]
 
     get 'collection/:id' => 'collection#index'
 

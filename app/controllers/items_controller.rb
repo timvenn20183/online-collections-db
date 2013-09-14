@@ -2,18 +2,7 @@ class ItemsController < ApplicationController
 
 	layout 'ocd'
 
-    before_filter :must_login, :expect => [:search]
-
-    def search
-        @search = params[:search]
-        @items = current_site.things.paginate(:page => params[:page], :per_page => current_site_pagination, :conditions => ['searchstring LIKE ?',"%#{@search}%"])
-        @items = Array.new if @items == nil
-        # session[:menu] = 'COL_' + @collection.slug
-        respond_to do |format|
-            format.js { render 'items/list' }
-            format.html { render 'items/list' }
-        end
-    end
+    before_filter :must_login
 
     def settings_index
         @id = decrypt(params[:id]) if params[:id] != nil

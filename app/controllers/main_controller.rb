@@ -35,6 +35,18 @@ class MainController < ApplicationController
         session[:menu] = "HOME"
     end
 
+    def search
+        @search = params[:search]
+        debugger
+        @items = current_site.things.paginate(:page => params[:page], :per_page => current_site_pagination, :conditions => ['searchstring LIKE ?',"%#{@search}%"])
+        @items = Array.new if @items == nil
+        # session[:menu] = 'COL_' + @collection.slug
+        respond_to do |format|
+            format.js { render 'items/list' }
+            format.html { render 'items/list' }
+        end
+    end
+
     def welcome
         redirect_to request.protocol + Ocd::Application.config.domain if current_site != nil
     end
