@@ -10,7 +10,7 @@
             Name
         </th>
         <th>
-            Email 
+            Email
         </th>
         <th>
             Subject
@@ -25,6 +25,7 @@
         <tr>
             <td>
                 <%= comment.name %>
+                <%=raw '<span id="new_' + Digest::MD5.hexdigest(comment.id.to_s)  + '" class="label label-warning">New</span>&nbsp;' if comment.viewdate == nil %>
             </td>
             <td>
                <%= mail_to comment.email_address %>

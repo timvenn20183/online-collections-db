@@ -263,6 +263,8 @@ class SettingsController < ApplicationController
 
     def comments_view
         @comment = Comment.find(decrypt(params[:id]))
+        @comment.viewdate = Time.now
+        @comment.save
         respond_to do |format|
             format.js
         end
