@@ -67,6 +67,7 @@ class SettingsController < ApplicationController
         @site = Site.find(current_site.id)
         @site.comms_options[:email_comments] = !@site.comms_options[:email_comments] if params[:email_comments] == '1'
         @site.homepage_options[:about_on_homepage] = !@site.homepage_options[:about_on_homepage] if params[:about_on_homepage] == '1'
+        @site.homepage_options[:show_homepage_note] = !@site.homepage_options[:show_homepage_note] if params[:show_homepage_note] == '1'
         @site.homepage_options[:show_navbar] = !@site.homepage_options[:show_navbar] if params[:show_navbar] == '1'
         @site.homepage_options[:last_x_items_images] = !@site.homepage_options[:last_x_items_images] if params[:last_x_items_images] == '1'
         @site.homepage_options[:random_x_items_images] = !@site.homepage_options[:random_x_items_images] if params[:random_x_items_images] == '1'
@@ -313,6 +314,18 @@ class SettingsController < ApplicationController
                 format.js { render :action => 'success' }
             else
                 format.js { render :action => 'user_update_failed' }
+            end
+        end
+    end
+
+    def home_note_update
+        @comment = Dialog.find(current_homepage_note.id)
+        @comment.content = params[:homepage_note]
+        respond_to do |format|
+            if @comment.save then
+                format.js { render :action => 'success' }
+            else
+                format.js { render :action => 'failed' }
             end
         end
     end

@@ -11,6 +11,9 @@
             <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => encrypt(@comment.id) %>
                 <button class="btn btn-primary" onclick="$.ajax({url : '<%= geturl %>&approve=true'});$('#myModal').modal('hide');" type="button">Approve</button>
             <% end %>
+             <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => encrypt(@comment.id) %>
+                <button class="btn btn-danger" onclick="$.ajax({url : '<%= geturl %>&remove=true'});$('#myModal').modal('hide');" type="button">Remove</button>
+
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>

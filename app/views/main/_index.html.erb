@@ -1,8 +1,14 @@
+<% if !current_site.siteheader.blank? %>
 <div class="row-fluid">
     <div class="span12" style="text-align:center;">
         <%= image_tag current_site.siteheader.url %>
     </div>
-</div>
+</div><br/>
+<% end %>
+<% if current_site.homepage_options[:show_homepage_note] == true then %>
+    <%=raw current_homepage_note.content.gsub("\n","<br/>") %>
+    <%=raw '<br/><br/>' if current_site.homepage_options[:about_on_homepage] == true %>
+<% end %>
 
 <% if current_site.homepage_options[:about_on_homepage] == true then %>
     <%=raw current_about.content.gsub("\n","<br/>") %>

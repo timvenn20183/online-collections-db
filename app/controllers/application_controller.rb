@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
     protect_from_forgery
 
-    helper_method :current_site, :current_about, :user_logged_in
+    helper_method :current_site, :current_about, :user_logged_in, :current_homepage_note
 
     private
 
@@ -16,9 +16,14 @@ class ApplicationController < ActionController::Base
     end
 
     def current_about
-        #stub
-        return current_site.dialogs.where(:code => 'ABOUT').first_or_create do |dialog|
-            dialog.content = 'About your collection'
+        return current_site.dialogs.where(:code => 'ABOUT',:site_id => current_site.id).first_or_create do |dialog|
+            dialog.content = 'Tell us something about yourself and your collection'
+        end
+    end
+
+    def current_homepage_note
+        return current_site.dialogs.where(:code => 'HOMEPAGE', :site_id => current_site.id).first_or_create do |dialog|
+            dialog.content = 'Welcome people to your site and tell then briefly what they will find'
         end
     end
 

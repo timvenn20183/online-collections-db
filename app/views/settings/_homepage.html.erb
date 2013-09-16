@@ -2,8 +2,35 @@
 <div class="alert alert-info">
 <%= render :partial => 'settings/homepage_help' %>
 </div>
+</div>
+<div id="welcome_note" style="display:hidden;">
+<%= form_tag({:controller => :settings, :action => :home_note_update}, :remote => true, :id => 'home_note_update' , :authenticity_token => form_authenticity_token ) do |f| %>
+
+    <textarea name="homepage_note" id="homepage_note" style="width:95%; height:300px;"><%= current_homepage_note.content %></textarea>
+    <br/>
+    <div>
+        <button onclick="$('#home_note_update').submit();return false;" class="btn btn-primary btn-mini" type="button" id="save_button">Update</button>
+    </div>
+<% end %>
+</div>
+<% if @site.homepage_options[:show_homepage_note] == true %>
+<script>
+    $('#welcome_note').show(); 
+</script>
+<% end %>
 <%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
 <table border="0" width="100%">
+    <tr>
+        <td>
+            Show welcome note on homepage (text above)  ? <span class="label label-info" title="">?</span>
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input id="welcome_status" type="checkbox" <%=raw ' checked ' if @site.homepage_options[:show_homepage_note] == true %> onchange="$.ajax({url : '<%= geturl %>?show_homepage_note=1'});">
+            </div><br/><br/>
+        </td>
+    </tr>
     <tr>
         <td>
             Number of random items to show
@@ -106,5 +133,10 @@
         $('.selectpicker').selectpicker({
             'dropupAuto': true
         });
+        $('#welcome_status').change(function() { 
+            if (!$(this)[0].checked) { $('#welcome_note').hide(); } 
+            else
+            { $('#welcome_note').show(); }
+         });
     });
 </script>

@@ -22,6 +22,7 @@ Ocd::Application.routes.draw do
     get 'settings/users' => 'settings#users'
     get 'settings/site' => 'settings#site'
     match 'settings/site_update' => 'settings#site_update', via: [:get, :post]
+    match 'settings/home_note_update' => 'settings#home_note_update', via: [:get, :post]
     match 'settings/users_update' => 'settings#users_update', via: [:get, :post]
     match 'settings/site_header' => 'settings#site_header', via: [:get, :post]
     get 'settings/about' => 'settings#about'
