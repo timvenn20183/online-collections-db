@@ -4,6 +4,7 @@ class CollectionController < ApplicationController
 
 	def index
 		@collection = Virtualcollection.find_by_slug(params[:id])
+        @header_text = @collection.name
 		@items = @collection.things.paginate(:page => params[:page], :per_page => current_site_pagination)
 		@items = Array.new if @items == nil
         session[:menu] = 'COL_' + @collection.slug

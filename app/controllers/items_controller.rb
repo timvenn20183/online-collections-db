@@ -4,6 +4,17 @@ class ItemsController < ApplicationController
 
     before_filter :must_login
 
+    def view
+        @item = Thing.where(:slug => params[:id]).first
+        respond_to do |format|
+            if !@item.blank?
+                format.js
+            else
+                render :nothing => true
+            end
+        end
+    end
+
     def settings_index
         @id = decrypt(params[:id]) if params[:id] != nil
         @alphabet_list = current_site.things.pluck(:alphabet_letter).uniq.sort

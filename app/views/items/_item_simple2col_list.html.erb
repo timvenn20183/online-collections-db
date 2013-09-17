@@ -1,14 +1,20 @@
 <% if !(index-1).odd? then %>
 <div class="row-fluid">
 <% end %>
-  <div class="span1">	
-  	<%= image_tag(item.mainimage.url(:list)) if !item.mainimage.blank? %>
+  <div class="span2">	
+    <% geturl = url_for :controller => 'gallery', :action => 'item_view', :id => item.slug %>
+  	<%= image_tag(item.mainimage.url(:view), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer;margin-left:10px'}) if !item.mainimage.blank? %>
   </div>
-  <div class="span4">
+  <div class="span3">
   	<strong><%= item.name %></strong><br/>
   	Collection ID : <%= item.collection_id %><br/>
   	Year : <%= item.year %><br/>
   	Reference : <%= item.reference_number %>
+    <% geturl = url_for :controller => 'items', :action => 'view', :id => item.slug %>
+    <div style="clear:both;"></div>
+    <div style="float:right;margin-top:5px; margin-bottom:-5px">
+        <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" style="width:75px;">View</button>
+    </div>
   </div>
 <% if !(index-1).odd? %>
 </div>

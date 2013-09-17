@@ -1,3 +1,8 @@
+<% if defined? @header_text %>
+<div>
+<h4><%= @header_text %></h4>
+</div>
+<% end %>
 <% if current_site.item_view_options[:list_type] == "Accordion" %>
 <div class="accordion" id="fieldslist">
 <% items.each do |item| %>

@@ -1,0 +1,13 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3 id="myModalLabel"><%= item.name %></h3>
+    </div>
+    <div class="modal-body">
+        <div style="text-align:center">
+            <%= image_tag(item.mainimage.url(:full)) if !item.mainimage.blank? %>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>

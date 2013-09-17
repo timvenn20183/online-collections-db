@@ -67,6 +67,7 @@ Ocd::Application.routes.draw do
     match 'settings/rolodex_visibility' => 'settings#rolodex_visibility', via: [:get, :post]
 
     get 'items/settings_index' => 'items#settings_index'
+    get 'items/view/:id' => 'items#view'
     match 'items/extra_update' => 'items#extra_update', via: [:get, :post]
     match 'items/edit_list' => 'items#edit_list', via: [:get, :post]
     match 'items/edit' => 'items#edit', via: [:get, :post]
@@ -99,6 +100,8 @@ Ocd::Application.routes.draw do
     match 'thingfields/create' => 'thingfields#create', via: [:get, :post]
     match 'thingfields/remove' => 'thingfields#remove', via: [:get, :post]
     match 'thingfields/update' => 'thingfields#update', via: [:get, :post]
+
+    get 'gallery/item_view' => 'gallery#item_view'
 
     get 'fieldoptions/:id' => 'fieldoptions#index'
 

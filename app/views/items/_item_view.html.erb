@@ -1,9 +1,10 @@
-<div class="row-fluid">
-  <div class="span2">
-    <% geturl = url_for :controller => 'gallery', :action => 'item_view', :id => item.slug %>
-    <%= image_tag(item.mainimage.url(:list), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer'}) if !item.mainimage.blank? %>
-  </div>
-  <div class="span10">
+<div class="row-fluid"> 
+    <% if !item.mainimage.blank? %>
+        <div class="span5"><%= image_tag(item.mainimage.url(:medium)) %></div>
+        <div class="span7">
+    <% else %>
+        <div class="span12">
+    <% end %>
   	<strong><%= item.name %></strong><br/>
   	Collection ID : <%= item.collection_id %><br/>
   	Year : <%= item.year %><br/>
@@ -18,6 +19,10 @@
     Condition :
     <% item.conditions.each do |condition| %>
         <%= condition.name %> <%= ' / ' if condition != item.conditions.last %>
+    <% end %><br/>
+    Rolodex :
+    <% item.rolodexes.each do |rolodex| %>
+        <%= rolodex.name %> <%= ' / ' if rolodex != item.rolodexes.last %>
     <% end %><br/>
     <% item.thingfields.each do |field| %>
     <% if !field.name.blank? then %>

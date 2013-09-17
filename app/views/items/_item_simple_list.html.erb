@@ -1,9 +1,18 @@
 <div class="row-fluid">
-  <div class="span2"><%= image_tag(item.mainimage.url(:list)) if !item.mainimage.blank? %></div>
+  <div class="span2">
+    <% geturl = url_for :controller => 'gallery', :action => 'item_view', :id => item.slug %>
+    <%= image_tag(item.mainimage.url(:list), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer'}) if !item.mainimage.blank? %>
+  </div>
   <div class="span10">
   	<strong><%= item.name %></strong><br/>
   	Collection ID : <%= item.collection_id %><br/>
   	Year : <%= item.year %><br/>
   	Reference : <%= item.reference_number %><br/>
+  </div>
+    <div style="clear:both;"></div>
+    <div style="float:right;">
+        <% geturl = url_for :controller => 'items', :action => 'view', :id => item.slug %>
+        <button class="btn btn-info btn-mini" onclick="$.ajax({url : '<%= geturl %>'});" style="width:75px;">View</button>
+    </div>
   </div>
 </div>
