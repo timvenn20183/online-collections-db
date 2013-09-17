@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
 	layout 'ocd'
 
-    before_filter :must_login
+    before_filter :must_login, :except => [:view]
 
     def view
         @item = Thing.where(:slug => params[:id]).first
