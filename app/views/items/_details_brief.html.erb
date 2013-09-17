@@ -2,7 +2,7 @@
 <div class="row-fluid">
 <div class="span4" style="text-align:center;">
     <% geturl = url_for :controller => 'gallery', :action => 'item_view', :id => item.slug %>
-    <%= image_tag(item.mainimage.url(:medium), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer'}) if !item.mainimage.blank? %>
+    <%= image_tag(item.mainimage.url(:medium), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer', :class => 'img-polaroid'}) if !item.mainimage.blank? %>
 
 </div>
 <div class="span8">
