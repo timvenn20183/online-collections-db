@@ -62,6 +62,11 @@ This is the administration section of the online collectors database. Select wha
 <dd>
 <%= render :partial => 'rolodex/rolodex_help' %>
 </dd>
+<br/>
+<dt><%= link_to("Wanted", :action => 'index', :controller => 'wanted', :remote => true) %></dt>
+<dd>
+<%= render :partial => 'wanted/wanted_help' %>
+</dd>
 </dl>
 <script>
 $('html, body').animate({ scrollTop: 0 }, 0);

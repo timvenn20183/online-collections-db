@@ -10,7 +10,7 @@ module Ocd
   class Application < Rails::Application
 
     config.single_mode = false
-    config.domain = "test.co.za"
+    config.domain = "onlinecollector.co.za"
     config.support_email = "tim@nevyn.co.za"
     config.protocol = "http"
     config.password_retries = 3

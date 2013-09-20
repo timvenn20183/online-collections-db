@@ -8,6 +8,9 @@
         <% if current_site.menu_options[:contact_on_menu] == true then %>
         <li class="<%=raw 'active' if session[:menu] == 'CONTACT' %>"><%= link_to('Contact', :controller => :main, :action => :contact, :remote => true) %></li>
         <% end %>
+        <% if current_site.menu_options[:wanted_on_menu] == true then %>
+        <li class="<%=raw 'active' if session[:menu] == 'WANTED' %>"><%= link_to('Wanted', :controller => :main, :action => :wanted, :remote => true) %></li>
+        <% end %>
         <li class="divider"></li>
 
 <!-- COLLECTIONS -->

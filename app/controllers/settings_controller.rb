@@ -71,7 +71,9 @@ class SettingsController < ApplicationController
         @site.homepage_options[:show_navbar] = !@site.homepage_options[:show_navbar] if params[:show_navbar] == '1'
         @site.homepage_options[:last_x_items_images] = !@site.homepage_options[:last_x_items_images] if params[:last_x_items_images] == '1'
         @site.homepage_options[:random_x_items_images] = !@site.homepage_options[:random_x_items_images] if params[:random_x_items_images] == '1'
+        @site.menu_options[:wanted_on_menu] = !@site.menu_options[:wanted_on_menu] if params[:wanted_on_menu] == '1'
         @site.homepage_options[:last_x_items] = params[:last_x_items].to_i if params[:last_x_items] != nil
+        @site.homepage_options[:last_x_comments] = params[:last_x_comments].to_i if params[:last_x_comments] != nil
         @site.homepage_options[:random_x_items] = params[:random_x_items].to_i if params[:random_x_items] != nil
         @site.item_view_options[:list_type] = params[:list_type] if params[:list_type] != nil
         @site.item_view_options[:pagination] = params[:pagination] if params[:pagination] != nil

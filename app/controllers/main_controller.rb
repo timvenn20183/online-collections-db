@@ -31,8 +31,19 @@ class MainController < ApplicationController
                     @random_items = Thing.random_items(current_site) if current_site.homepage_options[:random_x_items]
                 end
             end
+            if current_site.homepage_options[:last_x_comments] > 0 then
+                @comments = @site.comments.where(:approved => true).last(current_site.homepage_options[:last_x_comments])
+            end
         end
         session[:menu] = "HOME"
+    end
+
+    def wanted
+        session[:menu] = "WANTED"
+        respond_to do |format|
+            format.js
+            format.html
+        end
     end
 
     def search

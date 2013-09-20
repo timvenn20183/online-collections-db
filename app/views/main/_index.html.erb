@@ -27,4 +27,21 @@
 		<%= render :partial => 'items/list', :locals => {:items => @random_items} %>
 </p>
 <% end %>
+<% if current_site.homepage_options[:last_x_comments] > 0 and @comments.count > 0 then %>
+    <div style="clear:both;"></div>
+    <hr/>
+    <h4>Recent comments</h4>
+    <hr/>
+    <div class="row-fluid">
+    <% @comments.each do |comment| %>
+        <div class="span1">
+            <%= comment.created_at.to_date %>
+        </div>
+        <div class="span11">
+            <%=raw comment.detail.gsub("\n","<br/>") %>
+        </div>
+        <br>
+    <% end %>
+    </div>
+<% end %>
 

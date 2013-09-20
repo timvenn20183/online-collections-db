@@ -1,0 +1,65 @@
+<div id="notice_bar">
+<div class="alert alert-info">
+<%= render :partial => 'wanted/wanted_help' %>
+</div>
+</div>
+<table border="0" width="80%">
+    <tr>
+        <td valign="top">
+            Include wanted list on menu ?
+        </td>
+        <td>
+            <div class="switch switch-mini" data-on="success" data-off="warning">
+                <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
+                <input type="checkbox" <%=raw ' checked ' if current_site.menu_options[:wanted_on_menu] == true %> onchange="$.ajax({url : '<%= geturl %>?wanted_on_menu=1'});">
+            </div><br/><br/>
+        </td>
+    </tr>
+</table>
+
+<div style="float:left;">
+        <%= form_tag({:controller => :wanted, :action => :insert}, :remote => true,:id => 'wanted_insert', :authenticity_token => form_authenticity_token ) do |f| %>
+            <%= text_field_tag 'name', '' %>&nbsp;
+            <button onclick="$('#wanted_insert').submit();return false;" type="button" class="btn btn-mini btn-primary" style="width:75px;" id="insert_button">Add</button>
+        <% end %>
+</div>
+<table class="table table-hover">
+<thead>
+    <th width="80%">
+        Name
+    </th>
+    <th>
+        Action
+    </th>
+</thead>
+<tbody>
+    <% if @wanteds != nil and @wanteds.count > 0 then %>
+    <% @wanteds.each do |wanted| %>
+        <tr <%=raw "class='success'" if defined? @id and wanted.id == @id %>>
+            <td>
+                <%= wanted.name %>
+            </td>
+            <td>
+                <% geturl = url_for :controller => 'wanted', :action => 'remove', :id => encrypt(wanted.id) %>
+                <button onclick="$.ajax({url : '<%= geturl %>'});" type="button" class="btn btn-mini btn-danger" style="width:75px;">Remove</button>
+            </td>
+        </tr>
+    <% end %>
+    <% else %>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.switch')['bootstrapSwitch']();
+    });
+</script>
+

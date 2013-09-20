@@ -8,6 +8,7 @@
     has_many :rolodexes
     has_many :dialogs
     has_many :comments
+    has_many :wanteds
 
     serialize :homepage_options, Hash
     serialize :item_view_options, Hash
@@ -47,6 +48,7 @@
         self.homepage_options[:about_is_homepage] = false if self.homepage_options[:about_is_homepage] == nil
         self.homepage_options[:last_x_items] = 0 if self.homepage_options[:last_x_items] == nil
         self.homepage_options[:random_x_items] = 0 if self.homepage_options[:random_x_items] == nil
+        self.homepage_options[:random_x_comments] = 0 if self.homepage_options[:random_x_comments] == nil
         self.homepage_options[:show_navbar] = true if self.homepage_options[:show_navbar] == nil
         self.homepage_options[:show_homepage_note] = true if self.homepage_options[:show_homepage_note] == nil
         self.homepage_options[:last_x_items_images] = false if self.homepage_options[:last_x_items_images] == nil
@@ -61,6 +63,7 @@
 
     def set_menu_options
         self.menu_options[:contact_on_menu] = true if self.menu_options[:contact_on_menu] == nil
+        self.menu_options[:wanted_on_menu] = false if self.menu_options[:wanted_on_menu] == nil
     end
 
     def set_lowercase_code

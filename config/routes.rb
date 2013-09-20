@@ -7,6 +7,7 @@ Ocd::Application.routes.draw do
 
     get 'login' => 'main#login'
     get 'search' => 'main#search'
+    get 'wanted' => 'main#wanted'
     match 'main/login_process' => 'main#login_process', via: [:get, :post]
     get 'sign_up' => 'main#sign_up'
     match 'main/sign_up_process' => 'main#sign_up_process', via: [:get, :post]
@@ -104,6 +105,10 @@ Ocd::Application.routes.draw do
     get 'gallery/item_view' => 'gallery#item_view'
 
     get 'fieldoptions/:id' => 'fieldoptions#index'
+
+    get 'wanted/index' => 'wanted#index'
+    match 'wanted/insert' => 'wanted#insert', via: [:get, :post]
+    match 'wanted/remove' => 'wanted#remove', via: [:get, :post]
 
     # catch all route
     match '*path' => 'main#welcome', via: [:get, :post]

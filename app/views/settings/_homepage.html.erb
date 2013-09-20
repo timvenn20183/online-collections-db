@@ -21,7 +21,7 @@
 <%= form_tag({:controller => :settings, :action => :site_update}, :remote => true, :id => 'site_update' , :authenticity_token => form_authenticity_token ) do |f| %>
 <table border="0" width="100%">
     <tr>
-        <td>
+        <td valign="top">
             Show welcome note on homepage (text above)  ? <span class="label label-info" title="">?</span>
         </td>
         <td>
@@ -32,10 +32,10 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             Number of random items to show
         </td>
-        <td>
+        <td valign="top">
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
             <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="selectpicker" data-style="btn-info">
             <% (0..10).each do |i| %>
@@ -45,7 +45,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             Number of recent items to show
         </td>
         <td>
@@ -59,7 +59,7 @@
     </tr>
 
 	<tr>
-		<td>
+		<td valign="top">
 			Include about page on homepage ? <span class="label label-info" title="">?</span>
 		</td>
 		<td>
@@ -70,7 +70,7 @@
 		</td>
 	</tr>
     <tr>
-        <td>
+        <td valign="top">
             Dropdown menus ?
         </td>
         <td>
@@ -81,7 +81,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
            <% geturl = url_for :controller => 'settings', :action => 'about_on_menu' %>
             Show about on main menu ?
         </td>
@@ -92,7 +92,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             Show top navigation bar ?
         </td>
         <td>
@@ -103,7 +103,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             Limit recents items to those with images ?
         </td>
         <td>
@@ -114,7 +114,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             Limit random items to those with images ?
         </td>
         <td>

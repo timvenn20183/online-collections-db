@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914104323) do
+ActiveRecord::Schema.define(version: 20130919145611) do
 
   create_table "articles_things", id: false, force: true do |t|
     t.integer "article_id"
@@ -293,6 +293,13 @@ ActiveRecord::Schema.define(version: 20130914104323) do
     t.boolean  "show_on_menu",   default: true
     t.boolean  "public_visible", default: true
     t.string   "slug"
+  end
+
+  create_table "wanteds", force: true do |t|
+    t.string   "name"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "webrings", force: true do |t|
