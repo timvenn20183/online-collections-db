@@ -8,8 +8,8 @@
     </div>
     <div class="modal-footer">
             <% geturl = url_for :controller => 'settings', :action => 'comments_update', :id => encrypt(@comment.id) %>
-            <button class="btn btn-danger" onclick="$.ajax({url : '<%= geturl %>&remove=true'});$('#myModal').modal('hide');" type="button">Remove</button>
+            <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=true'});$('#myModal').modal('hide');" type="button">Remove</button>
 
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>

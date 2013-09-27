@@ -1,0 +1,8 @@
+<div class="tab-pane" id="item_note">
+    <p>
+        <%=raw item.note.gsub("\n","<br/>") if !item.note.blank? %>
+    </p>
+    <div style="float:right;">
+        <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>

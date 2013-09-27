@@ -8,7 +8,7 @@
 
     <textarea name="homepage_note" id="homepage_note" style="width:95%; height:300px;"><%= current_homepage_note.content %></textarea>
     <br/>
-    <div>
+    <div align="right">
         <button onclick="$('#home_note_update').submit();return false;" class="btn btn-primary btn-mini" type="button" id="save_button">Update</button>
     </div>
 <% end %>
@@ -37,7 +37,7 @@
         </td>
         <td valign="top">
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="selectpicker" data-style="btn-info">
+            <select onchange="$.ajax({url : '<%= geturl %>?random_x_items='+$(this).val()});" name="random_x_items" id="random_x_items" class="selectpicker" data-style="btn-info btn-mini">
             <% (0..10).each do |i| %>
                 <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:random_x_items] %>><%=i%></option>
             <% end %>
@@ -50,7 +50,7 @@
         </td>
         <td>
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="selectpicker" data-style="btn-info">
+            <select onchange="$.ajax({url : '<%= geturl %>?last_x_items='+$(this).val()});" name="last_x_items" id="last_x_items" class="selectpicker" data-style="btn-info btn-mini">
             <% (0..10).each do |i| %>
                 <option value="<%=i%>" <%=raw ' selected ' if i==@site.homepage_options[:last_x_items] %>><%=i%></option>
             <% end %>

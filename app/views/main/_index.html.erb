@@ -35,7 +35,7 @@
     <div class="row-fluid">
     <% @comments.each do |comment| %>
         <div class="span1">
-            <%= comment.created_at.to_date %>
+            <strong><%= comment.created_at.to_date %></strong>
         </div>
         <div class="span11">
             <%=raw comment.detail.gsub("\n","<br/>") %>

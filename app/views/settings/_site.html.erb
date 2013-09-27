@@ -10,7 +10,7 @@
 <table border="0" width="100%">
     <tr>
         <td>
-              Site header
+              Site header&nbsp;<span class="label label-info" style="cursor:help;" title="This sets the name of the site that appears on the top left.">?</span>
         </td>
         <td>
             <%= text_field_tag 'site[header]', @site.header, :size => 50 %>
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>
-              Site tagline
+              Site tagline&nbsp;<span class="label label-info" style="cursor:help;" title="This sets the text that appears to the right of the site name set above.">?</span>
         </td>
         <td>
             <%= text_field_tag 'site[tagline]', @site.tagline, :size => 50 %>
@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td>
-            Site title
+            Site title&nbsp;<span class="label label-info" style="cursor:help;" title="This changes the text that appears at the top of the browser window.">?</span>
         </td>
         <td>
             <%= text_field_tag 'site[title]', @site.title, :size => 50 %>
@@ -51,15 +51,15 @@
     <%= render :partial => 'extra_settings' %>
     <tr>
         <td>
-            Footer
+            Footer&nbsp;<span class="label label-info" style="cursor:help;" title="This changes the text that appears at the bottom of the main website. You can use html tags in this field.">?</span>
         </td>
         <td>
             <%= text_area_tag 'site[footer]', @site.footer, :rows => 5, :cols => 50 %>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary" type="button" id="save_button">Update</button>
+        <td colspan="2" align="right">
+            <button onclick="$('#site_update').submit();return false;" class="btn btn-primary btn-mini" type="button" id="save_button">Update</button>
         </td>
     </tr>
 </table>

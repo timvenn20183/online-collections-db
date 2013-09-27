@@ -5,7 +5,7 @@
     <% geturl = url_for :controller => 'gallery', :action => 'item_view', :id => item.slug %>
   	<%= image_tag(item.mainimage.url(:view), {:onclick => "$.ajax({url : '" + geturl + "'});", :style => 'cursor:pointer;margin-left:10px', :class => 'img-polaroid'}) if !item.mainimage.blank? %>
   </div>
-  <div class="span3">
+  <div class="span4">
   	<strong><%= item.name %></strong><br/>
   	Collection ID : <%= item.collection_id %><br/>
   	Year : <%= item.year %><br/>

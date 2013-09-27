@@ -1,0 +1,12 @@
+<div class="tab-pane" id="item_note">
+<%= form_tag({:controller => :items, :action => :update},:remote => true, :id => 'update_form', :class => "form-horizontal") do |f| %>
+        <%= hidden_field_tag 'id', encrypt(@item.id) %>
+<p>
+        <%= text_area_tag 'item[note]', @item.note, :rows => 12, :style => "width:97%" %>
+</p>
+<% end %>
+<div style="float:right;">
+    <button id="login" class="btn btn-primary btn-mini" onclick="$('#update_form').submit();$('#myModal').modal('hide');">Update</button>
+    <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+</div>

@@ -9,7 +9,7 @@
 </div>
 <div style="float:right;">
      <% geturl = url_for :controller => 'settings', :action => 'site_header', :id => encrypt(current_site.id) %>
-     <button class="btn btn-danger" onclick="$.ajax({url : '<%= geturl %>&remove=1'});return false;">Remove</button>
+     <button class="btn btn-danger btn-mini" onclick="$.ajax({url : '<%= geturl %>&remove=1'});return false;">Remove</button>
 </div>
 
 <% end %>

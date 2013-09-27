@@ -1,3 +1,4 @@
+<div class="tab-pane active" id="item_main">
 <div class="row-fluid"> 
     <% if !item.mainimage.blank? %>
         <div class="span5"><%= image_tag(item.mainimage.url(:medium)) %></div>
@@ -34,4 +35,9 @@
     <% end %>
     <% end %>
   </div>
+    <div style="float:right;">
+        <button class="btn btn-mini" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+
+</div>
 </div>

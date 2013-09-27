@@ -28,5 +28,11 @@
             <% end %><br/>
     <% end %>
     <% end %>
+    <% if !item.note.blank? %>
+    <table border="0">
+    <tr><td valign="top">Note : </td>
+    <td><%=raw item.note.gsub("\n","<br/>") %></td>
+    </table>
+    <% end %>
   </div>
 </div>

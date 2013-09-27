@@ -10,7 +10,7 @@
 		</td>
 		<td>
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select  onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="selectpicker" data-style="btn-info">
+            <select  onchange="$.ajax({url : '<%= geturl %>?list_type='+$(this).val()});" name="list_type" id="list_type" class="selectpicker" data-style="btn-info btn-mini">
             <% ['Accordion','Detailed','Simple','2 Column'].each do |i| %>
                 <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:list_type] %>><%=i%></option>
             <% end %>
@@ -23,7 +23,7 @@
         </td>
         <td>
             <% geturl = url_for :controller => 'settings', :action => 'homepage_update' %>
-            <select onchange="$.ajax({url : '<%= geturl %>?pagination='+$(this).val()});" name="pagination" id="pagination" class="selectpicker" data-style="btn-info">
+            <select onchange="$.ajax({url : '<%= geturl %>?pagination='+$(this).val()});" name="pagination" id="pagination" class="selectpicker" data-style="btn-info btn-mini">
             <% (0..20).each do |i| %>
                 <option value="<%=i%>" <%=raw ' selected ' if i==current_site.item_view_options[:pagination].to_i %>><%=i%></option>
             <% end %>

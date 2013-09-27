@@ -1,15 +1,27 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3 id="myModalLabel"><%= @item.name %></h3>
+        <h4 id="myModalLabel"><%= @item.name %></h4>
     </div>
     <div class="modal-body">
-        <div>
-            <%= render :partial => 'items/item_view', :locals => {:item => @item} %>            
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a href="#item_main" data-toggle="tab">Main</a></li>
+        <li><a href="#item_note" data-toggle="tab">Notes</a></li>
+    </ul>
+    <div class="tab-content">
+        <%= render :partial => 'items/item_view', :locals => {:item => @item} %>            
+        <%= render :partial => 'items/item_note', :locals => {:item => @item} %>            
     </div>
 </div>
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+});
 
+$('#myModal').on('show', function () {
+    $(this).find('.modal-body').css({width:'auto',
+                               height:'auto',
+                              'max-height':'100%'});
+});
+</script>
