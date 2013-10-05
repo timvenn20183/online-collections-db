@@ -49,6 +49,7 @@
         self.homepage_options[:last_x_items] = 0 if self.homepage_options[:last_x_items] == nil
         self.homepage_options[:random_x_items] = 0 if self.homepage_options[:random_x_items] == nil
         self.homepage_options[:random_x_comments] = 0 if self.homepage_options[:random_x_comments] == nil
+        self.homepage_options[:last_x_comments] = 0 if self.homepage_options[:last_x_comments] == nil
         self.homepage_options[:show_navbar] = true if self.homepage_options[:show_navbar] == nil
         self.homepage_options[:show_homepage_note] = true if self.homepage_options[:show_homepage_note] == nil
         self.homepage_options[:last_x_items_images] = false if self.homepage_options[:last_x_items_images] == nil
