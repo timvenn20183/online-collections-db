@@ -7,9 +7,10 @@
   </div>
   <div class="span4">
   	<strong><%= item.name %></strong><br/>
-  	Collection ID : <%= item.collection_id %><br/>
   	Year : <%= item.year %><br/>
+    <% if !item.reference_number.blank? %>
   	Reference : <%= item.reference_number %>
+    <% end %>
     <% geturl = url_for :controller => 'items', :action => 'view', :id => item.slug %>
     <div style="clear:both;"></div>
     <div style="float:right;margin-top:5px; margin-bottom:-5px">
