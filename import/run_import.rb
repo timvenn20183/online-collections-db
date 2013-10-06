@@ -111,7 +111,7 @@ start.upto(line-1) do |l|
                 notices = "[F]"
             end
         else
-            thing.mainimage = nil
+            thing.remove_mainimage!
             thing.save!
         end
 
