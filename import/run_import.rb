@@ -110,6 +110,8 @@ start.upto(line-1) do |l|
             else
                 notices = "[F]"
             end
+        else
+            thing.mainimage = nil
         end
 
         # dynamic fields
