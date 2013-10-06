@@ -112,6 +112,7 @@ start.upto(line-1) do |l|
             end
         else
             thing.mainimage = nil
+            thing.save!
         end
 
         # dynamic fields
