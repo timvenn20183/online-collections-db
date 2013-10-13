@@ -9,7 +9,7 @@ require 'digest/md5'
 
 items_processed = Array.new
 
-site_id = 1
+@site_id = 1
 
 start = ARGV[0].to_i
 counter = 0
@@ -55,7 +55,7 @@ start.upto(line-1) do |l|
             tempcounter = tempcounter + 1
         end
 
-        thing = Thing.find_or_create_by_collection_id(:collection_id => collection_id, :name => name, :site_id => site_id)
+        thing = Thing.find_or_create_by_collection_id(:collection_id => collection_id, :name => name, :site_id => @site_id)
         thing.year = year
         thing.cost = cost
         thing.name = name

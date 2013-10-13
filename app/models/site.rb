@@ -2,6 +2,7 @@
 
     has_many :virtualcollections
     has_many :conditions
+    has_many :categories
     has_many :things
     has_many :thingfields
     has_many :fieldoptions

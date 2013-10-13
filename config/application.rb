@@ -9,7 +9,7 @@ Bundler.require(:default, Rails.env)
 module Ocd
   class Application < Rails::Application
 
-    config.single_mode = false
+    config.single_mode = true
     config.domain = "onlinecollector.co.za"
     config.support_email = "tim@nevyn.co.za"
     config.protocol = "http"

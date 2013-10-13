@@ -1,7 +1,15 @@
 <% if defined? @header_text %>
-<div>
+<div style="float:left;">
 <h4><%= @header_text %></h4>
 </div>
+<div style="float:right;padding-top:8px;line-height:17px;">
+
+<% if defined? @fieldoption %>
+<%= link_to("List view" %>
+<% end %>
+
+</div>
+<div style="clear:both;"></div>
 <% end %>
 <% if current_site.item_view_options[:list_type] == "Accordion" %>
 <div class="accordion" id="fieldslist">
